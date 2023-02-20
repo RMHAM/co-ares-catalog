@@ -1,0 +1,540 @@
+<html>
+  <head>
+    <title>Colorado ARES Form ICS 309</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        font-size: 12pt;
+        margin: 0 auto;
+        max-width: 800px;
+        background-color: lightgray;
+      }
+      .no-print {
+        display: block;
+      }
+      table {
+        width: 100%;
+        border: 2px solid black;
+        border-collapse: collapse;
+        background-color: white;
+      }
+      td {
+        border: 1px solid black;
+      }
+      h1 {
+        font-size: 16pt;
+        margin: 0;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      label {
+        margin: 0 2px;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      input {
+        background-color: rgb(244, 255, 255);
+        border: 0;
+        margin: 0 4px;
+        width: calc(100% - 8px);
+        font-size: 12pt;
+        height: 22px;
+      }
+      td.date-time {
+        width: 170px;
+      }
+      input.date {
+        margin-right: 1px;
+        width: calc(60% - 4px);
+      }
+      input.time {
+        margin-left: 1px;
+        width: calc(35% - 4px);
+      }
+      table.main-log input {
+        height: 28px;
+      }
+
+      @page {
+        size: letter portrait;
+        margin: 0.25in;
+        /* space for 3-ring holes */
+        margin-left: 0.625in;
+      }
+      @media print {
+        .no-print {
+          display: none;
+        }
+        /* hide placeholder text https://stackoverflow.com/a/16493412/587091 */
+        ::-webkit-input-placeholder {
+          /* WebKit browsers */
+          color: transparent;
+        }
+        :-moz-placeholder {
+          /* Mozilla Firefox 4 to 18 */
+          color: transparent;
+        }
+        ::-moz-placeholder {
+          /* Mozilla Firefox 19+ */
+          color: transparent;
+        }
+        :-ms-input-placeholder {
+          /* Internet Explorer 10+ */
+          color: transparent;
+        }
+      }
+    </style>
+    <script type="application/javascript">
+      function resetForm() {
+        const inputs = document.querySelectorAll("input");
+        inputs.forEach((input) => {
+          input.value = "";
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <div class="no-print" style="margin: 16px">
+      <button onclick="resetForm()">Reset form</button>
+    </div>
+    <table class="header" style="border-bottom-width: 1px">
+      <tr>
+        <td rowspan="2" style="width: 220px">
+          <h1>
+            Colorado ARES <br />
+            Communications <br />
+            Log
+          </h1>
+        </td>
+        <td colspan="2"><label>For Operational Period:</label></td>
+        <td style="border-bottom-width: 0"></td>
+      </tr>
+      <tr>
+        <td class="date-time">
+          <label>1. Start Date/Time</label>
+          <input class="date" value="2023-01-24" placeholder="date" />
+          <input class="time" value="19:30" placeholder="time" />
+        </td>
+        <td class="date-time">
+          <label>2. End Date/Time</label>
+          <input class="date" value="2023-01-24" placeholder="date" />
+          <input class="time" value="19:43" placeholder="time" />
+        </td>
+        <td style="border-top-width: 0">
+          <label>3. Tactical Call</label> <input value="R1D6 Net Control" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>4. Assignment/Location</label> <input value="Broomfield" />
+        </td>
+        <td colspan="3">
+          <label>5. Incident Name</label> <input value="Routine R1D6 Net" />
+        </td>
+      </tr>
+      <tr>
+        <td><label>6. Operator Call Sign</label> <input value="K0SWE" /></td>
+        <td colspan="3">
+          <label>7. Operator Signature</label> <input value="On File" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>8. Date/Time Prepared</label>
+          <input class="date" value="2023-01-24" placeholder="date" />
+          <input class="time" value="20:00" placeholder="time" />
+        </td>
+        <td colspan="3">
+          <label>9. Operator Printed Name</label> <input value="Chris Keller" />
+        </td>
+      </tr>
+    </table>
+    <table style="border-top-width: 1px; border-bottom-width: 1px">
+      <tr>
+        <td style="text-align: center; text-transform: uppercase">
+          <label>Message And Action Log</label>
+        </td>
+      </tr>
+    </table>
+    <table
+      class="main-log"
+      style="border-top-width: 1px; border-bottom-width: 1px"
+    >
+      <tr>
+        <td style="border-bottom-width: 0"></td>
+        <td colspan="2" style="border-bottom-width: 0; text-align: center">
+          <label>11. Station ID</label>
+        </td>
+        <td colspan="2" style="border-bottom-width: 0"></td>
+      </tr>
+      <tr>
+        <td style="width: 65px; border-top-width: 0">
+          <label>10. Time</label>
+        </td>
+        <td style="width: 80px; border-top-width: 0">
+          <label>From</label>
+        </td>
+        <td style="width: 80px; border-top-width: 0">
+          <label>To</label>
+        </td>
+        <td style="border-top-width: 0; border-right-width: 0">
+          <label>12. Subject</label>
+        </td>
+        <td
+          style="border-top-width: 0; border-left-width: 0; text-align: right"
+        >
+          <label>13. Disposition</label>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input value="19:30" />
+        </td>
+        <td>
+          <input value="K0SWE" />
+        </td>
+        <td>
+          <input value="Net" />
+        </td>
+        <td colspan="2">
+          <input value="Opening, call for short timers" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="W0AI" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Geiger" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="W0EPK" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Black" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="K0SWE" />
+        </td>
+        <td>
+          <input value="Net" />
+        </td>
+        <td colspan="2">
+          <input value="Call for regular check-ins" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="KE0ZUO" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Bates" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="N0AIU" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Bullock" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="KF0AAC" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Gunther" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="KF0ABR" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Budoff" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="WG0N" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Baysinger" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="KC0IHA" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Foxhoven" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="K0MCW" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Montoya" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="N0MKV" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Vasquez, with traffic" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="N0XRX" />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="Thomas" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="K0SWE" />
+        </td>
+        <td>
+          <input value="Net" />
+        </td>
+        <td colspan="2">
+          <input value="Traffic" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input value="N0MKV" />
+        </td>
+        <td>
+          <input value="Net" />
+        </td>
+        <td colspan="2">
+          <input value="Final training 2023 schedule sent out to email list." />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input
+            value="Feb 21 @ Arvada Fire Training Center, Winlink Basics."
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input
+            value="March 21 @ Arvada Fire, SKYWARN w/ City of Arvada and CERT, register"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input
+            value="Apr 22 @ Dakota Bldg, DMR Programming w/ Mike Lozano K0NGA"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input value="June 24-25, Field Day w/ Denver Radio Club" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input
+            value="Apr, S-158 RADO course with Jeffco IMT, details coming"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input value="19:43" />
+        </td>
+        <td>
+          <input value="K0SWE" />
+        </td>
+        <td>
+          <input value="Net" />
+        </td>
+        <td colspan="2">
+          <input value="Closed net" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td>
+          <input />
+        </td>
+        <td colspan="2">
+          <input />
+        </td>
+      </tr>
+    </table>
+    <table style="border-top-width: 1px">
+      <tr>
+        <td style="width: 33.3%">
+          <label>Page</label>
+          <input style="width: 50px" value="1" placeholder="1" />
+          <label>of</label>
+          <input style="width: 50px" value="1" placeholder="1" />
+        </td>
+        <td style="width: 33.3%; text-align: center">
+          <span style="font-size: small">OpenICS 2023-02-20</span>
+        </td>
+        <td style="width: 33.3%; text-align: center">
+          <span style="font-weight: bold; font-size: large"
+            >COARES ICS 309</span
+          >
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
