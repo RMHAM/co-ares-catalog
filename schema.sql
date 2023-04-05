@@ -1,9 +1,9 @@
 -- PostgreSQL database schema
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
 CREATE DATABASE "open-ics" WITH ENCODING = 'UTF8' LOCALE = 'en_US.UTF8';
 
 CREATE SCHEMA public;
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
 
 CREATE TYPE public.org_type AS ENUM ('section', 'region', 'district');
 
@@ -55,12 +55,12 @@ ADD
 ALTER TABLE
     ONLY public.organizations
 ADD
-    CONSTRAINT organizations_pkey PRIMARY KEY (id);
+    CONSTRAINT organizations_pk PRIMARY KEY (id);
 
 ALTER TABLE
     ONLY public.radio_channels
 ADD
-    CONSTRAINT radio_channels_pkey PRIMARY KEY (id);
+    CONSTRAINT radio_channels_pk PRIMARY KEY (id);
 
 ALTER TABLE
     ONLY public."217a_page_channels"
