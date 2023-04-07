@@ -7,13 +7,13 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
 
 CREATE TYPE public.org_type AS ENUM ('section', 'region', 'district');
 
-CREATE TABLE public."217a_page_channels" (
+CREATE TABLE public."f217a_page_channels" (
     page_id uuid NOT NULL,
     channel_id uuid NOT NULL,
     "order" smallint
 );
 
-CREATE TABLE public."217a_pages" (
+CREATE TABLE public."f217a_pages" (
     id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
     page_owner uuid NOT NULL,
     frequency_band character varying NOT NULL
@@ -43,14 +43,14 @@ CREATE TABLE public.radio_channels (
 );
 
 ALTER TABLE
-    ONLY public."217a_page_channels"
+    ONLY public."f217a_page_channels"
 ADD
-    CONSTRAINT "217a_page_channels_pk" PRIMARY KEY (page_id, channel_id);
+    CONSTRAINT "f217a_page_channels_pk" PRIMARY KEY (page_id, channel_id);
 
 ALTER TABLE
-    ONLY public."217a_pages"
+    ONLY public."f217a_pages"
 ADD
-    CONSTRAINT "217a_pages_pk" PRIMARY KEY (id);
+    CONSTRAINT "f217a_pages_pk" PRIMARY KEY (id);
 
 ALTER TABLE
     ONLY public.organizations
@@ -63,19 +63,19 @@ ADD
     CONSTRAINT radio_channels_pk PRIMARY KEY (id);
 
 ALTER TABLE
-    ONLY public."217a_page_channels"
+    ONLY public."f217a_page_channels"
 ADD
-    CONSTRAINT "217a_page_channels_page_FK" FOREIGN KEY (page_id) REFERENCES public."217a_pages"(id);
+    CONSTRAINT "f217a_page_channels_page_FK" FOREIGN KEY (page_id) REFERENCES public."f217a_pages"(id);
 
 ALTER TABLE
-    ONLY public."217a_page_channels"
+    ONLY public."f217a_page_channels"
 ADD
-    CONSTRAINT "217a_page_channels_channel_FK" FOREIGN KEY (channel_id) REFERENCES public.radio_channels(id);
+    CONSTRAINT "f217a_page_channels_channel_FK" FOREIGN KEY (channel_id) REFERENCES public.radio_channels(id);
 
 ALTER TABLE
-    ONLY public."217a_pages"
+    ONLY public."f217a_pages"
 ADD
-    CONSTRAINT "217a_page_owner_FK" FOREIGN KEY (page_owner) REFERENCES public.organizations(id);
+    CONSTRAINT "f217a_page_owner_FK" FOREIGN KEY (page_owner) REFERENCES public.organizations(id);
 
 ALTER TABLE
     ONLY public.organizations

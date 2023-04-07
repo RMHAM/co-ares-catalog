@@ -1,5 +1,8 @@
-# Created by https://www.toptal.com/developers/gitignore/api/linux,macos,nextjs,windows,visualstudiocode,jetbrains+all
-# Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,nextjs,windows,visualstudiocode,jetbrains+all
+# Created by https://www.toptal.com/developers/gitignore/api/linux,macos,nextjs,windows,jetbrains+all,visualstudiocode,dotenv
+# Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,nextjs,windows,jetbrains+all,visualstudiocode,dotenv
+
+### dotenv ###
+.env
 
 ### JetBrains+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -86,8 +89,8 @@ fabric.properties
 
 .idea/*
 
-!.idea/codeStyles
-!.idea/runConfigurations
+#!.idea/codeStyles
+#!.idea/runConfigurations
 
 ### Linux ###
 *~
@@ -217,4 +220,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/linux,macos,nextjs,windows,visualstudiocode,jetbrains+all
+# End of https://www.toptal.com/developers/gitignore/api/linux,macos,nextjs,windows,jetbrains+all,visualstudiocode,dotenv
