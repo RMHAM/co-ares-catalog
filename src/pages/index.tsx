@@ -53,10 +53,10 @@ export default function Home() {
                   <td>{chan.radio_channels.config}</td>
                   <td>{chan.radio_channels.name}</td>
                   <td>{chan.radio_channels.eligible_users}</td>
-                  <td>{chan.radio_channels.rx_freq}</td>
+                  <td>{chan.radio_channels.rx_freq.toFixed(4)}</td>
                   <td>{chan.radio_channels.rx_width}</td>
                   <td>{chan.radio_channels.rx_tone}</td>
-                  <td>{chan.radio_channels.tx_freq}</td>
+                  <td>{chan.radio_channels.tx_freq.toFixed(4)}</td>
                   <td>{chan.radio_channels.tx_width}</td>
                   <td>{chan.radio_channels.tx_tone}</td>
                   <td>{chan.radio_channels.mode}</td>
