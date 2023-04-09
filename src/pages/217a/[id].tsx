@@ -30,9 +30,9 @@ export default function View217A() {
     <div>
       <Link href={"/217a"}>&lt; Back to 217A Repository</Link>
       <h2>Form 217A</h2>
-      <h1>
+      <h2>
         {f217Data.organizations.name} - {f217Data.frequency_band}
-      </h1>
+      </h2>
       <table className="table">
         <thead>
           <tr>

@@ -21,7 +21,7 @@ export default function List217A() {
 
   return (
     <>
-      <h1>Form 217A Repository</h1>
+      <h2>Form 217A Repository</h2>
       <ul>
         {f217s &&
           f217s.map((f217: any) => (
