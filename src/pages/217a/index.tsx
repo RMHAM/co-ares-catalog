@@ -1,24 +1,13 @@
+import { f217a_pages } from "@prisma/client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-export default function List217A() {
-  const [f217s, setF217s] = useState<any | null>(null);
-  const [isLoading, setLoading] = useState(false);
+import prisma from "@/lib/prisma";
 
-  useEffect(() => {
-    setLoading(true);
-    const url = "/api/f217a_pages?" + "include=organizations";
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setF217s(data);
-        setLoading(false);
-      });
-  }, []);
+type List217AProps = {
+  f217s: f217a_pages[];
+};
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!f217s) return <p>No 217A data</p>;
-
+export default function List217A({ f217s }: List217AProps) {
   return (
     <>
       <h2>Form 217A Repository</h2>
@@ -34,4 +23,13 @@ export default function List217A() {
       </ul>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  let f217s = await prisma.f217a_pages.findMany({
+    include: { organizations: true },
+  });
+  return {
+    props: { f217s },
+  };
 }
