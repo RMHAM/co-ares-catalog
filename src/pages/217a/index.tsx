@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -17,30 +16,11 @@ export default function List217A() {
       });
   }, []);
 
-  if (isLoading)
-    return (
-      <>
-        <Head>
-          <title>Open ICS</title>
-        </Head>
-        <p>Loading...</p>
-      </>
-    );
-  if (!f217s)
-    return (
-      <>
-        <Head>
-          <title>Open ICS</title>
-        </Head>
-        <p>No 217A data</p>
-      </>
-    );
+  if (isLoading) return <p>Loading...</p>;
+  if (!f217s) return <p>No 217A data</p>;
 
   return (
     <>
-      <Head>
-        <title>Open ICS</title>
-      </Head>
       <h1>Form 217A Repository</h1>
       <ul>
         {f217s &&
