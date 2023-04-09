@@ -1,31 +1,13 @@
+import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 
-export default function View217A() {
-  const router = useRouter();
-  const { id } = router.query;
+import prisma from "@/lib/prisma";
 
-  const [f217Data, setF217Data] = useState<any | null>(null);
-  const [isLoading, setLoading] = useState(false);
+type View217AProps = {
+  f217Data: any;
+};
 
-  useEffect(() => {
-    setLoading(true);
-    const url =
-      `/api/f217a_pages/${id}?` +
-      "include=f217a_page_channels,organizations,f217a_page_channels.radio_channels&" +
-      'orderBy={"channel_order":"$asc"}';
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setF217Data(data);
-        setLoading(false);
-      });
-  }, [id]);
-
-  if (isLoading) return <p>Loading...</p>;
-  if (!f217Data) return <p>No 217A data</p>;
-
+export default function View217A({ f217Data }: View217AProps) {
   return (
     <div>
       <Link href={"/217a"}>&lt; Back to 217A Repository</Link>
@@ -70,4 +52,31 @@ export default function View217A() {
       </table>
     </div>
   );
+}
+
+export async function getServerSideProps({
+  params,
+}: GetServerSidePropsContext) {
+  if (!params) {
+    return {
+      notFound: true,
+    };
+  }
+  const f217Id = String(params["id"]);
+  let f217Data = await prisma.f217a_pages.findUnique({
+    where: { id: f217Id },
+    include: {
+      f217a_page_channels: { include: { radio_channels: true } },
+      organizations: true,
+    },
+  });
+
+  if (!f217Data) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: { f217Data: f217Data },
+  };
 }
