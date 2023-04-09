@@ -1,8 +1,17 @@
-# Created by https://www.toptal.com/developers/gitignore/api/linux,macos,nextjs,windows,jetbrains+all,visualstudiocode,dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,nextjs,windows,jetbrains+all,visualstudiocode,dotenv
+# Created by https://www.toptal.com/developers/gitignore/api/linux,macos,dotenv,nextjs,windows,jetbrains+all,visualstudiocode,firebase
+# Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,dotenv,nextjs,windows,jetbrains+all,visualstudiocode,firebase
 
 ### dotenv ###
 .env
+
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
 
 ### JetBrains+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -220,4 +229,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/linux,macos,nextjs,windows,jetbrains+all,visualstudiocode,dotenv
+# End of https://www.toptal.com/developers/gitignore/api/linux,macos,dotenv,nextjs,windows,jetbrains+all,visualstudiocode,firebase
