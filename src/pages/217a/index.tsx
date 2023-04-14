@@ -1,10 +1,10 @@
-import { f217a_pages } from "@prisma/client";
 import Link from "next/link";
 
-import prisma from "@/lib/prisma";
+import dbConnect from "@/lib/dbConnect";
+import { Form217A, IForm217A } from "@/models/form217a.model";
 
 type List217AProps = {
-  f217s: f217a_pages[];
+  f217s: IForm217A[];
 };
 
 export default function List217A({ f217s }: List217AProps) {
@@ -13,10 +13,10 @@ export default function List217A({ f217s }: List217AProps) {
       <h2>Form 217A Repository</h2>
       <ul>
         {f217s &&
-          f217s.map((f217: any) => (
-            <li key={f217.id}>
-              <Link href={"/217a/" + f217.id}>
-                {f217.organizations.name} {f217.frequency_band}
+          f217s.map((f217) => (
+            <li key={f217._id.toString()}>
+              <Link href={"/217a/" + f217._id}>
+                {f217.owner} - {f217.frequencyBand}
               </Link>
             </li>
           ))}
@@ -26,10 +26,9 @@ export default function List217A({ f217s }: List217AProps) {
 }
 
 export async function getServerSideProps() {
-  let f217s = await prisma.f217a_pages.findMany({
-    include: { organizations: true },
-  });
+  await dbConnect();
+  const f217s = await Form217A.find();
   return {
-    props: { f217s },
+    props: { f217s: f217s.map((f) => JSON.parse(JSON.stringify(f))) },
   };
 }

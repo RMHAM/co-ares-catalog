@@ -10,21 +10,22 @@
   },
   "dependencies": {
     "@types/node": "18.15.11",
-    "@types/react": "18.0.33",
+    "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
-    "bootstrap": "^5.2.3",
-    "eslint": "8.37.0",
-    "eslint-config-next": "13.2.4",
-    "next": "13.2.4",
+    "bootstrap": "5.2.3",
+    "eslint": "8.38.0",
+    "eslint-config-next": "13.3.0",
+    "mongoose": "7.0.3",
+    "next": "13.3.0",
     "react": "18.2.0",
-    "react-bootstrap": "2.7.2",
+    "react-bootstrap": "2.7.3",
     "react-dom": "18.2.0",
-    "typescript": "5.0.3"
+    "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.7"
+    "@trivago/prettier-plugin-sort-imports": "4.1.1",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "prettier": "2.8.7"
   }
 }
