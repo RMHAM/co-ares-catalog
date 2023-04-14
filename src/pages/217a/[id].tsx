@@ -1,8 +1,6 @@
 import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
 
-import prisma from "@/lib/prisma";
-
 type View217AProps = {
   f217Data: any;
 };
