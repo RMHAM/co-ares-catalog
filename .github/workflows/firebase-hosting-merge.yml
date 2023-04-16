@@ -10,13 +10,19 @@ name: Deploy to Firebase Hosting on merge
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    env:
+      MONGODB_URI: mongodb://dummy:27017
+
     steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
       - uses: actions/checkout@v2
 
       - name: Build
         run: |
           npm ci 
-          npx prisma generate
           npm run build
 
       - name: Deploy
