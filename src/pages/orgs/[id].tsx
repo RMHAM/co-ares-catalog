@@ -28,7 +28,16 @@ export async function getServerSideProps({
   }
   await dbConnect();
   const orgId = String(params["id"]);
-  const org = await Organization.findById(orgId);
+  let org = null;
+  try {
+    org = await Organization.findById(orgId);
+  } catch (err: any) {
+    // If the ID is not a valid ObjectId, then we'll get a CastError.
+    // In that case, let it fall through and we'll return a 404.
+    if (err.name !== "CastError") {
+      throw err;
+    }
+  }
 
   if (!org) {
     return {

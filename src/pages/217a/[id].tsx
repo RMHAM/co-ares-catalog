@@ -65,7 +65,16 @@ export async function getServerSideProps({
   }
   await dbConnect();
   const f217Id = String(params["id"]);
-  const f217Data = await Form217A.findById(f217Id);
+  let f217Data = null;
+  try {
+    f217Data = await Form217A.findById(f217Id);
+  } catch (err: any) {
+    // If the ID is not a valid ObjectId, then we'll get a CastError.
+    // In that case, let it fall through and we'll return a 404.
+    if (err.name !== "CastError") {
+      throw err;
+    }
+  }
 
   if (!f217Data) {
     return {
