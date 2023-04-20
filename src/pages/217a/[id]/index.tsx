@@ -1,5 +1,6 @@
 import { GetServerSidePropsContext } from "next";
 import Link from "next/link";
+import { PrinterFill } from "react-bootstrap-icons";
 
 import dbConnect from "@/lib/dbConnect";
 import { Form217A, IForm217A } from "@/models/form217a.model";
@@ -12,13 +13,25 @@ export default function View217A({ f217Data }: View217AProps) {
   return (
     <>
       <Link href={"/217a"}>&lt; Back to 217A Repository</Link>
-      <h2>Form 217A</h2>
-      <h2>
-        {f217Data.owner} - {f217Data.frequencyBand}
-      </h2>
+      <h3>Form 217A</h3>
+      <div className="d-flex">
+        <h2>
+          {f217Data.owner} - {f217Data.frequencyBand}
+        </h2>
+        <div className="flex-grow-1" />
+        <Link href={`/217a/${f217Data._id}/print`}>
+          Print{" "}
+          <PrinterFill
+            color="primary"
+            size={36}
+            aria-label="Go to print layout"
+          />
+        </Link>
+      </div>
       <table className="table">
         <thead>
           <tr>
+            <th></th>
             <th>Config</th>
             <th>Name</th>
             <th>Eligible Users</th>
@@ -36,6 +49,7 @@ export default function View217A({ f217Data }: View217AProps) {
           {f217Data.channels &&
             f217Data.channels.map((chan) => (
               <tr key={chan.order.toString()}>
+                <td>{chan.order.toString()}</td>
                 <td>{chan.config}</td>
                 <td>{chan.name}</td>
                 <td>{chan.eligibleUsers}</td>
