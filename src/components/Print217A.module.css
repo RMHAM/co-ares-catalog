@@ -1,0 +1,44 @@
+.noPrint {
+  display: block;
+}
+
+.printForm {
+  font-family: "Arial", sans-serif;
+  font-size: 12pt;
+  margin: 0 auto;
+  max-width: 1020px;
+}
+
+.printForm table {
+  width: 100%;
+  border: 2px solid black;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.printForm td {
+  border: 1px solid black;
+}
+
+.printForm h1 {
+  font-size: 16pt;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.printForm .smallHeading {
+  font-size: 8pt;
+}
+
+@page {
+  size: letter landscape;
+  margin: 0.25in;
+}
+@media print {
+  .noPrint {
+    display: none;
+  }
+  .printForm {
+    max-width: 100%;
+  }
+}
