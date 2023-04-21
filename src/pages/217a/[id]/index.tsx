@@ -12,7 +12,7 @@ type View217AProps = {
 export default function View217A({ f217Data }: View217AProps) {
   return (
     <>
-      <Link href={"/217a"}>&lt; Back to 217A Repository</Link>
+      <Link href={"/217a"}>&lt; Back to 217A Catalog</Link>
       <h3>Form 217A</h3>
       <div className="d-flex">
         <h2>

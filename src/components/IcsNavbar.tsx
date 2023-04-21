@@ -9,7 +9,7 @@ export default function IcsNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/217a">Form 217A Repo</Nav.Link>
+            <Nav.Link href="/217a">217A Catalog</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">

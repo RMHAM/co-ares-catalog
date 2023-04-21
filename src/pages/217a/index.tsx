@@ -10,7 +10,7 @@ type List217AProps = {
 export default function List217A({ f217s }: List217AProps) {
   return (
     <>
-      <h2>Form 217A Repository</h2>
+      <h2>ICS-217A Catalog</h2>
       <ul>
         {f217s &&
           f217s.map((f217) => (
