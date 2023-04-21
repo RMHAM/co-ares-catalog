@@ -12,6 +12,9 @@ export default function IcsNavbar() {
             <Nav.Link href="/217a">Form 217A Repo</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>Login</Navbar.Text>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
