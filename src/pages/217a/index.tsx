@@ -27,7 +27,10 @@ export default function List217A({ f217s }: List217AProps) {
 
 export async function getServerSideProps() {
   await dbConnect();
-  const f217s = await Form217A.find();
+  const f217s = await Form217A.find().sort({
+    owner: "asc",
+    frequencyBand: "asc",
+  });
   return {
     props: { f217s: f217s.map((f) => JSON.parse(JSON.stringify(f))) },
   };
