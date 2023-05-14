@@ -33,7 +33,7 @@ export default function Print217A({ f217Data }: Print217AProps) {
               </td>
             </tr>
             <tr>
-              <td className={styles.smallHeading}>{/* channel number*/}</td>
+              <td className={styles.smallHeading}>{/* channel number */}</td>
               <td className={styles.smallHeading}>3. Channel Configuration</td>
               <td className={styles.smallHeading}>
                 4. Channel Name / Trunked Radio System Talkgroup
@@ -54,7 +54,7 @@ export default function Print217A({ f217Data }: Print217AProps) {
             {f217Data.channels &&
               f217Data.channels.map((chan) => (
                 <tr key={chan.order.toString()}>
-                  <td>{chan.order.toString()}</td>
+                  <td>{/* channel number */}</td>
                   <td>{chan.config}</td>
                   <td>{chan.name}</td>
                   <td className={styles.smallHeading}>{chan.eligibleUsers}</td>

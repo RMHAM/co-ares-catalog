@@ -31,7 +31,7 @@ export default function View217A({ f217Data }: View217AProps) {
       <table className="table">
         <thead>
           <tr>
-            <th></th>
+            <th>{/* channel number */}</th>
             <th>Config</th>
             <th>Name</th>
             <th>Eligible Users</th>
@@ -49,7 +49,7 @@ export default function View217A({ f217Data }: View217AProps) {
           {f217Data.channels &&
             f217Data.channels.map((chan) => (
               <tr key={chan.order.toString()}>
-                <td>{chan.order.toString()}</td>
+                <td>{/* channel number */}</td>
                 <td>{chan.config}</td>
                 <td>{chan.name}</td>
                 <td>{chan.eligibleUsers}</td>
