@@ -2,8 +2,6 @@
 Extract Form 217a data from an Excel file and export it to a CSV file.
 
 Usage: python extractor.py <filename.xlsx>
-
-find '/path/to/ARES Communication ' -name "*217*.xlsx" -print0 | xargs -0 -I {} python3 -m extractor '{}'
 """
 
 import sys

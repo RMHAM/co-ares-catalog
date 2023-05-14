@@ -1,5 +1,4 @@
 [project]
-dependencies = [
-    "openpyxl"
-    "pandas"
-]
+name = "ccc_data"
+version = "0.0.1"
+dependencies = ["openpyxl", "pandas", "pymongo"]
