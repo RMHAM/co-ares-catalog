@@ -13,7 +13,7 @@ export default function IcsNavbar() {
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>Login</Navbar.Text>
+          <Navbar.Text>Beta</Navbar.Text>
         </Navbar.Collapse>
       </Container>
     </Navbar>
