@@ -29,7 +29,7 @@ export default function Print217A({ f217Data }: Print217AProps) {
               </td>
               <td colSpan={2}>
                 <div className={styles.smallHeading}>2. Description</div>
-                {f217Data.owner}
+                {f217Data.description}
               </td>
             </tr>
             <tr>

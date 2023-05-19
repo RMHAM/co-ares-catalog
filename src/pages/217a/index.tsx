@@ -16,7 +16,7 @@ export default function List217A({ f217s }: List217AProps) {
           f217s.map((f217) => (
             <li key={f217._id.toString()}>
               <Link href={"/217a/" + f217._id}>
-                {f217.owner} - {f217.frequencyBand}
+                {f217.description} - {f217.frequencyBand}
               </Link>
             </li>
           ))}
@@ -28,9 +28,11 @@ export default function List217A({ f217s }: List217AProps) {
 export async function getServerSideProps() {
   await dbConnect();
   const f217s = await Form217A.find().sort({
-    owner: "asc",
+    description: "asc",
     frequencyBand: "asc",
-  });
+  });  
+
+  console.log(f217s);
   return {
     props: { f217s: f217s.map((f) => JSON.parse(JSON.stringify(f))) },
   };

@@ -16,7 +16,7 @@ export default function View217A({ f217Data }: View217AProps) {
       <h3>Form 217A</h3>
       <div className="d-flex">
         <h2>
-          {f217Data.owner} - {f217Data.frequencyBand}
+          {f217Data.description} - {f217Data.frequencyBand}
         </h2>
         <div className="flex-grow-1" />
         <Link href={`/217a/${f217Data._id}/print`}>

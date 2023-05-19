@@ -2,7 +2,8 @@ import mongoose, { Schema, Types, model, models } from "mongoose";
 
 export interface IForm217A {
   _id: mongoose.Types.ObjectId;
-  owner: string;
+  ownerId: mongoose.Types.ObjectId;
+  description: string;
   frequencyBand: string;
   channels: Types.Array<IRadioChannel>;
 }
@@ -23,7 +24,11 @@ export interface IRadioChannel {
 }
 
 const Form217ASchema = new Schema<IForm217A>({
-  owner: {
+  ownerId: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
+  description: {
     type: String,
     required: true,
   },

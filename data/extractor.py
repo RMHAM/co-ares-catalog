@@ -72,13 +72,22 @@ df['group'] = df['name'].str.extract(r'^(\d{2,3}\w)')
 connection_string = os.environ.get('MONGODB_CONNECTION_STRING')
 client = MongoClient(connection_string, 27017)
 db = client['test']
+
+# query names from the organizations collection
+orgColl = db['organizations']
+orgs = list(orgColl.find())
+
 collection = db['form217as']
 for group in df['group'].unique():
     df_group = df[df['group'] == group]
     df_group.drop(columns=['group'], inplace=True)
     df_group['order'] = df_group.index + 1
 
-    matches = re.search(r'^(\d{1,2})(\d)(\w)', group)
+    try:
+        matches = re.search(r'^(\d{1,2})(\d)(\w)', group)
+    except TypeError:
+        print(f'Could not parse group {group}')
+        continue
     region = matches.group(1)
     district = matches.group(2)
     band = matches.group(3)
@@ -93,9 +102,18 @@ for group in df['group'].unique():
         'V': 'VHF',
     }[band]
 
-    owner = f'Region {region} District {district}'
+    description = f'R{region}D{district}'
     if region == '1' and district == '0':
-        owner = 'Colorado Section'
-    form217doc = dict({'owner': owner, 'frequencyBand': band,
-                      'channels': channels})
+        description = 'Colorado State EOC'
+    ownerId = None
+    for org in orgs:
+        if org['name'].startswith(description):
+            ownerId = org['_id']
+            description = org['name']
+            break
+    if ownerId is None:
+        print(f'Could not find owner for {description}')
+        continue
+    form217doc = dict({'description': description, 'frequencyBand': band,
+                      'channels': channels, 'ownerId': ownerId})
     collection.insert_one(form217doc)
