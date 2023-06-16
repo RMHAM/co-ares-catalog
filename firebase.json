@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "open-ics",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
