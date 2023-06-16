@@ -23,9 +23,12 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span *ngIf="!(isHandset$ | async)">
+      <span *ngIf="!(isHandset$ | async); else mobileTitle">
         Colorado ARES Communications Catalog
       </span>
+      <ng-template #mobileTitle>
+        <span>ARES Catalog</span>
+      </ng-template>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
