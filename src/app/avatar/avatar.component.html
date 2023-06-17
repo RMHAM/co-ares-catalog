@@ -1,0 +1,22 @@
+<div *ngIf="loggedIn$ | async; else loggedOut">
+  <img
+    alt="Avatar photo"
+    [src]="photoURL$ | async"
+    [matMenuTriggerFor]="menu"
+  />
+  <mat-menu #menu>
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
+</div>
+<ng-template #loggedOut>
+  <div>
+    <img
+      alt="Blank avatar photo"
+      [src]="blankPhotoUrl"
+      [matMenuTriggerFor]="menu"
+    />
+    <mat-menu #menu>
+      <a mat-menu-item routerLink="/login">Login</a>
+    </mat-menu>
+  </div>
+</ng-template>

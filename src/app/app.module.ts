@@ -10,10 +10,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatMenuModule } from '@angular/material/menu';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AvatarComponent } from './avatar/avatar.component';
 import { Ics217DetailComponent } from './ics217-detail/ics217-detail.component';
+import { LoginComponent } from './login/login.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { OrderByPipe } from './order-by.pipe';
 import { OrgBranchComponent } from './org-branch/org-branch.component';
@@ -29,6 +32,8 @@ import { OrganizationTitlePipe } from './organization-title.pipe';
     OrgBranchComponent,
     OrderByPipe,
     OrganizationTitlePipe,
+    LoginComponent,
+    AvatarComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,7 @@ import { OrganizationTitlePipe } from './organization-title.pipe';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
