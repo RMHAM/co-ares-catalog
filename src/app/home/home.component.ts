@@ -7,5 +7,5 @@ import { OrganizationsService } from '../organizations.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  orgs$ = inject(OrganizationsService).readAll();
+  orgs$ = inject(OrganizationsService).getAll();
 }

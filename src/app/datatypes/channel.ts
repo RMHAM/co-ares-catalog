@@ -3,10 +3,10 @@ export interface Channel {
   config: string;
   name: string;
   users: string;
-  rxFrequency: string;
+  rxFrequency: number;
   rxWidth: string;
   rxTone: string;
-  txFrequency: string;
+  txFrequency: number;
   txWidth: string;
   txTone: string;
   mode: string;
