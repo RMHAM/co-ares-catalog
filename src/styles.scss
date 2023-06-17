@@ -17,10 +17,14 @@ $my-theme: mat.define-light-theme(
 );
 
 @include mat.core-theme($my-theme);
+
 @include mat.button-theme($my-theme);
+@include mat.icon-theme($my-theme);
+@include mat.icon-button-theme($my-theme);
+@include mat.list-theme($my-theme);
+@include mat.menu-theme($my-theme);
 @include mat.sidenav-theme($my-theme);
 @include mat.toolbar-theme($my-theme);
-@include mat.menu-theme($my-theme);
 
 html,
 body {
