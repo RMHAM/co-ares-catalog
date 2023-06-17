@@ -7,6 +7,7 @@ import {
   Firestore,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
 import { Ics217 } from './datatypes/ics217';
 
 @Injectable({

@@ -2,10 +2,10 @@ import { Component, inject } from '@angular/core';
 import { OrganizationsService } from '../organizations.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-org-tree',
+  templateUrl: './org-tree.component.html',
+  styleUrls: ['./org-tree.component.scss'],
 })
-export class HomeComponent {
+export class OrgTreeComponent {
   orgs$ = inject(OrganizationsService).getAll();
 }

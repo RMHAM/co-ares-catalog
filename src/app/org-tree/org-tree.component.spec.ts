@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeComponent } from './home.component';
+import { OrgTreeComponent } from './org-tree.component';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('OrgTreeComponent', () => {
+  let component: OrgTreeComponent;
+  let fixture: ComponentFixture<OrgTreeComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      declarations: [OrgTreeComponent],
     });
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(OrgTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

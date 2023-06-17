@@ -7,6 +7,7 @@ import {
   Firestore,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+
 import { Organization } from './datatypes/organization';
 
 @Injectable({
