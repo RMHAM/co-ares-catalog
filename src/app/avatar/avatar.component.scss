@@ -1,9 +1,23 @@
-div {
-  height: 40px;
+$avatar-size: 40px;
+
+:host {
+  height: 48px;
+  width: 48px;
 }
 
-img {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
+div.avatar {
+  height: 48px;
+  width: 48px;
+}
+
+button.avatar {
+  height: $avatar-size;
+  width: $avatar-size;
+  padding: 4px;
+}
+
+img.avatar {
+  border-radius: $avatar-size / 2;
+  height: $avatar-size;
+  width: $avatar-size;
 }

@@ -1,26 +1,37 @@
-<div *ngIf="loggedIn$ | async; else loggedOut">
-  <img
-    alt="Avatar photo"
-    [ngSrc]="(photoURL$ | async)?.toString()!"
-    width="40"
-    height="40"
-    [matMenuTriggerFor]="menu"
-  />
-  <mat-menu #menu>
-    <button mat-menu-item (click)="logout()">Logout</button>
-  </mat-menu>
-</div>
-<ng-template #loggedOut>
-  <div>
+<div *ngIf="loggedIn$ | async; else showLogin" class="avatar">
+  <button
+    class="avatar"
+    mat-icon-button
+    [matMenuTriggerFor]="accountMenu"
+    aria-label="User Menu"
+  >
     <img
-      alt="Blank avatar photo"
-      [ngSrc]="blankPhotoUrl"
+      class="avatar"
+      [ngSrc]="(photoURL$ | async)!.toString()"
+      [alt]="displayName$ | async"
       width="40"
       height="40"
-      [matMenuTriggerFor]="menu"
     />
-    <mat-menu #menu>
-      <a mat-menu-item routerLink="/login">Login</a>
+  </button>
+  <mat-menu #accountMenu="matMenu">
+    <button mat-menu-item disabled>{{ email$ | async }}</button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </mat-menu>
+</div>
+<ng-template #showLogin>
+  <div class="avatar">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="loginMenu"
+      aria-label="User Menu"
+    >
+      <mat-icon color="accent">person</mat-icon>
+    </button>
+    <mat-menu #loginMenu="matMenu">
+      <div mat-menu-item routerLink="/login">Log In</div>
     </mat-menu>
   </div>
 </ng-template>
