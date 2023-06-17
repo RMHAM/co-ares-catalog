@@ -8,7 +8,7 @@ describe('OrgBranchComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [OrgBranchComponent]
+      declarations: [OrgBranchComponent],
     });
     fixture = TestBed.createComponent(OrgBranchComponent);
     component = fixture.componentInstance;

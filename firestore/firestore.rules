@@ -1,0 +1,17 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+    	match /ics217s/{id} {
+      	allow read: if true;
+        allow write: if false;
+      }
+      match /organizations/{id} {
+      	allow read: if true;
+        allow write: if false;
+      }
+      allow read, write: if false;
+    }
+  }
+}

@@ -15,9 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Ics217DetailComponent } from './ics217-detail/ics217-detail.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import { OrderByPipe } from './order-by.pipe';
 import { OrgBranchComponent } from './org-branch/org-branch.component';
 import { OrgTreeComponent } from './org-tree/org-tree.component';
-import { OrderByPipe } from './order-by.pipe';
 import { OrganizationTitlePipe } from './organization-title.pipe';
 
 @NgModule({
