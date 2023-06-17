@@ -1,5 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+// Replace with https://github.com/VadimDez/ngx-order-pipe if
+// https://github.com/VadimDez/ngx-order-pipe/issues/154 ever gets fixed.
 @Pipe({
   name: 'orderBy',
 })
