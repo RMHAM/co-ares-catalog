@@ -1,7 +1,9 @@
 <div *ngIf="loggedIn$ | async; else loggedOut">
   <img
     alt="Avatar photo"
-    [src]="photoURL$ | async"
+    [ngSrc]="(photoURL$ | async)?.toString()!"
+    width="40"
+    height="40"
     [matMenuTriggerFor]="menu"
   />
   <mat-menu #menu>
@@ -12,7 +14,9 @@
   <div>
     <img
       alt="Blank avatar photo"
-      [src]="blankPhotoUrl"
+      [ngSrc]="blankPhotoUrl"
+      width="40"
+      height="40"
       [matMenuTriggerFor]="menu"
     />
     <mat-menu #menu>

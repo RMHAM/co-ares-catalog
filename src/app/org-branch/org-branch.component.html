@@ -1,6 +1,6 @@
 <div *ngIf="org == undefined; else branch">Loading</div>
 <ng-template #branch>
-  <p [title]="org!.id">{{ org! | orgTitle }}</p>
+  <p>{{ org! | orgTitle }}</p>
   <ul>
     <li
       *ngFor="
