@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Ics217DetailComponent } from './ics217-detail/ics217-detail.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import { OrgBranchComponent } from './org-branch/org-branch.component';
 import { OrgTreeComponent } from './org-tree/org-tree.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { OrgTreeComponent } from './org-tree/org-tree.component';
     Ics217DetailComponent,
     MainNavComponent,
     OrgTreeComponent,
+    OrgBranchComponent,
   ],
   imports: [
     BrowserModule,

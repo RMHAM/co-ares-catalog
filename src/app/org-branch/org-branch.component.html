@@ -1,0 +1,9 @@
+<div *ngIf="org == undefined; else branch">Loading</div>
+<ng-template #branch>
+  <p>{{ org!.name }}</p>
+  <ul>
+    <li *ngFor="let child of org!.children">
+      <app-org-branch [org]="child" />
+    </li>
+  </ul>
+</ng-template>

@@ -7,5 +7,5 @@ import { OrganizationsService } from '../organizations.service';
   styleUrls: ['./org-tree.component.scss'],
 })
 export class OrgTreeComponent {
-  orgs$ = inject(OrganizationsService).getAll();
+  rootOrg$ = inject(OrganizationsService).getTree();
 }
