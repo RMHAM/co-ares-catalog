@@ -1,8 +1,12 @@
 <div *ngIf="org == undefined; else branch">Loading</div>
 <ng-template #branch>
-  <p>{{ org!.name }}</p>
+  <p [title]="org!.id">{{ org! | orgTitle }}</p>
   <ul>
-    <li *ngFor="let child of org!.children">
+    <li
+      *ngFor="
+        let child of org!.children | orderBy : 'region' | orderBy : 'district'
+      "
+    >
       <app-org-branch [org]="child" />
     </li>
   </ul>

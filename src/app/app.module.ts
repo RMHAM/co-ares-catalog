@@ -17,6 +17,8 @@ import { Ics217DetailComponent } from './ics217-detail/ics217-detail.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { OrgBranchComponent } from './org-branch/org-branch.component';
 import { OrgTreeComponent } from './org-tree/org-tree.component';
+import { OrderByPipe } from './order-by.pipe';
+import { OrganizationTitlePipe } from './organization-title.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { OrgTreeComponent } from './org-tree/org-tree.component';
     MainNavComponent,
     OrgTreeComponent,
     OrgBranchComponent,
+    OrderByPipe,
+    OrganizationTitlePipe,
   ],
   imports: [
     BrowserModule,
