@@ -47,6 +47,8 @@ export class OrganizationsService {
 
   get(orgId: string) {
     const orgDoc = doc(this.firestore, 'organizations', orgId);
-    return docData(orgDoc) as Observable<Organization>;
+    return docData(orgDoc, {
+      idField: 'id',
+    }) as Observable<Organization>;
   }
 }

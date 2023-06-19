@@ -23,6 +23,7 @@ import { OrderByPipe } from './order-by.pipe';
 import { OrgBranchComponent } from './org-branch/org-branch.component';
 import { OrgTreeComponent } from './org-tree/org-tree.component';
 import { OrganizationTitlePipe } from './organization-title.pipe';
+import { OrgDetailComponent } from './org-detail/org-detail.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { OrganizationTitlePipe } from './organization-title.pipe';
     OrgBranchComponent,
     OrgTreeComponent,
     OrganizationTitlePipe,
+    OrgDetailComponent,
   ],
   imports: [
     AppRoutingModule,

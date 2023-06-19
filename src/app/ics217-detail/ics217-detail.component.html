@@ -1,7 +1,12 @@
 <h1>ICS 217A</h1>
 <div *ngIf="(ics217$ | async) == undefined; else details">Loading</div>
 <ng-template #details>
-  <p>{{ (ownerOrg$ | async)?.name }} - {{ (ics217$ | async)?.band }}</p>
+  <h2>
+    <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.id">{{
+      (ownerOrg$ | async)?.name
+    }}</a>
+    - {{ (ics217$ | async)?.band }}
+  </h2>
   <ul>
     <li *ngFor="let chan of (ics217$ | async)?.channels">
       {{ chan.name }} - {{ chan.remarks }}
