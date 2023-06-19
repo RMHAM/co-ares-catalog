@@ -1,5 +1,5 @@
-import { DocumentReference } from '@angular/fire/firestore';
-import { Organization } from './organization';
+import { DocumentReference } from '@google-cloud/firestore';
+import { Organization } from './organization.js';
 
 export interface Ics217 {
   id: string;
