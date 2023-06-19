@@ -1,6 +1,6 @@
 <h1>{{ (organization$ | async)! | orgTitle }}</h1>
 
-<h2>ICS 217A Resources</h2>
+<h2>ICS 217A Communications Resource Availability Worksheets</h2>
 <ul>
   <li *ngFor="let ics217 of ics217s$ | async">
     <a [routerLink]="'/ics217/' + ics217.id">{{ ics217.band }}</a>

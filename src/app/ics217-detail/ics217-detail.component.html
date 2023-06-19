@@ -1,10 +1,10 @@
-<h1>ICS 217A</h1>
+<h1>ICS 217A Communications Resource Availability Worksheet</h1>
 <div *ngIf="(ics217$ | async) == undefined; else details">Loading</div>
 <ng-template #details>
   <h2>
-    <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.id">{{
-      (ownerOrg$ | async)?.name
-    }}</a>
+    <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.id">
+      {{ (ownerOrg$ | async)?.name }}
+    </a>
     - {{ (ics217$ | async)?.band }}
   </h2>
   <ul>
