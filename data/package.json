@@ -4,6 +4,7 @@
     "node": ">= 18.12 <19"
   },
   "dependencies": {
+    "firebase-admin": "11.9.0",
     "tslib": "2.5"
   },
   "devDependencies": {
@@ -20,10 +21,10 @@
     "run-func": "3.0.0",
     "ts-api-utils": "1.0.1",
     "ts-jest": "29.1",
-    "typescript": "5.1"
+    "typescript": "5.0.4"
   },
   "scripts": {
-    "start": "run-func build/src/main.js",
+    "start": "node build/src/main.js",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.json",
