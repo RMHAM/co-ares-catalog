@@ -8,6 +8,7 @@ const app = initializeApp({
   credential: applicationDefault(),
 });
 const db = getFirestore(app);
+db.settings({ ignoreUndefinedProperties: true });
 
 export async function findOrg(
   region: number,
