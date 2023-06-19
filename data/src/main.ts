@@ -1,20 +1,19 @@
-import { applicationDefault, initializeApp } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+import { readExcel } from './excel.js';
+import { findOrg } from './firebase.js';
 
-const app = initializeApp({
-  credential: applicationDefault(),
-});
-
-const db = getFirestore(app);
-const query = db
-  .collection('organizations')
-  .where('region', '==', 1)
-  .where('district', '==', 6)
-  .limit(1);
-const result = await query.get();
-if (result.empty) {
-  console.log('No such document!');
-} else {
-  const org = result.docs[0].data();
-  console.log('Found org:', org.name);
+// Parse excel file from program arguments
+const args = process.argv.slice(2);
+if (args.length !== 1) {
+  console.error('Usage: node main.js <path-to-excel-file>');
+  process.exit(1);
 }
+const excelFile = args[0];
+const region = Number(excelFile.match(/Region (\d+)/)[1]) || null;
+const district = Number(excelFile.match(/District (\d+)/)[1]) || null;
+console.log(`Region: ${region}, District: ${district}`);
+
+const rows = readExcel(excelFile);
+console.log(`Read ${rows.length} rows`);
+
+const org = await findOrg(region, district);
+console.log('Found org:', org.name);
