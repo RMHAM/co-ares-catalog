@@ -19,5 +19,9 @@ const rows = readExcel(excelFile);
 const ics217s = rowsTo217s(rows, orgDocSnapshot.ref);
 
 ics217s.map(async (ics217) => {
+  if (ics217.band == undefined) {
+    console.warn(`Band is undefined`);
+    return;
+  }
   await upsertIcs217(ics217);
 });
