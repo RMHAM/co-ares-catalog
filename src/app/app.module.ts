@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,9 +22,9 @@ import { LoginComponent } from './login/login.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { OrderByPipe } from './order-by.pipe';
 import { OrgBranchComponent } from './org-branch/org-branch.component';
+import { OrgDetailComponent } from './org-detail/org-detail.component';
 import { OrgTreeComponent } from './org-tree/org-tree.component';
 import { OrganizationTitlePipe } from './organization-title.pipe';
-import { OrgDetailComponent } from './org-detail/org-detail.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { OrgDetailComponent } from './org-detail/org-detail.component';
     MatListModule,
     MatMenuModule,
     MatSidenavModule,
+    MatTableModule,
     MatToolbarModule,
     NgOptimizedImage,
     provideAuth(() => getAuth()),

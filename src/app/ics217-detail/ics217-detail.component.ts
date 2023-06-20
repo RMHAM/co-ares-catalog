@@ -17,6 +17,18 @@ export class Ics217DetailComponent {
   ics217$: Observable<Ics217 | undefined> = of(undefined);
   ownerOrg$: Observable<Organization | undefined> = of(undefined);
 
+  columnsToDisplay = [
+    'config',
+    'name',
+    'users',
+    'rxFreq',
+    'rxTone',
+    'txFreq',
+    'txTone',
+    'mode',
+    'remarks',
+  ];
+
   @Input()
   set ics217Id(ics217Id: string) {
     this.ics217$ = this.ics217Service.get(ics217Id);
