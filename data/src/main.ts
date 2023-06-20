@@ -1,4 +1,4 @@
-import { readExcel, rowsTo217s } from './excel.js';
+import { getRegionAndDistrict, readExcel, rowsTo217s } from './excel.js';
 import { findOrg, upsertIcs217 } from './firebase.js';
 
 // Parse excel file from program arguments
@@ -8,8 +8,9 @@ if (args.length !== 1) {
   process.exit(1);
 }
 const excelFile = args[0];
-const region = Number(excelFile.match(/Region (\d+)/)[1]) || null;
-const district = Number(excelFile.match(/District (\d+)/)[1]) || null;
+console.log(excelFile);
+
+const { region, district } = getRegionAndDistrict(excelFile);
 console.log(`Region: ${region}, District: ${district}`);
 
 const orgDocSnapshot = await findOrg(region, district);

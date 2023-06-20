@@ -36,7 +36,7 @@ export async function upsertIcs217(ics217: Partial<Ics217>) {
   if (result.empty) {
     const doc = db.collection('ics217s').doc();
     await doc.set(ics217);
-    console.log(`Created ${doc.id}`);
+    console.log(`Created ${ics217.band} ${doc.id}`);
   } else {
     const doc = result.docs[0];
     await doc.ref.update(ics217);

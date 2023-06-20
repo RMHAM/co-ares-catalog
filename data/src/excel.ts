@@ -3,6 +3,28 @@ import { readFileSync } from 'fs';
 import { parse } from 'node-xlsx';
 import { Channel, Ics217 } from './ics217.js';
 
+export function getRegionAndDistrict(filename: string) {
+  let region = null;
+  const regionMatch = filename.match(/Region (\d+)/);
+  if (regionMatch) {
+    region = Number(regionMatch[1]);
+    if (region == 0) {
+      // Colorado Section
+      region = null;
+    }
+  } else {
+    // There is no "Region n" in the file name, so it's probably not a 217; quit now
+    console.error('File name does not contain "Region n"');
+    process.exit(1);
+  }
+  let district = null;
+  const districtMatch = filename.match(/District (\d+)/);
+  if (districtMatch) {
+    district = Number(districtMatch[1]);
+  }
+  return { region, district };
+}
+
 export function readExcel(excelFile): any[][] {
   // Parse excel file
   const workSheetsFromBuffer = parse(readFileSync(excelFile));
@@ -49,24 +71,25 @@ export function rowsTo217s(
     };
   });
 
-  // Group channels by page
+  // Group channels by band
   const pages = channels.reduce((acc, channel: Channel) => {
-    if (!acc[channel.page]) {
-      acc[channel.page] = [];
+    const bandLetter = channel.name.match(/([A-Z])/)[1] || null;
+    if (!acc[bandLetter]) {
+      acc[bandLetter] = [];
     }
-    acc[channel.page].push(channel);
+    acc[bandLetter].push(channel);
     return acc;
   }, {} as { [key: string]: Channel[] });
 
-  // Transfer each page into an ICS-217 object
+  // Transfer each band into an ICS-217 object
   return Object.entries(pages).map(([_, channels]) => {
-    const bandLetter = channels[0].name.match(/([A-Z]+)/)[1] || null;
+    const bandLetter = channels[0].name.match(/([A-Z])/)[1] || null;
     // map band letter to a band name
     const band = {
       V: 'VHF',
       U: 'UHF',
       H: 'HF',
-      D: 'Digital',
+      D: 'DMR',
       P: 'Packet',
     }[bandLetter];
 
