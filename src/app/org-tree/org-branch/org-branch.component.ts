@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Organization } from '../datatypes/organization';
+import { Organization } from '../../datatypes/organization';
 
 @Component({
   selector: 'app-org-branch',
