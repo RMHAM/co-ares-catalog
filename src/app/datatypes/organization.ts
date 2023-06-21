@@ -5,6 +5,13 @@ export interface Organization {
   name: string;
   region: number;
   district: number;
+  personnel: Personnel[];
   parent: DocumentReference<Organization>;
   children: Organization[];
+}
+
+export interface Personnel {
+  name: string;
+  title: string;
+  callsign: string;
 }
