@@ -6,6 +6,9 @@ import { Organization } from '../datatypes/organization';
 })
 export class OrganizationTitlePipe implements PipeTransform {
   transform(value: Organization): string {
+    if (value === null) {
+      return 'Loading';
+    }
     let title = '';
     if (value.region && !value.district) {
       title += 'Region ' + value.region + ' ';

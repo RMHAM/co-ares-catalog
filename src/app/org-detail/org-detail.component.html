@@ -1,17 +1,20 @@
 <h1>{{ (organization$ | async)! | orgTitle }}</h1>
 
 <h2>Key Personnel</h2>
-<ul
+<table
+  class="personnel"
   *ngIf="
     (organization$ | async) && (organization$ | async)!.personnel;
     else noPersonnel
   "
 >
-  <li *ngFor="let person of (organization$ | async)!.personnel">
-    {{ person.title }}: {{ person.name }}
-    <span class="callsign">{{ person.callsign }}</span>
-  </li>
-</ul>
+  <tr *ngFor="let person of (organization$ | async)!.personnel">
+    <td>{{ person.title }}:</td>
+    <td>
+      {{ person.name }} <span class="callsign">{{ person.callsign }}</span>
+    </td>
+  </tr>
+</table>
 <ng-template #noPersonnel>
   <p>No personnel on file.</p>
 </ng-template>
