@@ -4,25 +4,25 @@
     "node": ">= 18.12 <19"
   },
   "dependencies": {
-    "firebase-admin": "11.9.0",
+    "firebase-admin": "11.10.1",
     "node-xlsx": "^0.23.0",
-    "tslib": "2.5"
+    "tslib": "2.6"
   },
   "devDependencies": {
     "@types/jest": "29.5",
     "@types/node": "20",
-    "@typescript-eslint/eslint-plugin": "5.59",
-    "@typescript-eslint/parser": "5.59",
-    "eslint": "8.43",
+    "@typescript-eslint/eslint-plugin": "6.1",
+    "@typescript-eslint/parser": "6.1",
+    "eslint": "8.45",
     "eslint-config-prettier": "8.8",
     "eslint-plugin-jest": "27.2",
-    "jest": "29.5",
-    "prettier": "2.8",
+    "jest": "29.6",
+    "prettier": "3.0",
     "rimraf": "5.0",
     "run-func": "3.0.0",
     "ts-api-utils": "1.0.1",
     "ts-jest": "29.1",
-    "typescript": "5.0.4"
+    "typescript": "5.1.6"
   },
   "scripts": {
     "start": "node build/src/main.js",
