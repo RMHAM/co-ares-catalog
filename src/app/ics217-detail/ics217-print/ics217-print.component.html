@@ -1,14 +1,5 @@
-<a [routerLink]="'/ics217/'+(ics217$|async)?.id" class="noPrint">Back to ICS 217</a>
-<h1 class="noPrint">[Print View] ICS 217A Communications Resource Availability Worksheet</h1>
 <div *ngIf="(ics217$ | async) == undefined; else details">Loading</div>
 <ng-template #details>
-  <h2 class="noPrint">
-    <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.id">
-      {{ (ownerOrg$ | async)?.name }}
-    </a>
-    - {{ (ics217$ | async)?.band }}
-  </h2>
-
   <div class="printForm">
     <table>
       <tbody>

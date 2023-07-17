@@ -1,8 +1,5 @@
-.noPrint {
-  display: block;
-}
-
 .printForm {
+  display: none;
   font-family: "Arial", sans-serif;
   font-size: 12pt;
   margin: 0 auto;
@@ -56,10 +53,12 @@
   width: 85px;
   border-right: none;
 }
+
 .printForm .widthColumn {
   width: 30px;
   border-left: none;
 }
+
 .printForm .toneColumn {
   width: 85px;
 }
@@ -72,11 +71,10 @@
   size: letter landscape;
   margin: 0.25in;
 }
+
 @media print {
-  .noPrint {
-    display: none;
-  }
   .printForm {
+    display: block;
     max-width: 100%;
   }
 }

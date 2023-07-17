@@ -1,9 +1,9 @@
 import { Component, inject, Input } from '@angular/core';
-import { Ics217Service } from '../ics217.service';
-import { OrganizationsService } from '../organizations.service';
+import { Ics217Service } from '../../ics217.service';
+import { OrganizationsService } from '../../organizations.service';
 import { Observable, of } from 'rxjs';
-import { Ics217 } from '../datatypes/ics217';
-import { Organization } from '../datatypes/organization';
+import { Ics217 } from '../../datatypes/ics217';
+import { Organization } from '../../datatypes/organization';
 
 @Component({
   selector: 'app-ics217-print',
