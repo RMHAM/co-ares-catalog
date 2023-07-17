@@ -1,77 +1,77 @@
-<a [routerLink]="'/ics217/'+(ics217$|async)?.id">Back to ICS 217</a>
-<h1>[Print View] ICS 217A Communications Resource Availability Worksheet</h1>
+<a [routerLink]="'/ics217/'+(ics217$|async)?.id" class="noPrint">Back to ICS 217</a>
+<h1 class="noPrint">[Print View] ICS 217A Communications Resource Availability Worksheet</h1>
 <div *ngIf="(ics217$ | async) == undefined; else details">Loading</div>
 <ng-template #details>
-  <h2>
+  <h2 class="noPrint">
     <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.id">
       {{ (ownerOrg$ | async)?.name }}
     </a>
     - {{ (ics217$ | async)?.band }}
   </h2>
 
-  <table
-    mat-table
-    [dataSource]="(ics217$ | async)!.channels"
-    class="mat-elevation-z1"
-  >
-    <ng-container matColumnDef="config">
-      <th mat-header-cell *matHeaderCellDef>Configuration</th>
-      <td mat-cell *matCellDef="let channel">{{ channel.config }}</td>
-    </ng-container>
+  <div class="printForm">
+    <table>
+      <tbody>
+      <tr>
+        <td colSpan="7">
+          <h1>
+            ICS-217A Communications Resource Availability&nbsp;Worksheet
+          </h1>
+        </td>
+        <td colSpan="3">
+          <div class="smallHeading">1. Freqency Band</div>
+          {{ (ics217$ | async)?.band }}
+        </td>
+        <td colSpan="2">
+          <div class="smallHeading">2. Description</div>
+          {{ (ownerOrg$ | async)?.name }}
+        </td>
+      </tr>
+      <tr>
+        <th class="smallHeading pageColumn">Pg No</th>
+        <th class="smallHeading configColumn">3. Channel Configuration</th>
+        <th class="smallHeading nameColumn">
+          4. Channel Name / Trunked Radio System Talkgroup
+        </th>
+        <th class="smallHeading usersColumn">5. Eligible Users</th>
+        <th class="smallHeading freqColumn">6. Rx Freq</th>
+        <th class="smallHeading widthColumn">N/W</th>
+        <th class="smallHeading toneColumn">7. Rx Tone/NAC</th>
+        <th class="smallHeading freqColumn">8.Tx Freq</th>
+        <th class="smallHeading widthColumn">N/W</th>
+        <th class="smallHeading toneColumn">9. Tx Tone/NAC</th>
+        <th class="smallHeading modeColumn">
+          10. Mode <br />
+          A, D or M
+        </th>
+        <th class="smallHeading">11. Remarks</th>
+      </tr>
+      <tr *ngFor="let chan of (ics217$|async)?.channels">
+        <td class="pageColumn"><!-- page number --></td>
+        <td class="configColumn">{{chan.config}}</td>
+        <td class="nameColumn">{{chan.name}}</td>
+        <td class="smallHeading usersColumn">{{chan.users}}</td>
+        <td class="freqColumn">{{chan.rxFrequency | number : "1.4-4"}}</td>
+        <td class="widthColumn">{{chan.rxWidth}}</td>
+        <td class="toneColumn">{{chan.rxTone}}</td>
+        <td class="freqColumn">{{chan.txFrequency | number : "1.4-4"}}</td>
+        <td class="widthColumn">{{chan.txWidth}}</td>
+        <td class="toneColumn">{{chan.txTone}}</td>
+        <td class="modeColumn">{{chan.mode}}</td>
+        <td class="smallHeading">{{chan.remarks}}</td>
+      </tr>
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Channel Name</th>
-      <td mat-cell *matCellDef="let channel">{{ channel.name }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="users">
-      <th mat-header-cell *matHeaderCellDef>Eligible Users</th>
-      <td mat-cell *matCellDef="let channel">{{ channel.users }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="rxFreq">
-      <th mat-header-cell *matHeaderCellDef>Receive Frequency</th>
-      <td mat-cell *matCellDef="let channel">
-        {{ channel.rxFrequency | number : "1.4-4" }} {{ channel.rxWidth }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="rxTone">
-      <th mat-header-cell *matHeaderCellDef>Receive Tone</th>
-      <td mat-cell *matCellDef="let channel">
-        {{ channel.rxTone }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="txFreq">
-      <th mat-header-cell *matHeaderCellDef>Transmit Frequency</th>
-      <td mat-cell *matCellDef="let channel">
-        {{ channel.txFrequency | number : "1.4-4" }} {{ channel.txWidth }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="txTone">
-      <th mat-header-cell *matHeaderCellDef>Transmit Tone</th>
-      <td mat-cell *matCellDef="let channel">
-        {{ channel.txTone }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="mode">
-      <th mat-header-cell *matHeaderCellDef>Mode</th>
-      <td mat-cell *matCellDef="let channel">
-        {{ channel.mode }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="remarks">
-      <th mat-header-cell *matHeaderCellDef>Remarks</th>
-      <td mat-cell *matCellDef="let channel">
-        {{ channel.remarks }}
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
-  </table>
+      <tr>
+        <td class="smallHeading" colSpan="2">
+          12. Prepared by:
+        </td>
+        <td colSpan="2"><!-- name --></td>
+        <td class="smallHeading" colSpan="2">
+          13. Date prepared:
+        </td>
+        <td colSpan="2"><!-- date --></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </ng-template>

@@ -23,3 +23,12 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+@media print {
+  .noPrint {
+    display: none;
+  }
+  mat-sidenav-content {
+    margin-left: 0 !important;
+  }
+}
