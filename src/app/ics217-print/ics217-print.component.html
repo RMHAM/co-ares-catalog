@@ -1,16 +1,13 @@
-<h1>ICS 217A Communications Resource Availability Worksheet</h1>
+<a [routerLink]="'/ics217/'+(ics217$|async)?.id">Back to ICS 217</a>
+<h1>[Print View] ICS 217A Communications Resource Availability Worksheet</h1>
 <div *ngIf="(ics217$ | async) == undefined; else details">Loading</div>
 <ng-template #details>
-  <div class="header">
-    <h2>
-      <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.id">
-        {{ (ownerOrg$ | async)?.name }}
-      </a>
-      - {{ (ics217$ | async)?.band }}
-    </h2>
-    <div><a [routerLink]="'/ics217/'+(ics217$|async)?.id+'/print'">Print View</a></div>
-  </div>
-
+  <h2>
+    <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.id">
+      {{ (ownerOrg$ | async)?.name }}
+    </a>
+    - {{ (ics217$ | async)?.band }}
+  </h2>
 
   <table
     mat-table

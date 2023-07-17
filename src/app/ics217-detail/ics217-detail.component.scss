@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  flex-direction: row;
+}
+
+.header h2,div {
+  flex: 1;
+}
