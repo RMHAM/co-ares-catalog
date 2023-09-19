@@ -1,18 +1,18 @@
 import { firestore } from 'firebase-admin';
-import { applicationDefault, initializeApp } from 'firebase-admin/app';
+import { cert, initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import { Ics217 } from './ics217.js';
 import QueryDocumentSnapshot = firestore.QueryDocumentSnapshot;
 
 const app = initializeApp({
-  credential: applicationDefault(),
+  credential: cert('firebase-creds.json'),
 });
 const db = getFirestore(app);
 db.settings({ ignoreUndefinedProperties: true });
 
 export async function findOrg(
   region: number,
-  district: number
+  district: number,
 ): Promise<QueryDocumentSnapshot | null> {
   const query = db
     .collection('organizations')

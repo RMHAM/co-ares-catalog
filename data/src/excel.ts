@@ -25,7 +25,7 @@ export function getRegionAndDistrict(filename: string) {
   return { region, district };
 }
 
-export function readExcel(excelFile): any[][] {
+export function readExcel(excelFile): string[][] {
   // Parse excel file
   const workSheetsFromBuffer = parse(readFileSync(excelFile));
   const sheet = workSheetsFromBuffer[0];
@@ -35,8 +35,8 @@ export function readExcel(excelFile): any[][] {
 }
 
 export function rowsTo217s(
-  rows: any[][],
-  ownerId: DocumentReference
+  rows: string[][],
+  ownerId: DocumentReference,
 ): Array<Partial<Ics217>> {
   // Transfer each row into a Channel object
   const channels: Channel[] = rows.map((row, idx) => {
@@ -56,15 +56,15 @@ export function rowsTo217s(
     ] = row;
     return {
       order: idx,
-      page,
+      page: page ? Number(page) : null,
       config,
       name,
       users,
-      rxFrequency,
-      rxWidth,
+      rxFrequency: rxFrequency ? Number(rxFrequency) : null,
+      rxWidth: rxWidth ? rxWidth : null,
       rxTone,
-      txFrequency,
-      txWidth,
+      txFrequency: txFrequency ? Number(txFrequency) : null,
+      txWidth: txWidth ? txWidth : null,
       txTone,
       mode,
       remarks,
@@ -72,16 +72,20 @@ export function rowsTo217s(
   });
 
   // Group channels by band
-  const pages = channels.reduce((acc, channel: Channel) => {
-    const bandLetter = channel.name.match(/([A-Z])/)[1] || null;
-    if (!acc[bandLetter]) {
-      acc[bandLetter] = [];
-    }
-    acc[bandLetter].push(channel);
-    return acc;
-  }, {} as { [key: string]: Channel[] });
+  const pages = channels.reduce(
+    (acc, channel: Channel) => {
+      const bandLetter = channel.name.match(/([A-Z])/)[1] || null;
+      if (!acc[bandLetter]) {
+        acc[bandLetter] = [];
+      }
+      acc[bandLetter].push(channel);
+      return acc;
+    },
+    {} as { [key: string]: Channel[] },
+  );
 
   // Transfer each band into an ICS-217 object
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return Object.entries(pages).map(([_, channels]) => {
     const bandLetter = channels[0].name.match(/([A-Z])/)[1] || null;
     // map band letter to a band name
