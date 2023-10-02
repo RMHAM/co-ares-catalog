@@ -3,6 +3,10 @@
   flex-direction: row;
 }
 
-.header h2,div {
+.header h2, div {
   flex: 1;
+}
+
+mat-icon {
+  vertical-align: middle;
 }
