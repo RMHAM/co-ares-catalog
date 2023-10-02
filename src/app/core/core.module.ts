@@ -12,6 +12,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { OrderByPipe } from './order-by.pipe';
 import { OrganizationTitlePipe } from './organization-title.pipe';
+import { TonePipe } from './tone.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { OrganizationTitlePipe } from './organization-title.pipe';
     MainNavComponent,
     OrderByPipe,
     OrganizationTitlePipe,
+    TonePipe,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,6 @@ import { OrganizationTitlePipe } from './organization-title.pipe';
     NgOptimizedImage,
     RouterModule,
   ],
-  exports: [MainNavComponent, OrderByPipe, OrganizationTitlePipe],
+  exports: [MainNavComponent, OrderByPipe, OrganizationTitlePipe, TonePipe],
 })
 export class CoreModule {}
