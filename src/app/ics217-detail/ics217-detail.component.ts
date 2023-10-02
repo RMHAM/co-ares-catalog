@@ -39,4 +39,8 @@ export class Ics217DetailComponent {
       this.ownerOrg$ = this.organizationsService.get(ics217.owner.id);
     });
   }
+
+  print() {
+    window.print();
+  }
 }
