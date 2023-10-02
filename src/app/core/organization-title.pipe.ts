@@ -5,8 +5,8 @@ import { Organization } from '../datatypes/organization';
   name: 'orgTitle',
 })
 export class OrganizationTitlePipe implements PipeTransform {
-  transform(value: Organization): string {
-    if (value === null) {
+  transform(value: Organization | undefined | null): string {
+    if (!value) {
       return 'Loading';
     }
     let title = '';

@@ -15,7 +15,7 @@
         </td>
         <td colSpan="2">
           <div class="smallHeading">2. Description</div>
-          {{ (ownerOrg$ | async)?.name }}
+          {{ (ownerOrg$ | async) | orgTitle }}
         </td>
       </tr>
       <tr>
@@ -44,10 +44,10 @@
         <td class="smallHeading usersColumn">{{chan.users}}</td>
         <td class="freqColumn">{{chan.rxFrequency | number : "1.4-4"}}</td>
         <td class="widthColumn">{{chan.rxWidth}}</td>
-        <td class="toneColumn">{{chan.rxTone}}</td>
+        <td class="toneColumn">{{chan.rxTone | tone}}</td>
         <td class="freqColumn">{{chan.txFrequency | number : "1.4-4"}}</td>
         <td class="widthColumn">{{chan.txWidth}}</td>
-        <td class="toneColumn">{{chan.txTone}}</td>
+        <td class="toneColumn">{{chan.txTone | tone}}</td>
         <td class="modeColumn">{{chan.mode}}</td>
         <td class="smallHeading">{{chan.remarks}}</td>
       </tr>
