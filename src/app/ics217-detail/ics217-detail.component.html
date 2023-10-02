@@ -51,7 +51,7 @@
       <ng-container matColumnDef="rxTone">
         <th mat-header-cell *matHeaderCellDef>Receive Tone</th>
         <td mat-cell *matCellDef="let channel">
-          {{ channel.rxTone }}
+          {{ channel.rxTone | tone }}
         </td>
       </ng-container>
 
@@ -68,7 +68,7 @@
       <ng-container matColumnDef="txTone">
         <th mat-header-cell *matHeaderCellDef>Transmit Tone</th>
         <td mat-cell *matCellDef="let channel">
-          {{ channel.txTone }}
+          {{ channel.txTone | tone }}
         </td>
       </ng-container>
 
