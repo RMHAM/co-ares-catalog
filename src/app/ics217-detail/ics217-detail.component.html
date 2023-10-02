@@ -2,12 +2,19 @@
 <div *ngIf="(ics217$ | async) == undefined; else details">Loading</div>
 <ng-template #details>
   <div class="header noPrint">
-    <h2 class="noPrint">
-      <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.id">
-        {{ (ownerOrg$ | async)?.name }}
-      </a>
-      - {{ (ics217$ | async)?.band }}
-    </h2>
+    <div>
+      <h2 class="noPrint">
+        <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.id">
+          {{ (ownerOrg$ | async)?.name }}
+        </a>
+        - {{ (ics217$ | async)?.band }}
+      </h2>
+    </div>
+    <div class="noPrint">
+      <button mat-mini-fab color="primary" aria-label="Print ICS-217A" (click)="print()">
+        <mat-icon>print</mat-icon>
+      </button>
+    </div>
   </div>
 
   <div class="noPrint">
@@ -32,7 +39,10 @@
       </ng-container>
 
       <ng-container matColumnDef="rxFreq">
-        <th mat-header-cell *matHeaderCellDef>Receive Frequency</th>
+        <th mat-header-cell *matHeaderCellDef>
+          Receive Frequency
+          <mat-icon title="Handheld/mobile receive&#013;Repeater transmit">info</mat-icon>
+        </th>
         <td mat-cell *matCellDef="let channel">
           {{ channel.rxFrequency | number : "1.4-4" }} {{ channel.rxWidth }}
         </td>
@@ -46,7 +56,10 @@
       </ng-container>
 
       <ng-container matColumnDef="txFreq">
-        <th mat-header-cell *matHeaderCellDef>Transmit Frequency</th>
+        <th mat-header-cell *matHeaderCellDef>
+          Transmit Frequency
+          <mat-icon title="Handheld/mobile transmit&#013;Repeater receive">info</mat-icon>
+        </th>
         <td mat-cell *matCellDef="let channel">
           {{ channel.txFrequency | number : "1.4-4" }} {{ channel.txWidth }}
         </td>
