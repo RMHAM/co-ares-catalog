@@ -1,0 +1,64 @@
+[[package]]
+name = "fastkml"
+version = "0.12"
+description = "Fast KML processing in python"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+pygeoif = "<1.0"
+python-dateutil = "*"
+
+[[package]]
+name = "lxml"
+version = "4.9.3"
+description = "Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, != 3.4.*"
+
+[package.extras]
+cssselect = ["cssselect (>=0.7)"]
+html5 = ["html5lib"]
+htmlsoup = ["beautifulsoup4"]
+source = ["Cython (>=0.29.35)"]
+
+[[package]]
+name = "pygeoif"
+version = "0.7"
+description = "A basic implementation of the __geo_interface__"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "0b2b0347a09332bbe98933c1e10867dd2c466ed7675481442344dd26c6acd262"
+
+[metadata.files]
+fastkml = []
+lxml = []
+pygeoif = []
+python-dateutil = []
+six = []
