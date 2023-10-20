@@ -3,73 +3,71 @@
   <div class="printForm">
     <table>
       <tbody>
-      <tr>
-        <td colSpan="7">
-          <h1>
-            ICS-217A Communications Resource Availability&nbsp;Worksheet
-          </h1>
-        </td>
-        <td colSpan="3">
-          <div class="smallHeading">1. Freqency Band</div>
-          {{ (ics217$ | async)?.band }}
-        </td>
-        <td colSpan="2">
-          <div class="smallHeading">2. Description</div>
-          {{ (ownerOrg$ | async) | orgTitle }}
-        </td>
-      </tr>
-      <tr>
-        <th class="smallHeading pageColumn">Pg No</th>
-        <th class="smallHeading configColumn">3. Channel Configuration</th>
-        <th class="smallHeading nameColumn">
-          4. Channel Name / Trunked Radio System Talkgroup
-        </th>
-        <th class="smallHeading usersColumn">5. Eligible Users</th>
-        <th class="smallHeading freqColumn">6. Rx Freq</th>
-        <th class="smallHeading widthColumn">N/W</th>
-        <th class="smallHeading toneColumn">7. Rx Tone/NAC</th>
-        <th class="smallHeading freqColumn">8.Tx Freq</th>
-        <th class="smallHeading widthColumn">N/W</th>
-        <th class="smallHeading toneColumn">9. Tx Tone/NAC</th>
-        <th class="smallHeading modeColumn">
-          10. Mode <br />
-          A, D or M
-        </th>
-        <th class="smallHeading">11. Remarks</th>
-      </tr>
-      <tr *ngFor="let chan of (ics217$|async)?.channels">
-        <td class="pageColumn"><!-- page number --></td>
-        <td class="configColumn">{{chan.config}}</td>
-        <td class="nameColumn">{{chan.name}}</td>
-        <td class="smallHeading usersColumn">{{chan.users}}</td>
-        <td class="freqColumn">{{chan.rxFrequency | number : "1.4-4"}}</td>
-        <td class="widthColumn">{{chan.rxWidth}}</td>
-        <td class="toneColumn">{{chan.rxTone | tone}}</td>
-        <td class="freqColumn">{{chan.txFrequency | number : "1.4-4"}}</td>
-        <td class="widthColumn">{{chan.txWidth}}</td>
-        <td class="toneColumn">{{chan.txTone | tone}}</td>
-        <td class="modeColumn">{{chan.mode}}</td>
-        <td class="smallHeading">{{chan.remarks}}</td>
-      </tr>
+        <tr>
+          <td colSpan="7">
+            <h1>
+              ICS-217A Communications Resource Availability&nbsp;Worksheet
+            </h1>
+          </td>
+          <td colSpan="3">
+            <div class="smallHeading">1. Freqency Band</div>
+            {{ (ics217$ | async)?.band }}
+          </td>
+          <td colSpan="2">
+            <div class="smallHeading">2. Description</div>
+            {{ ownerOrg$ | async | orgTitle }}
+          </td>
+        </tr>
+        <tr>
+          <th class="smallHeading pageColumn">Pg No</th>
+          <th class="smallHeading configColumn">3. Channel Configuration</th>
+          <th class="smallHeading nameColumn">
+            4. Channel Name / Trunked Radio System Talkgroup
+          </th>
+          <th class="smallHeading usersColumn">5. Eligible Users</th>
+          <th class="smallHeading freqColumn">6. Rx Freq</th>
+          <th class="smallHeading widthColumn">N/W</th>
+          <th class="smallHeading toneColumn">7. Rx Tone/NAC</th>
+          <th class="smallHeading freqColumn">8.Tx Freq</th>
+          <th class="smallHeading widthColumn">N/W</th>
+          <th class="smallHeading toneColumn">9. Tx Tone/NAC</th>
+          <th class="smallHeading modeColumn">
+            10. Mode <br />
+            A, D or M
+          </th>
+          <th class="smallHeading">11. Remarks</th>
+        </tr>
+        <tr *ngFor="let chan of (ics217$ | async)?.channels">
+          <td class="pageColumn"><!-- page number --></td>
+          <td class="configColumn">{{ chan.config }}</td>
+          <td class="nameColumn">{{ chan.name }}</td>
+          <td class="smallHeading usersColumn">{{ chan.users }}</td>
+          <td class="freqColumn">{{ chan.rxFrequency | number: '1.4-4' }}</td>
+          <td class="widthColumn">{{ chan.rxWidth }}</td>
+          <td class="toneColumn">{{ chan.rxTone | tone }}</td>
+          <td class="freqColumn">{{ chan.txFrequency | number: '1.4-4' }}</td>
+          <td class="widthColumn">{{ chan.txWidth }}</td>
+          <td class="toneColumn">{{ chan.txTone | tone }}</td>
+          <td class="modeColumn">{{ chan.mode }}</td>
+          <td class="smallHeading">{{ chan.remarks }}</td>
+        </tr>
 
-      <tr>
-        <td class="smallHeading" colSpan="2">
-          12. Prepared by:
-        </td>
-        <td colSpan="2"><!-- name --></td>
-        <td class="smallHeading" colSpan="2">
-          13. Date prepared:
-        </td>
-        <td colSpan="2"><!-- date --></td>
-      </tr>
+        <tr>
+          <td class="smallHeading" colSpan="2">12. Prepared by:</td>
+          <td colSpan="2"><!-- name --></td>
+          <td class="smallHeading" colSpan="2">13. Date prepared:</td>
+          <td colSpan="2"><!-- date --></td>
+        </tr>
       </tbody>
       <tr>
         <td class="smallHeading" colspan="12">
-          The convention calls for frequency lists to show four digits after the decimal place, followed by either an
-          "N" or a "W", depending on whether the frequency is narrow or wide band. Mode refers to either "A" or "D"
-          indicating analog or digital (e.g. Project 25 or DMR) or "M" indicating mixed mode (e.g. Fusion). All channels
-          shown as if programmed in a control station, mobile or portable radio. Repeater and base stations must be
-          programmed with the Rx and Tx reversed.
+          The convention calls for frequency lists to show four digits after the
+          decimal place, followed by either an "N" or a "W", depending on
+          whether the frequency is narrow or wide band. Mode refers to either
+          "A" or "D" indicating analog or digital (e.g. Project 25 or DMR) or
+          "M" indicating mixed mode (e.g. Fusion). All channels shown as if
+          programmed in a control station, mobile or portable radio. Repeater
+          and base stations must be programmed with the Rx and Tx reversed.
         </td>
       </tr>
     </table>

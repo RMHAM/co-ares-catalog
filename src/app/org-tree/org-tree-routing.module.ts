@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { CoreModule } from '../core/core.module';
 import { OrgTreeComponent } from './org-tree.component';
 
