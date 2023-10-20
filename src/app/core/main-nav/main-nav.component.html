@@ -9,9 +9,15 @@
   >
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="/">
-        <mat-icon>group</mat-icon>
+      <a mat-list-item routerLink="/orgs">
+        <mat-icon>groups</mat-icon>
         Organizations
+      </a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="loggedIn()">
+      <a mat-list-item routerLink="/users">
+        <mat-icon>manage_accounts</mat-icon>
+        Manage Users
       </a>
     </mat-nav-list>
     <mat-nav-list>
