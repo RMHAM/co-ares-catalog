@@ -112,7 +112,7 @@ export class OrderByPipe implements PipeTransform {
     expression?: any,
     reverse?: boolean,
     isCaseInsensitive: boolean = false,
-    comparator?: Function
+    comparator?: Function,
   ): any {
     if (!value) {
       return value;
@@ -124,7 +124,7 @@ export class OrderByPipe implements PipeTransform {
         expression.slice(),
         reverse,
         isCaseInsensitive,
-        comparator
+        comparator,
       );
     }
 
@@ -134,7 +134,7 @@ export class OrderByPipe implements PipeTransform {
         expression,
         reverse,
         isCaseInsensitive,
-        comparator
+        comparator,
       );
     }
 
@@ -144,7 +144,7 @@ export class OrderByPipe implements PipeTransform {
         expression,
         reverse,
         isCaseInsensitive,
-        comparator
+        comparator,
       );
     }
 
@@ -166,7 +166,7 @@ export class OrderByPipe implements PipeTransform {
     expression?: any,
     reverse?: boolean,
     isCaseInsensitive?: boolean,
-    comparator?: Function
+    comparator?: Function,
   ): T[] {
     const isDeepLink = expression && expression.indexOf('.') !== -1;
 
@@ -198,7 +198,7 @@ export class OrderByPipe implements PipeTransform {
 
       return compareFn(
         OrderByPipe.getValue(a, expression),
-        OrderByPipe.getValue(b, expression)
+        OrderByPipe.getValue(b, expression),
       );
     });
 
@@ -224,7 +224,7 @@ export class OrderByPipe implements PipeTransform {
     expression?: any,
     reverse?: boolean,
     isCaseInsensitive?: boolean,
-    comparator?: Function
+    comparator?: Function,
   ): any {
     const parsedExpression = OrderByPipe.parseExpression(expression);
     let lastPredicate: string | null = parsedExpression.pop() ?? null;
@@ -243,7 +243,7 @@ export class OrderByPipe implements PipeTransform {
     OrderByPipe.setValue(
       value,
       this.transform(oldValue, lastPredicate, reverse, isCaseInsensitive),
-      parsedExpression
+      parsedExpression,
     );
     return value;
   }
@@ -263,7 +263,7 @@ export class OrderByPipe implements PipeTransform {
     expressions: any[],
     reverse?: boolean,
     isCaseInsensitive: boolean = false,
-    comparator?: Function
+    comparator?: Function,
   ): any {
     return expressions.reverse().reduce((result: any, expression: any) => {
       return this.transform(
@@ -271,7 +271,7 @@ export class OrderByPipe implements PipeTransform {
         expression,
         reverse,
         isCaseInsensitive,
-        comparator
+        comparator,
       );
     }, value);
   }

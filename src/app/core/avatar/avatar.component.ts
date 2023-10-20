@@ -1,6 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
-import { Auth, user } from '@angular/fire/auth';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Auth, user } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-avatar',
@@ -15,7 +15,7 @@ export class AvatarComponent {
   private user = toSignal(user(this.auth));
   loggedIn = computed(() => !!this.user());
   photoURL = computed(
-    () => new URL(this.user()?.photoURL ?? this.blankPhotoUrl)
+    () => new URL(this.user()?.photoURL ?? this.blankPhotoUrl),
   );
   displayName = computed(() => this.user()?.displayName ?? 'Anonymous');
   email = computed(() => this.user()?.email ?? 'me@example.com');

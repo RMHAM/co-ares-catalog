@@ -1,7 +1,9 @@
 import { firestore } from 'firebase-admin';
 import { cert, initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
+
 import { Ics217 } from './ics217.js';
+
 import QueryDocumentSnapshot = firestore.QueryDocumentSnapshot;
 
 const app = initializeApp({

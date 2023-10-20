@@ -1,10 +1,10 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
+  Firestore,
   collection,
   collectionData,
   doc,
   docData,
-  Firestore,
   query,
   where,
 } from '@angular/fire/firestore';

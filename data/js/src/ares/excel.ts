@@ -1,6 +1,7 @@
 import { DocumentReference } from '@google-cloud/firestore';
 import { readFileSync } from 'fs';
 import { parse } from 'node-xlsx';
+
 import { Channel, Ics217 } from './ics217.js';
 
 export function getRegionAndDistrict(filename: string) {

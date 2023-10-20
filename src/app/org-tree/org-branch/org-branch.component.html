@@ -6,7 +6,7 @@
   <ul>
     <li
       *ngFor="
-        let child of org!.children | orderBy : 'region' | orderBy : 'district'
+        let child of org!.children | orderBy: 'region' | orderBy: 'district'
       "
     >
       <app-org-branch [org]="child" />

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import {
-  provideRouter,
   RouterModule,
   Routes,
+  provideRouter,
   withComponentInputBinding,
 } from '@angular/router';
 
@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'ics217/:ics217Id',
     loadChildren: () =>
       import('./ics217-detail/ics217-detail.module').then(
-        (m) => m.Ics217DetailModule
+        (m) => m.Ics217DetailModule,
       ),
   },
   {

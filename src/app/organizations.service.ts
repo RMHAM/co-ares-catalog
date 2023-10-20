@@ -1,14 +1,14 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
+  Firestore,
   collection,
   collectionData,
   doc,
   docData,
-  Firestore,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-
 import { map } from 'rxjs/operators';
+
 import { Organization } from './datatypes/organization';
 
 @Injectable({
@@ -34,14 +34,14 @@ export class OrganizationsService {
         // recursively find children
         const findChildren = (org: Organization) => {
           org.children = orgs.filter(
-            (childOrg) => childOrg.parent?.id === org.id
+            (childOrg) => childOrg.parent?.id === org.id,
           );
           org.children.forEach(findChildren);
         };
         findChildren(rootOrg);
 
         return rootOrg;
-      })
+      }),
     );
   }
 
