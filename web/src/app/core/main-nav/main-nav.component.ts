@@ -1,5 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { Auth, user } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -10,7 +12,10 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver);
+  private auth: Auth = inject(Auth);
 
+  private user = toSignal(user(this.auth));
+  loggedIn = computed(() => !!this.user());
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
