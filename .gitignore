@@ -40,6 +40,7 @@ e2e/*.map
 .idea
 **/node_modules/*
 **/.firebaserc
+firebase*.log
 
 ### Firebase Patch ###
 .runtimeconfig.json
