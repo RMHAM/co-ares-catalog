@@ -12,7 +12,7 @@
     "test": "npm run build && mocha --reporter spec ./build/ --recursive"
   },
   "engines": {
-    "node": "18"
+    "node": ">=18"
   },
   "main": "build/src/index.js",
   "dependencies": {
