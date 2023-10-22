@@ -10,7 +10,7 @@ describe("newUser", () => {
   let user: UserRecord;
 
   before(async () => {
-    test = firebaseFunctionsTest({ projectId: "open-ics-test" }, "creds.json");
+    test = firebaseFunctionsTest({ projectId: "open-ics" }, "creds.json");
     user = test.auth.makeUserRecord({
       uid: "12345",
       email: "test@example.com",
