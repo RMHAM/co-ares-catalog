@@ -45,7 +45,7 @@ after(async () => {
 
         res.on("end", resolve);
         res.on("error", reject);
-      }
+      },
     );
   });
 
@@ -91,19 +91,19 @@ const setupIcs217s = async () => {
     const fs = context.firestore();
     await setDoc(doc(fs, "ics217s", "r1d1-uhf"), {
       band: "UHF",
-      parent: doc(fs, "organizations", "r1d1"),
+      owner: doc(fs, "organizations", "r1d1"),
     });
     await setDoc(doc(fs, "ics217s", "r1d1-vhf"), {
       band: "VHF",
-      parent: doc(fs, "organizations", "r1d1"),
+      owner: doc(fs, "organizations", "r1d1"),
     });
     await setDoc(doc(fs, "ics217s", "r1d5-dmr"), {
       band: "DMR",
-      parent: doc(fs, "organizations", "r1d5"),
+      owner: doc(fs, "organizations", "r1d5"),
     });
     await setDoc(doc(fs, "ics217s", "r1d5-hf"), {
       band: "HF",
-      parent: doc(fs, "organizations", "r5d1"),
+      owner: doc(fs, "organizations", "r1d5"),
     });
   });
 };
@@ -127,7 +127,7 @@ describe("Organizations", () => {
     await assertFails(
       updateDoc(doc(anonDb, "organizations/r1d3"), {
         name: "People's Republic of Boulder",
-      })
+      }),
     );
   });
 
@@ -137,7 +137,7 @@ describe("Organizations", () => {
     await assertFails(
       updateDoc(doc(joeDb, "organizations/r1d5"), {
         name: "ARESDEC",
-      })
+      }),
     );
   });
 });
@@ -161,7 +161,7 @@ describe("ICS 217s", () => {
     await assertFails(
       updateDoc(doc(anonDb, "ics217s/r1d5-dmr"), {
         band: "DigiMon Rock",
-      })
+      }),
     );
   });
 
@@ -171,7 +171,89 @@ describe("ICS 217s", () => {
     await assertFails(
       updateDoc(doc(joeDb, "ics217s/r1d5-hf"), {
         band: "Shortwave",
-      })
+      }),
     );
+  });
+
+  it("should let org manager users for the owning org to update ICS 217 info", async function () {
+    await setupIcs217s();
+    await testEnv.withSecurityRulesDisabled(async (context) => {
+      const fs = context.firestore();
+      await setDoc(doc(fs, "users", "jim"), {
+        manages: [doc(fs, "organizations", "r1d1")],
+      });
+    });
+    const jimDb = testEnv.authenticatedContext("jim").firestore();
+    await assertSucceeds(
+      updateDoc(doc(jimDb, "ics217s/r1d1-uhf"), {
+        channels: [
+          { order: 0, name: "11U01", frequency: "446.000", tone: "None" },
+        ],
+      }),
+    );
+  });
+
+  it("should let admin to update ICS 217 info", async function () {
+    await setupIcs217s();
+    await testEnv.withSecurityRulesDisabled(async (context) => {
+      const fs = context.firestore();
+      await setDoc(doc(fs, "users", "chris"), {
+        admin: true,
+      });
+    });
+    const chrisDb = testEnv.authenticatedContext("chris").firestore();
+    await assertSucceeds(
+      updateDoc(doc(chrisDb, "ics217s/r1d1-uhf"), {
+        channels: [
+          { order: 0, name: "11U01", frequency: "446.000", tone: "None" },
+        ],
+      }),
+    );
+  });
+
+  it("should not let org manager users outside the owning org to update ICS 217 info", async function () {
+    await setupIcs217s();
+    await testEnv.withSecurityRulesDisabled(async (context) => {
+      const fs = context.firestore();
+      await setDoc(doc(fs, "users", "jim"), {
+        manages: [doc(fs, "organizations", "r1d1")],
+      });
+    });
+    const jimDb = testEnv.authenticatedContext("jim").firestore();
+    await assertFails(
+      updateDoc(doc(jimDb, "ics217s/r1d5-hf"), {
+        channels: [
+          { order: 0, name: "15H01", frequency: "7.250", tone: "None" },
+        ],
+      }),
+    );
+  });
+});
+
+describe("Users", () => {
+  it("should not let anon read user doc", async function () {
+    const anonDb = testEnv.unauthenticatedContext().firestore();
+    await assertFails(getDoc(doc(anonDb, "users/joe")));
+  });
+
+  it("should let normal users read their own user doc", async function () {
+    const joeDb = testEnv.authenticatedContext("joe").firestore();
+    await assertSucceeds(getDoc(doc(joeDb, "users/joe")));
+  });
+
+  it("should not let normal users read other user doc", async function () {
+    const joeDb = testEnv.authenticatedContext("joe").firestore();
+    await assertFails(getDoc(doc(joeDb, "users/jim")));
+  });
+
+  it("should let admin read any user doc", async function () {
+    await testEnv.withSecurityRulesDisabled(async (context) => {
+      const fs = context.firestore();
+      await setDoc(doc(fs, "users", "chris"), {
+        admin: true,
+      });
+    });
+    const chrisDb = testEnv.authenticatedContext("chris").firestore();
+    await assertSucceeds(getDoc(doc(chrisDb, "users/joe")));
   });
 });

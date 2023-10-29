@@ -2,13 +2,31 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
+    function loggedIn() {
+      return request.auth != null;
+    }
+    function isAdmin() {
+      let user = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+      return user.admin == true;
+    }
     match /{document=**} {
     	match /ics217s/{id} {
+        function userManagesOrg() {
+          let user = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+          return resource.data.owner in user.manages;
+        }
       	allow read: if true;
-        allow write: if false;
+        allow write: if loggedIn() && (userManagesOrg() || isAdmin());
       }
       match /organizations/{id} {
       	allow read: if true;
+        allow write: if false;
+      }
+      match /users/{userId} {
+        function usersOwnDoc() {
+          return request.auth.uid == userId;
+        }
+        allow read: if loggedIn() && (usersOwnDoc() || isAdmin());
         allow write: if false;
       }
       allow read, write: if false;
