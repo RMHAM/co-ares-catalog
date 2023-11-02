@@ -109,19 +109,19 @@ const setupIcs217s = async () => {
 };
 
 describe("Organizations", () => {
-  it("should let anon read organization info", async function () {
+  it("should be readable by logged-out users", async function () {
     await setupOrgs();
     const anonDb = testEnv.unauthenticatedContext().firestore();
     await assertSucceeds(getDoc(doc(anonDb, "organizations/r1d1")));
   });
 
-  it("should let normal users read organization info", async function () {
+  it("should be readable by normal users", async function () {
     await setupOrgs();
     const joeDb = testEnv.authenticatedContext("joe").firestore();
     await assertSucceeds(getDoc(doc(joeDb, "organizations/r1d3")));
   });
 
-  it("should not let anon update organization info", async function () {
+  it("should NOT be updatable by logged-out users", async function () {
     await setupOrgs();
     const anonDb = testEnv.unauthenticatedContext().firestore();
     await assertFails(
@@ -131,7 +131,7 @@ describe("Organizations", () => {
     );
   });
 
-  it("should not let normal users update organization info", async function () {
+  it("should NOT be updatable by normal users", async function () {
     await setupOrgs();
     const joeDb = testEnv.authenticatedContext("joe").firestore();
     await assertFails(
@@ -143,19 +143,19 @@ describe("Organizations", () => {
 });
 
 describe("ICS 217s", () => {
-  it("should let anon read ICS 217 info", async function () {
+  it("should be readable by logged-out users", async function () {
     await setupIcs217s();
     const anonDb = testEnv.unauthenticatedContext().firestore();
     await assertSucceeds(getDoc(doc(anonDb, "ics217s/r1d1-uhf")));
   });
 
-  it("should let normal users read ICS 217 info", async function () {
+  it("should be readable by normal users", async function () {
     await setupIcs217s();
     const joeDb = testEnv.authenticatedContext("joe").firestore();
     await assertSucceeds(getDoc(doc(joeDb, "ics217s/r1d1-vhf")));
   });
 
-  it("should not let anon update ICS 217 info", async function () {
+  it("should NOT be updatable by logged-out users", async function () {
     await setupIcs217s();
     const anonDb = testEnv.unauthenticatedContext().firestore();
     await assertFails(
@@ -165,7 +165,7 @@ describe("ICS 217s", () => {
     );
   });
 
-  it("should not let normal users update ICS 217 info", async function () {
+  it("should NOT be updatable by normal users", async function () {
     await setupIcs217s();
     const joeDb = testEnv.authenticatedContext("joe").firestore();
     await assertFails(
@@ -175,7 +175,7 @@ describe("ICS 217s", () => {
     );
   });
 
-  it("should let org manager users for the owning org to update ICS 217 info", async function () {
+  it("should be updatable by a manager of the owning org", async function () {
     await setupIcs217s();
     await testEnv.withSecurityRulesDisabled(async (context) => {
       const fs = context.firestore();
@@ -193,7 +193,7 @@ describe("ICS 217s", () => {
     );
   });
 
-  it("should let admin to update ICS 217 info", async function () {
+  it("should be updatable by an admin", async function () {
     await setupIcs217s();
     await testEnv.withSecurityRulesDisabled(async (context) => {
       const fs = context.firestore();
@@ -211,7 +211,7 @@ describe("ICS 217s", () => {
     );
   });
 
-  it("should not let org manager users outside the owning org to update ICS 217 info", async function () {
+  it("should NOT be updatable by a manager of another org", async function () {
     await setupIcs217s();
     await testEnv.withSecurityRulesDisabled(async (context) => {
       const fs = context.firestore();
@@ -230,23 +230,23 @@ describe("ICS 217s", () => {
   });
 });
 
-describe("Users", () => {
-  it("should not let anon read user doc", async function () {
+describe("User Info", () => {
+  it("should NOT be readable by logged-out users", async function () {
     const anonDb = testEnv.unauthenticatedContext().firestore();
     await assertFails(getDoc(doc(anonDb, "users/joe")));
   });
 
-  it("should let normal users read their own user doc", async function () {
+  it("should be readable by the user", async function () {
     const joeDb = testEnv.authenticatedContext("joe").firestore();
     await assertSucceeds(getDoc(doc(joeDb, "users/joe")));
   });
 
-  it("should not let normal users read other user doc", async function () {
+  it("should NOT be readable by another user", async function () {
     const joeDb = testEnv.authenticatedContext("joe").firestore();
     await assertFails(getDoc(doc(joeDb, "users/jim")));
   });
 
-  it("should let admin read any user doc", async function () {
+  it("should be readable by an admin", async function () {
     await testEnv.withSecurityRulesDisabled(async (context) => {
       const fs = context.firestore();
       await setDoc(doc(fs, "users", "chris"), {
