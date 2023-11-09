@@ -1,5 +1,5 @@
-import * as admin from "firebase-admin";
+import * as admin from 'firebase-admin';
 
-export { newUser } from "./newUser";
+export { newUser } from './newUser';
 
 admin.initializeApp();

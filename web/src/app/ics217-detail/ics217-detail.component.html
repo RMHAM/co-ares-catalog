@@ -19,8 +19,13 @@
       >
         <mat-icon>print</mat-icon>
       </button>
-      <button *ngIf="(userCanEdit$ | async)" mat-mini-fab color="primary"
-              aria-label="Edit ICS-217A" [hidden]="true">
+      <button
+        *ngIf="userCanEdit$ | async"
+        mat-mini-fab
+        color="primary"
+        aria-label="Edit ICS-217A"
+        [hidden]="true"
+      >
         <mat-icon>edit</mat-icon>
       </button>
     </div>
@@ -51,9 +56,8 @@
         <th mat-header-cell *matHeaderCellDef>
           Receive Frequency
           <mat-icon title="Handheld/mobile receive&#013;Repeater transmit"
-          >info
-          </mat-icon
-          >
+            >info
+          </mat-icon>
         </th>
         <td mat-cell *matCellDef="let channel">
           {{ channel.rxFrequency | number: '1.4-4' }} {{ channel.rxWidth }}
@@ -71,9 +75,8 @@
         <th mat-header-cell *matHeaderCellDef>
           Transmit Frequency
           <mat-icon title="Handheld/mobile transmit&#013;Repeater receive"
-          >info
-          </mat-icon
-          >
+            >info
+          </mat-icon>
         </th>
         <td mat-cell *matCellDef="let channel">
           {{ channel.txFrequency | number: '1.4-4' }} {{ channel.txWidth }}

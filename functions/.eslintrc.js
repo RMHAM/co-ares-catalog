@@ -5,25 +5,25 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "google",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
+    'eslint:recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'google',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: ["tsconfig.json", "tsconfig.dev.json"],
-    sourceType: "module",
+    project: ['tsconfig.json', 'tsconfig.dev.json'],
+    sourceType: 'module',
   },
   ignorePatterns: [
-    "/build/**/*", // Ignore built files.
+    '/build/**/*', // Ignore built files.
   ],
-  plugins: ["@typescript-eslint", "import"],
+  plugins: ['@typescript-eslint', 'import'],
   rules: {
-    "import/no-unresolved": 0,
-    indent: ["error", 2],
+    'import/no-unresolved': 0,
+    indent: ['error', 2],
   },
 };
