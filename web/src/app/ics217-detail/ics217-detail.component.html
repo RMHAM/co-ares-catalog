@@ -108,5 +108,5 @@
       <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
     </table>
   </div>
-  <app-ics217-print [ics217Id]="(ics217$ | async)?.id ?? ''"></app-ics217-print>
+  <app-ics217-print [ics217Id]="(ics217Id$ | async) ?? ''"></app-ics217-print>
 </ng-template>

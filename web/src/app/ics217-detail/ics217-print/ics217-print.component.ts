@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, mergeMap } from 'rxjs';
 
 import { Ics217 } from '../../datatypes/ics217';
 import { Organization } from '../../datatypes/organization';
@@ -15,8 +15,13 @@ export class Ics217PrintComponent {
   ics217Service = inject(Ics217Service);
   organizationsService = inject(OrganizationsService);
 
-  ics217$: Observable<Ics217 | undefined> = of(undefined);
-  ownerOrg$: Observable<Organization | undefined> = of(undefined);
+  ics217Id$ = new BehaviorSubject<string | undefined>(undefined);
+  ics217$: Observable<Ics217> = this.ics217Id$.pipe(
+    mergeMap((id) => this.ics217Service.get(id!)),
+  );
+  ownerOrg$: Observable<Organization> = this.ics217$.pipe(
+    mergeMap((ics217) => this.organizationsService.get(ics217.owner.id)),
+  );
 
   columnsToDisplay = [
     'config',
@@ -32,12 +37,6 @@ export class Ics217PrintComponent {
 
   @Input()
   set ics217Id(ics217Id: string) {
-    this.ics217$ = this.ics217Service.get(ics217Id);
-    this.ics217$.subscribe((ics217) => {
-      if (!ics217) {
-        return;
-      }
-      this.ownerOrg$ = this.organizationsService.get(ics217.owner.id);
-    });
+    this.ics217Id$.next(ics217Id);
   }
 }
