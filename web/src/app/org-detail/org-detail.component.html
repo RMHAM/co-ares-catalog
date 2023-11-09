@@ -1,6 +1,10 @@
 <h1>{{ (organization$ | async)! | orgTitle }}</h1>
 
 <h2>Key Personnel</h2>
+<button *ngIf="(userCanEdit$ | async)" mat-mini-fab color="primary"
+        aria-label="Edit Organization" [hidden]="true">
+  <mat-icon>edit</mat-icon>
+</button>
 <table
   class="personnel"
   *ngIf="

@@ -28,8 +28,6 @@ export class Ics217DetailComponent {
       if (!user || !ownerOrg) {
         return false;
       }
-      console.log(user);
-      console.log(ownerOrg);
       return user.admin || user.manages.some((org) => org.id === ownerOrg.id);
     },
   );
