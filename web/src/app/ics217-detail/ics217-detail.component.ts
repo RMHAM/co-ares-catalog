@@ -1,10 +1,9 @@
 import { Component, Input, inject } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
 
-import { Ics217 } from '../datatypes/ics217';
-import { Organization } from '../datatypes/organization';
 import { Ics217Service } from '../ics217.service';
 import { OrganizationsService } from '../organizations.service';
+import { UserInfoService } from '../user-info.service';
 
 @Component({
   selector: 'app-ics217-detail',
@@ -14,9 +13,26 @@ import { OrganizationsService } from '../organizations.service';
 export class Ics217DetailComponent {
   ics217Service = inject(Ics217Service);
   organizationsService = inject(OrganizationsService);
+  userInfoService = inject(UserInfoService);
 
-  ics217$: Observable<Ics217 | undefined> = of(undefined);
-  ownerOrg$: Observable<Organization | undefined> = of(undefined);
+  ics217Id$ = new BehaviorSubject<string | undefined>(undefined);
+  ics217$ = this.ics217Id$.pipe(mergeMap((id) => this.ics217Service.get(id!)));
+  ownerOrg$ = this.ics217$.pipe(
+    mergeMap((ics217) => this.organizationsService.get(ics217.owner.id)),
+  );
+  user$ = this.userInfoService.getCurrentUserInfo();
+  userCanEdit$: Observable<boolean> = combineLatest(
+    this.user$,
+    this.ownerOrg$,
+    (user, ownerOrg) => {
+      if (!user || !ownerOrg) {
+        return false;
+      }
+      console.log(user);
+      console.log(ownerOrg);
+      return user.admin || user.manages.some((org) => org.id === ownerOrg.id);
+    },
+  );
 
   columnsToDisplay = [
     'config',
@@ -32,13 +48,7 @@ export class Ics217DetailComponent {
 
   @Input()
   set ics217Id(ics217Id: string) {
-    this.ics217$ = this.ics217Service.get(ics217Id);
-    this.ics217$.subscribe((ics217) => {
-      if (!ics217) {
-        return;
-      }
-      this.ownerOrg$ = this.organizationsService.get(ics217.owner.id);
-    });
+    this.ics217Id$.next(ics217Id);
   }
 
   print() {
