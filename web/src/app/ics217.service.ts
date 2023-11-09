@@ -8,7 +8,7 @@ import {
   query,
   where,
 } from '@angular/fire/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Ics217 } from './datatypes/ics217';
 
