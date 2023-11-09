@@ -11,12 +11,12 @@ service cloud.firestore {
     }
     match /{document=**} {
     	match /ics217s/{id} {
-        function userManagesOrg() {
+        function userManagesOwningOrg() {
           let user = get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
           return resource.data.owner in user.manages;
         }
       	allow read: if true;
-        allow write: if loggedIn() && (userManagesOrg() || isAdmin());
+        allow write: if loggedIn() && (userManagesOwningOrg() || isAdmin());
       }
       match /organizations/{id} {
       	allow read: if true;
