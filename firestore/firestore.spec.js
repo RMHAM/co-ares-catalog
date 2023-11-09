@@ -108,6 +108,43 @@ describe("Organizations", () => {
       }),
     );
   });
+
+  it("should be updatable by managers of that org", async function () {
+    await testEnv.withSecurityRulesDisabled(async (context) => {
+      const fs = context.firestore();
+      let r1d5DocRef = doc(fs, "organizations", "r1d5");
+      await setDoc(r1d5DocRef, {
+        name: "Douglas and Elbert",
+      });
+      await setDoc(doc(fs, "users", "k8ztt"), {
+        manages: [r1d5DocRef],
+      });
+    });
+    const dickDb = testEnv.authenticatedContext("k8ztt").firestore();
+    await assertSucceeds(
+      updateDoc(doc(dickDb, "organizations", "r1d5"), {
+        winlinkCallsigns: [{ ARESDEC: "District EC" }],
+      }),
+    );
+  });
+
+  it("should NOT be updatable by managers of other orgs", async function () {
+    await testEnv.withSecurityRulesDisabled(async (context) => {
+      const fs = context.firestore();
+      await setDoc(doc(fs, "organizations", "r1d5"), {
+        name: "Douglas and Elbert",
+      });
+      await setDoc(doc(fs, "users", "n0mkv"), {
+        manages: [doc(fs, "organizations", "r1d6")],
+      });
+    });
+    const marcDb = testEnv.authenticatedContext("n0mkv").firestore();
+    await assertFails(
+      updateDoc(doc(marcDb, "organizations", "r1d5"), {
+        winlinkCallsigns: [{ OLDFART: "District EC" }],
+      }),
+    );
+  });
 });
 
 describe("ICS 217s", () => {
