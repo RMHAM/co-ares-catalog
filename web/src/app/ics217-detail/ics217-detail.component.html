@@ -4,7 +4,7 @@
   <div class="header noPrint">
     <div>
       <h2 class="noPrint">
-        <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.id">
+        <a [routerLink]="'/orgs/' + (ownerOrg$ | async)?.slug">
           {{ ownerOrg$ | async | orgTitle }}
         </a>
         - {{ (ics217$ | async)?.band }}

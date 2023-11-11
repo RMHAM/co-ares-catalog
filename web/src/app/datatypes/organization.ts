@@ -8,6 +8,7 @@ export interface Organization {
   personnel: Personnel[];
   parent: DocumentReference<Organization>;
   children: Organization[];
+  slug: string;
 }
 
 export interface Personnel {

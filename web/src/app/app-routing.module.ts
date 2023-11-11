@@ -26,7 +26,7 @@ const routes: Routes = [
       import('./org-tree/org-tree.module').then((m) => m.OrgTreeModule),
   },
   {
-    path: 'orgs/:orgId',
+    path: 'orgs/:orgSlug',
     loadChildren: () =>
       import('./org-detail/org-detail.module').then((m) => m.OrgDetailModule),
   },

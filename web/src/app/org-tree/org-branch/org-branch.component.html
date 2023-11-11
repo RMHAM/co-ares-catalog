@@ -1,7 +1,7 @@
 <div *ngIf="org == undefined; else branch">Loading</div>
 <ng-template #branch>
   <p>
-    <a [routerLink]="'/orgs/' + org!.id">{{ org! | orgTitle }}</a>
+    <a [routerLink]="'/orgs/' + org!.slug">{{ org! | orgTitle }}</a>
   </p>
   <ul>
     <li

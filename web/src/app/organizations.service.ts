@@ -5,8 +5,12 @@ import {
   collectionData,
   doc,
   docData,
+  getDocs,
+  query,
+  where,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { fromPromise } from 'rxjs/internal/observable/innerFrom';
 import { map } from 'rxjs/operators';
 
 import { Organization } from './datatypes/organization';
@@ -50,5 +54,17 @@ export class OrganizationsService {
     return docData(orgDoc, {
       idField: 'id',
     }) as Observable<Organization>;
+  }
+
+  getSlug(orgSlug: string): Observable<Organization> {
+    const orgQuery = query(
+      collection(this.firestore, 'organizations'),
+      where('slug', '==', orgSlug),
+    );
+    return fromPromise(getDocs(orgQuery)).pipe(
+      map((orgs) => {
+        return { ...orgs.docs[0].data(), id: orgs.docs[0].id } as Organization;
+      }),
+    );
   }
 }

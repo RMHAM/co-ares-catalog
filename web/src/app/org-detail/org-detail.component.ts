@@ -15,12 +15,12 @@ export class OrgDetailComponent {
   private ics217Service = inject(Ics217Service);
   private userInfoService = inject(UserInfoService);
 
-  orgId$ = new BehaviorSubject<string | undefined>(undefined);
-  organization$ = this.orgId$.pipe(
-    mergeMap((id) => this.organizationsService.get(id!)),
+  orgSlug$ = new BehaviorSubject<string | undefined>(undefined);
+  organization$ = this.orgSlug$.pipe(
+    mergeMap((id) => this.organizationsService.getSlug(id!)),
   );
-  ics217s$ = this.orgId$.pipe(
-    mergeMap((id) => this.ics217Service.getByOwner(id!)),
+  ics217s$ = this.organization$.pipe(
+    mergeMap((org) => this.ics217Service.getByOwner(org.id!)),
   );
   user$ = this.userInfoService.getCurrentUserInfo();
   userCanEdit$: Observable<boolean> = combineLatest(
@@ -35,7 +35,7 @@ export class OrgDetailComponent {
   );
 
   @Input()
-  set orgId(orgId: string) {
-    this.orgId$.next(orgId);
+  set orgSlug(orgSlug: string) {
+    this.orgSlug$.next(orgSlug);
   }
 }
