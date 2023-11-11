@@ -14,7 +14,7 @@
         Organizations
       </a>
     </mat-nav-list>
-    <mat-nav-list *ngIf="loggedIn()">
+    <mat-nav-list *ngIf="isAdmin$ | async">
       <a mat-list-item routerLink="/users">
         <mat-icon>manage_accounts</mat-icon>
         Manage Users

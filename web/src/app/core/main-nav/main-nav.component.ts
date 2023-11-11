@@ -1,9 +1,9 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { Auth, user } from '@angular/fire/auth';
+import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+
+import { UserInfoService } from '../../user-info.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -12,10 +12,12 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver);
-  private auth: Auth = inject(Auth);
+  private userInfoService = inject(UserInfoService);
 
-  private user = toSignal(user(this.auth));
-  loggedIn = computed(() => !!this.user());
+  isAdmin$ = this.userInfoService
+    .getCurrentUserInfo()
+    .pipe(map((user) => user?.admin));
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
