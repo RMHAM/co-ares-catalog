@@ -37,6 +37,9 @@ export class OrganizationsService {
 
         // recursively find children
         const findChildren = (org: Organization) => {
+          if (!org) {
+            return;
+          }
           org.children = orgs.filter(
             (childOrg) => childOrg.parent?.id === org.id,
           );
