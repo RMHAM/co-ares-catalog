@@ -1,7 +1,18 @@
-table.personnel {
-  margin-bottom: 2em;
+header {
+  margin: 8px 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
 
-.callsign {
-  font-family: 'Source Code Pro', monospace;
+button[mat-mini-fab] {
+  margin-left: 8px;
+}
+
+mat-card {
+  max-width: 500px;
+}
+
+table.personnel {
+  margin-bottom: 2em;
 }

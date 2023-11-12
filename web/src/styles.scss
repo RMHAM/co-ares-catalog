@@ -31,6 +31,7 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
@@ -39,8 +40,19 @@ body {
 .noPrint {
   display: block;
 }
+
 @media print {
   .noPrint {
     display: none;
   }
+}
+
+mat-card {
+  margin-left: 16px;
+  margin-top: 8px;
+  border: 1px solid lightgray;
+}
+
+.callsign {
+  font-family: 'Source Code Pro', monospace;
 }

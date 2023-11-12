@@ -1,38 +1,56 @@
-<h1>{{ (organization$ | async)! | orgTitle }}</h1>
-<button
-  *ngIf="userCanEdit$ | async"
-  mat-mini-fab
-  color="primary"
-  aria-label="Edit Organization"
->
-  <mat-icon>edit</mat-icon>
-</button>
+<header>
+  <h1>{{ (organization$ | async)! | orgTitle }}</h1>
+  <button
+    *ngIf="userCanEdit$ | async"
+    mat-mini-fab
+    color="primary"
+    aria-label="Edit Organization"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+</header>
 
-<h2>Key Personnel</h2>
-<table
-  class="personnel"
-  *ngIf="
-    (organization$ | async) && (organization$ | async)!.personnel;
-    else noPersonnel
-  "
->
-  <tr *ngFor="let person of (organization$ | async)!.personnel">
-    <td>{{ person.title }}:</td>
-    <td>
-      {{ person.name }} <span class="callsign">{{ person.callsign }}</span>
-    </td>
-  </tr>
-</table>
-<ng-template #noPersonnel>
-  <p>No personnel on file.</p>
-</ng-template>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Key Personnel</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table
+      class="personnel"
+      *ngIf="
+        (organization$ | async) && (organization$ | async)!.personnel;
+        else noPersonnel
+      "
+    >
+      <tr *ngFor="let person of (organization$ | async)!.personnel">
+        <td>{{ person.title }}:</td>
+        <td>
+          {{ person.name }} <span class="callsign">{{ person.callsign }}</span>
+        </td>
+      </tr>
+    </table>
+    <ng-template #noPersonnel>
+      <p>No personnel on file.</p>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
 
-<h2>ICS 217A Communications Resource Availability Worksheets</h2>
-<ul *ngIf="(ics217s$ | async) && (ics217s$ | async)!.length > 0; else no217s">
-  <li *ngFor="let ics217 of ics217s$ | async">
-    <a [routerLink]="'/ics217/' + ics217.id">{{ ics217.band }}</a>
-  </li>
-</ul>
-<ng-template #no217s>
-  <p>No ICS 217s on file.</p>
-</ng-template>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title
+      >ICS 217A Communications Resource Availability Worksheets
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ul
+      *ngIf="(ics217s$ | async) && (ics217s$ | async)!.length > 0; else no217s"
+    >
+      <li *ngFor="let ics217 of ics217s$ | async">
+        <a [routerLink]="'/ics217/' + ics217.id">{{ ics217.band }}</a>
+      </li>
+    </ul>
+    <ng-template #no217s>
+      <p>No ICS 217s on file.</p>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
