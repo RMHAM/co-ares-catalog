@@ -1,6 +1,7 @@
 import { Component, HostListener, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Ics217Service } from '../ics217.service';
 import { OrganizationsService } from '../organizations.service';
@@ -19,6 +20,7 @@ export class Ics217DetailComponent {
 
   ics217Id$ = new BehaviorSubject<string | undefined>(undefined);
   ics217$ = this.ics217Id$.pipe(mergeMap((id) => this.ics217Service.get(id!)));
+  channels$ = this.ics217$.pipe(map((ics217) => ics217.channels));
   ownerOrg$ = this.ics217$.pipe(
     mergeMap((ics217) => this.organizationsService.get(ics217.owner.id)),
   );
