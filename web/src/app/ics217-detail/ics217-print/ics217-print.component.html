@@ -1,3 +1,4 @@
+<a class="noPrint" [routerLink]="['/ics217', ics217Id$ | async]">Back</a>
 <div *ngIf="(ics217$ | async) == undefined; else details">Loading</div>
 <ng-template #details>
   <div class="printForm">

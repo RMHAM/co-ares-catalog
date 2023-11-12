@@ -1,13 +1,23 @@
-.header {
+header {
+  margin: 8px 16px;
   display: flex;
   flex-direction: row;
+  align-items: baseline;
 }
 
-.header h2,
-div {
-  flex: 1;
+button[mat-mini-fab] {
+  margin-left: 8px;
 }
 
 mat-icon {
   vertical-align: middle;
+}
+
+mat-card-content {
+  padding: 0;
+}
+
+table[mat-table] {
+  width: 100%;
+  margin: 0;
 }

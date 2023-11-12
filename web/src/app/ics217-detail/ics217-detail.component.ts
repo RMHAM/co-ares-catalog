@@ -1,4 +1,5 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, HostListener, Input, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
 
 import { Ics217Service } from '../ics217.service';
@@ -14,6 +15,7 @@ export class Ics217DetailComponent {
   ics217Service = inject(Ics217Service);
   organizationsService = inject(OrganizationsService);
   userInfoService = inject(UserInfoService);
+  router = inject(Router);
 
   ics217Id$ = new BehaviorSubject<string | undefined>(undefined);
   ics217$ = this.ics217Id$.pipe(mergeMap((id) => this.ics217Service.get(id!)));
@@ -49,7 +51,11 @@ export class Ics217DetailComponent {
     this.ics217Id$.next(ics217Id);
   }
 
-  print() {
-    window.print();
+  @HostListener('window:beforeprint')
+  onBeforePrint(event: Event | undefined) {
+    this.router.navigate(['ics217', this.ics217Id$.value, 'print']);
+    if (event) {
+      event.preventDefault();
+    }
   }
 }

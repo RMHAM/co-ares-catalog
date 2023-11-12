@@ -1,8 +1,20 @@
-import { Component, Input, inject } from '@angular/core';
-import { BehaviorSubject, Observable, mergeMap } from 'rxjs';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnDestroy,
+  inject,
+} from '@angular/core';
+import {
+  BehaviorSubject,
+  Observable,
+  Subscription,
+  delay,
+  mergeMap,
+} from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 import { Ics217 } from '../../datatypes/ics217';
-import { Organization } from '../../datatypes/organization';
 import { Ics217Service } from '../../ics217.service';
 import { OrganizationsService } from '../../organizations.service';
 
@@ -11,7 +23,7 @@ import { OrganizationsService } from '../../organizations.service';
   templateUrl: './ics217-print.component.html',
   styleUrls: ['./ics217-print.component.scss'],
 })
-export class Ics217PrintComponent {
+export class Ics217PrintComponent implements AfterViewInit, OnDestroy {
   ics217Service = inject(Ics217Service);
   organizationsService = inject(OrganizationsService);
 
@@ -19,24 +31,28 @@ export class Ics217PrintComponent {
   ics217$: Observable<Ics217> = this.ics217Id$.pipe(
     mergeMap((id) => this.ics217Service.get(id!)),
   );
-  ownerOrg$: Observable<Organization> = this.ics217$.pipe(
+  ownerOrg$ = this.ics217$.pipe(
     mergeMap((ics217) => this.organizationsService.get(ics217.owner.id)),
+    shareReplay(1),
   );
-
-  columnsToDisplay = [
-    'config',
-    'name',
-    'users',
-    'rxFreq',
-    'rxTone',
-    'txFreq',
-    'txTone',
-    'mode',
-    'remarks',
-  ];
+  subscription: Subscription = undefined!;
 
   @Input()
   set ics217Id(ics217Id: string) {
     this.ics217Id$.next(ics217Id);
+  }
+
+  ngAfterViewInit() {
+    this.subscription = this.ownerOrg$
+      .pipe(delay(500))
+      .subscribe((ownerOrg) => {
+        if (ownerOrg) {
+          window.print();
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
