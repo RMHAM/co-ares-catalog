@@ -1,0 +1,25 @@
+<div *ngIf="org == undefined; else region">Loading</div>
+<ng-template #region>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <a [routerLink]="'/orgs/' + org!.slug">
+          {{ org! | orgTitle }}
+        </a>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div
+        *ngFor="
+          let child of org!.children | orderBy: 'region' | orderBy: 'district'
+        "
+      >
+        <p>
+          <a [routerLink]="'/orgs/' + child!.slug">{{ child! | orgTitle }}</a>
+        </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-template>
+
+<ng-template #leaf></ng-template>
