@@ -3,12 +3,31 @@
   <header>
     <h1>{{ (organization$ | async)! | orgTitle }}</h1>
     <button
-      *ngIf="userCanEdit$ | async"
+      *ngIf="(userCanEdit$ | async) && !editMode"
       mat-mini-fab
       color="primary"
       aria-label="Edit Organization"
+      (click)="editMode = true"
     >
       <mat-icon>edit</mat-icon>
+    </button>
+    <button
+      *ngIf="(userCanEdit$ | async) && editMode"
+      mat-mini-fab
+      color="accent"
+      aria-label="Save Edits"
+      (click)="editMode = false"
+    >
+      <mat-icon>save</mat-icon>
+    </button>
+    <button
+      *ngIf="(userCanEdit$ | async) && editMode"
+      mat-mini-fab
+      color="warn"
+      aria-label="Cancel Edits"
+      (click)="editMode = false"
+    >
+      <mat-icon>cancel</mat-icon>
     </button>
   </header>
 
@@ -49,6 +68,28 @@
       </ul>
       <ng-template #no217s>
         <p>No ICS 217s on file.</p>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Tactical Callsigns</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table
+        class="personnel"
+        *ngIf="(organization$ | async)?.tacticalCallsigns; else noTacticals"
+      >
+        <tr *ngFor="let tac of (organization$ | async)?.tacticalCallsigns">
+          <td>{{ tac.title }}:</td>
+          <td>
+            <span class="callsign">{{ tac.callsign }}</span>
+          </td>
+        </tr>
+      </table>
+      <ng-template #noTacticals>
+        <p>No tactical callsigns on file.</p>
       </ng-template>
     </mat-card-content>
   </mat-card>

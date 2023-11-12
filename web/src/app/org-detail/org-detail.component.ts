@@ -33,6 +33,7 @@ export class OrgDetailComponent {
       return user.admin || user.manages.some((m) => m.id === org.id);
     },
   );
+  editMode: boolean = false;
 
   @Input()
   set orgSlug(orgSlug: string) {

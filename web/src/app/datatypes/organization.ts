@@ -6,6 +6,7 @@ export interface Organization {
   region: number;
   district: number;
   personnel: Personnel[];
+  tacticalCallsigns: TacticalCallsign[];
   parent: DocumentReference<Organization>;
   children: Organization[];
   slug: string;
@@ -13,6 +14,11 @@ export interface Organization {
 
 export interface Personnel {
   name: string;
+  title: string;
+  callsign: string;
+}
+
+export interface TacticalCallsign {
   title: string;
   callsign: string;
 }
