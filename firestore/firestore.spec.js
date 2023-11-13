@@ -123,7 +123,7 @@ describe('Organizations', () => {
     const dickDb = testEnv.authenticatedContext('k8ztt').firestore();
     await assertSucceeds(
       updateDoc(doc(dickDb, 'organizations', 'r1d5'), {
-        winlinkCallsigns: [{ ARESDEC: 'District EC' }],
+        tacticalCallsigns: [{ title: 'District EC', callsign: 'ARESDEC' }],
       }),
     );
   });
@@ -141,7 +141,7 @@ describe('Organizations', () => {
     const marcDb = testEnv.authenticatedContext('n0mkv').firestore();
     await assertFails(
       updateDoc(doc(marcDb, 'organizations', 'r1d5'), {
-        winlinkCallsigns: [{ OLDFART: 'District EC' }],
+        tacticalCallsigns: [{ title: 'District EC', callsign: 'OLDFART' }],
       }),
     );
   });
