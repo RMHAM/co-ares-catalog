@@ -1,11 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-import { CanActivateFn } from '@angular/router';
+import { CanDeactivateFn } from '@angular/router';
 
 import { canDeactivateOrgDetailGuard } from './can-deactivate-org-detail.guard';
+import { OrgDetailComponent } from './org-detail.component';
 
 describe('canDeactivateOrgDetailGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => canDeactivateOrgDetailGuard(...guardParameters));
+  const executeGuard: CanDeactivateFn<OrgDetailComponent> = (
+    ...guardParameters
+  ) =>
+    TestBed.runInInjectionContext(() =>
+      canDeactivateOrgDetailGuard(...guardParameters),
+    );
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
