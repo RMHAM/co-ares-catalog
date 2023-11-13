@@ -36,21 +36,9 @@
       <mat-card-title>Key Personnel</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <table
-        class="personnel"
-        *ngIf="(organization$ | async)?.personnel; else noPersonnel"
-      >
-        <tr *ngFor="let person of (organization$ | async)?.personnel">
-          <td>{{ person.title }}:</td>
-          <td>
-            {{ person.name }}
-            <span class="callsign">{{ person.callsign }}</span>
-          </td>
-        </tr>
-      </table>
-      <ng-template #noPersonnel>
-        <p>No personnel on file.</p>
-      </ng-template>
+      <app-personnel-view
+        [personnel]="(organization$ | async)?.personnel ?? []"
+      />
     </mat-card-content>
   </mat-card>
 
@@ -77,20 +65,9 @@
       <mat-card-title>Tactical Callsigns</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <table
-        class="personnel"
-        *ngIf="(organization$ | async)?.tacticalCallsigns; else noTacticals"
-      >
-        <tr *ngFor="let tac of (organization$ | async)?.tacticalCallsigns">
-          <td>{{ tac.title }}:</td>
-          <td>
-            <span class="callsign">{{ tac.callsign }}</span>
-          </td>
-        </tr>
-      </table>
-      <ng-template #noTacticals>
-        <p>No tactical callsigns on file.</p>
-      </ng-template>
+      <app-tactical-view
+        [tacticalCallsigns]="(organization$ | async)?.tacticalCallsigns ?? []"
+      />
     </mat-card-content>
   </mat-card>
 </ng-template>

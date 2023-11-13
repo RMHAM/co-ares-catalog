@@ -1,0 +1,11 @@
+<table class="personnel" *ngIf="tacticalCallsigns.length > 0; else noTacticals">
+  <tr *ngFor="let tac of tacticalCallsigns">
+    <td>{{ tac.title }}:</td>
+    <td>
+      <span class="callsign">{{ tac.callsign }}</span>
+    </td>
+  </tr>
+</table>
+<ng-template #noTacticals>
+  <p>No tactical callsigns on file.</p>
+</ng-template>

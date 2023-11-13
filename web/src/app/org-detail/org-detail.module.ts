@@ -7,9 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { CoreModule } from '../core/core.module';
 import { OrgDetailRoutingModule } from './org-detail-routing.module';
 import { OrgDetailComponent } from './org-detail.component';
+import { PersonnelViewComponent } from './personnel-view/personnel-view.component';
+import { TacticalViewComponent } from './tactical-view/tactical-view.component';
 
 @NgModule({
-  declarations: [OrgDetailComponent],
+  declarations: [OrgDetailComponent, PersonnelViewComponent, TacticalViewComponent],
   imports: [
     CommonModule,
     CoreModule,

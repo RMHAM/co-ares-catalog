@@ -1,0 +1,12 @@
+<table class="personnel" *ngIf="personnel.length > 0; else noPersonnel">
+  <tr *ngFor="let person of personnel">
+    <td>{{ person.title }}:</td>
+    <td>
+      {{ person.name }}
+      <span class="callsign">{{ person.callsign }}</span>
+    </td>
+  </tr>
+</table>
+<ng-template #noPersonnel>
+  <p>No personnel on file.</p>
+</ng-template>
