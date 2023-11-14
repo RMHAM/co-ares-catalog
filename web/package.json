@@ -18,7 +18,7 @@
     "@angular/common": "17.0.2",
     "@angular/compiler": "17.0.2",
     "@angular/core": "17.0.2",
-    "@angular/fire": "^17.0.0-next.0",
+    "@angular/fire": "17.0.0-next.0",
     "@angular/forms": "17.0.2",
     "@angular/material": "17.0.0",
     "@angular/platform-browser": "17.0.2",
@@ -43,10 +43,5 @@
     "prettier": "3.0.3",
     "prettier-plugin-organize-imports": "3.2.3",
     "typescript": "5.2.2"
-  },
-  "overrides": {
-    "@angular/fire@7.6.1": {
-      "rxfire@^6.0.0": "6.0.3"
-    }
   }
 }
