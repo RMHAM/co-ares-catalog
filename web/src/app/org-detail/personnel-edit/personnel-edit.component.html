@@ -1,0 +1,5 @@
+<div [formGroup]="personnelForm">
+  <div *ngFor="let person of personnelArray.value; let i=index">
+    <app-personnel-edit-row [person]="person" [index]="i" [form]="personnelForm" />
+  </div>
+</div>

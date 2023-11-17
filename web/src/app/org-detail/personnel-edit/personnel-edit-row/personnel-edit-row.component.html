@@ -1,0 +1,20 @@
+<div class="personEditRow" [formGroup]="form">
+  <div>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput [formControlName]="person.title" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [formControlName]="person.name" />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Callsign</mat-label>
+      <input matInput [formControlName]="person.callsign" />
+    </mat-form-field>
+  </div>
+</div>

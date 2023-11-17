@@ -16,7 +16,7 @@
       mat-mini-fab
       color="accent"
       aria-label="Save Edits"
-      (click)="editMode = false"
+      (click)="save(); editMode = false"
     >
       <mat-icon>save</mat-icon>
     </button>
@@ -38,7 +38,13 @@
     <mat-card-content>
       <app-personnel-view
         [personnel]="(organization$ | async)?.personnel ?? []"
+        *ngIf="!editMode; else editPersonnel"
       />
+      <ng-template #editPersonnel>
+        <app-personnel-edit
+          [personnel]="(organization$ | async)?.personnel ?? []"
+        />
+      </ng-template>
     </mat-card-content>
   </mat-card>
 
@@ -67,7 +73,13 @@
     <mat-card-content>
       <app-tactical-view
         [tacticalCallsigns]="(organization$ | async)?.tacticalCallsigns ?? []"
+        *ngIf="!editMode; else editTactical"
       />
+      <ng-template #editTactical>
+        <app-tactical-edit
+          [tacticalCallsigns]="(organization$ | async)?.tacticalCallsigns ?? []"
+        />
+      </ng-template>
     </mat-card-content>
   </mat-card>
 </ng-template>

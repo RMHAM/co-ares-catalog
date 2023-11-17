@@ -1,4 +1,4 @@
-<table class="personnel" *ngIf="tacticalCallsigns.length > 0; else noTacticals">
+<table *ngIf="tacticalCallsigns.length > 0; else noTacticals">
   <tr *ngFor="let tac of tacticalCallsigns">
     <td>{{ tac.title }}:</td>
     <td>
