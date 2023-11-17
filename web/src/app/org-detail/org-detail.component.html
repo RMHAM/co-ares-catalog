@@ -1,34 +1,35 @@
-<div *ngIf="!(organization$ | async); else loaded">Loading</div>
-<ng-template #loaded>
+@if (pageData$ | async; as data) {
   <header>
-    <h1>{{ (organization$ | async)! | orgTitle }}</h1>
-    <button
-      *ngIf="(userCanEdit$ | async) && !editMode"
-      mat-mini-fab
-      color="primary"
-      aria-label="Edit Organization"
-      (click)="editMode = true"
-    >
-      <mat-icon>edit</mat-icon>
-    </button>
-    <button
-      *ngIf="(userCanEdit$ | async) && editMode"
-      mat-mini-fab
-      color="accent"
-      aria-label="Save Edits"
-      (click)="editMode = false"
-    >
-      <mat-icon>save</mat-icon>
-    </button>
-    <button
-      *ngIf="(userCanEdit$ | async) && editMode"
-      mat-mini-fab
-      color="warn"
-      aria-label="Cancel Edits"
-      (click)="editMode = false"
-    >
-      <mat-icon>cancel</mat-icon>
-    </button>
+    <h1>{{ data.org! | orgTitle }}</h1>
+    @if (data.userCanEdit && !editMode) {
+      <button
+        mat-mini-fab
+        color="primary"
+        aria-label="Edit Organization"
+        (click)="editMode = true"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+    } @else if (data.userCanEdit && editMode) {
+      <button
+        mat-mini-fab
+        color="accent"
+        title="Save Edits"
+        aria-label="Save Edits"
+        (click)="save(); editMode = false"
+      >
+        <mat-icon>save</mat-icon>
+      </button>
+      <button
+        mat-mini-fab
+        color="warn"
+        title="Cancel Edits"
+        aria-label="Cancel Edits"
+        (click)="editMode = false"
+      >
+        <mat-icon>cancel</mat-icon>
+      </button>
+    }
   </header>
 
   <mat-card>
@@ -36,9 +37,11 @@
       <mat-card-title>Key Personnel</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <app-personnel-view
-        [personnel]="(organization$ | async)?.personnel ?? []"
-      />
+      @if (!editMode) {
+        <app-personnel-view [personnel]="data.org.personnel ?? []" />
+      } @else {
+        <app-personnel-edit [personnel]="data.org.personnel ?? []" />
+      }
     </mat-card-content>
   </mat-card>
 
@@ -49,8 +52,8 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <ul *ngIf="(ics217s$ | async)?.length ?? 0 > 0; else no217s">
-        <li *ngFor="let ics217 of ics217s$ | async">
+      <ul *ngIf="data.ics217s?.length ?? 0 > 0; else no217s">
+        <li *ngFor="let ics217 of data.ics217s">
           <a [routerLink]="'/ics217/' + ics217.id">{{ ics217.band }}</a>
         </li>
       </ul>
@@ -65,9 +68,15 @@
       <mat-card-title>Tactical Callsigns</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <app-tactical-view
-        [tacticalCallsigns]="(organization$ | async)?.tacticalCallsigns ?? []"
-      />
+      @if (!editMode) {
+        <app-tactical-view
+          [tacticalCallsigns]="data.org.tacticalCallsigns ?? []"
+        />
+      } @else {
+        <app-tactical-edit
+          [tacticalCallsigns]="data.org.tacticalCallsigns ?? []"
+        />
+      }
     </mat-card-content>
   </mat-card>
-</ng-template>
+}

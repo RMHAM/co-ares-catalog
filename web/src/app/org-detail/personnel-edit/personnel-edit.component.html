@@ -1,0 +1,10 @@
+@for (form of formArray.controls; track form; let i = $index) {
+  <app-personnel-edit-row
+    [form]="form"
+    [index]="i"
+    (delete)="deleteRow($event)"
+  />
+}
+<button mat-icon-button (click)="addRow()">
+  <mat-icon>add</mat-icon>
+</button>

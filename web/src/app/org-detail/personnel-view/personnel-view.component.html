@@ -1,4 +1,4 @@
-<table class="personnel" *ngIf="personnel.length > 0; else noPersonnel">
+<table *ngIf="personnel.length > 0; else noPersonnel">
   <tr *ngFor="let person of personnel">
     <td>{{ person.title }}:</td>
     <td>
