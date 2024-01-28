@@ -28,7 +28,7 @@ export async function findOrg(
   return result.docs[0];
 }
 
-export async function upsertIcs217(ics217: Partial<Ics217>) {
+export async function upsertIcs217(ics217: Partial<Ics217>): Promise<void> {
   const query = db
     .collection('ics217s')
     .where('owner', '==', ics217.owner)
