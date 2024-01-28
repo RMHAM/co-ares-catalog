@@ -4,7 +4,10 @@ import { parse } from 'node-xlsx';
 
 import { Channel, Ics217 } from './ics217.js';
 
-export function getRegionAndDistrict(filename: string) {
+export function getRegionAndDistrict(filename: string): {
+  region: string;
+  district: string;
+} {
   let region = null;
   const regionMatch = filename.match(/Region (\d+)/);
   if (regionMatch) {
