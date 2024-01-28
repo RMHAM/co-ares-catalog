@@ -68,7 +68,7 @@ for point in point_to_geoids:
 import json
 def set_default(obj):
     if isinstance(obj, set):
-        return list(obj)
+        return sorted(list(obj))
     raise TypeError
 
 with open('county_adj.json', 'w') as outfile:
