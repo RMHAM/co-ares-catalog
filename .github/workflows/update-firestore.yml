@@ -1,0 +1,41 @@
+name: "{Reusable} Update Firestore Test Dependencies"
+on:
+  workflow_call:
+    secrets:
+      GH_PAT:
+        required: true
+
+defaults:
+  run:
+    working-directory: firestore
+
+jobs:
+  update-firestore:
+    name: Update Firestore Test dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: npm update
+        run: |
+          npx npm-check-updates -u
+          npm install -f
+          npm update
+          npm install
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: "${{ secrets.GH_PAT }}"
+          add-paths: "firestore/package*.json"
+          commit-message: npm update (firestore)
+          title: npm update (firstore)
+          branch: update-firestore
+          author: "github-actions <github-actions@github.com>"

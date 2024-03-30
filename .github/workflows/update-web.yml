@@ -1,0 +1,52 @@
+name: "{Reusable} Update Web dependencies"
+on:
+  workflow_call:
+    secrets:
+      GH_PAT:
+        required: true
+
+defaults:
+  run:
+    working-directory: web
+
+jobs:
+  update-web:
+    name: Update Web dependencies
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Cache node deps
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-web-node-deps
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('web/package-lock.json') }}
+
+      - name: npm update
+        run: |
+          npx npm-check-updates -u
+          npm install -f
+          npm update
+          npm install
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: "${{ secrets.GH_PAT }}"
+          add-paths: "web/package*.json"
+          commit-message: npm update (web)
+          title: npm update (web)
+          branch: update-web
+          author: "github-actions <github-actions@github.com>"
