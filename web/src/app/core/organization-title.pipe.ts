@@ -4,6 +4,7 @@ import { Organization } from '../datatypes/organization';
 
 @Pipe({
   name: 'orgTitle',
+  standalone: true,
 })
 export class OrganizationTitlePipe implements PipeTransform {
   transform(value: Organization | undefined | null): string {

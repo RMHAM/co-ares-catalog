@@ -1,3 +1,4 @@
+import { AsyncPipe, DecimalPipe, NgFor, NgIf } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -5,6 +6,7 @@ import {
   OnDestroy,
   inject,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   BehaviorSubject,
   Observable,
@@ -14,6 +16,8 @@ import {
 } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
+import { OrganizationTitlePipe } from '../../core/organization-title.pipe';
+import { TonePipe } from '../../core/tone.pipe';
 import { Ics217 } from '../../datatypes/ics217';
 import { Ics217Service } from '../../ics217.service';
 import { OrganizationsService } from '../../organizations.service';
@@ -22,6 +26,16 @@ import { OrganizationsService } from '../../organizations.service';
   selector: 'app-ics217-print',
   templateUrl: './ics217-print.component.html',
   styleUrls: ['./ics217-print.component.scss'],
+  standalone: true,
+  imports: [
+    RouterLink,
+    NgIf,
+    NgFor,
+    AsyncPipe,
+    DecimalPipe,
+    OrganizationTitlePipe,
+    TonePipe,
+  ],
 })
 export class Ics217PrintComponent implements AfterViewInit, OnDestroy {
   ics217Service = inject(Ics217Service);

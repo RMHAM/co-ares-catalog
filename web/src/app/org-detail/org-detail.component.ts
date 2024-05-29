@@ -1,14 +1,43 @@
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Component, Input, inject } from '@angular/core';
+import { MatMiniFabButton } from '@angular/material/button';
+import {
+  MatCard,
+  MatCardContent,
+  MatCardHeader,
+  MatCardTitle,
+} from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import { RouterLink } from '@angular/router';
 import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
 
+import { OrganizationTitlePipe } from '../core/organization-title.pipe';
 import { Ics217Service } from '../ics217.service';
 import { OrganizationsService } from '../organizations.service';
 import { UserInfoService } from '../user-info.service';
+import { PersonnelViewComponent } from './personnel-view/personnel-view.component';
+import { TacticalViewComponent } from './tactical-view/tactical-view.component';
 
 @Component({
   selector: 'app-org-detail',
   templateUrl: './org-detail.component.html',
   styleUrls: ['./org-detail.component.scss'],
+  standalone: true,
+  imports: [
+    NgIf,
+    MatMiniFabButton,
+    MatIcon,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    PersonnelViewComponent,
+    NgFor,
+    RouterLink,
+    TacticalViewComponent,
+    AsyncPipe,
+    OrganizationTitlePipe,
+  ],
 })
 export class OrgDetailComponent {
   private organizationsService = inject(OrganizationsService);

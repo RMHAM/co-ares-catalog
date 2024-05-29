@@ -8,7 +8,7 @@ describe('PersonnelViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PersonnelViewComponent]
+      imports: [PersonnelViewComponent],
     });
     fixture = TestBed.createComponent(PersonnelViewComponent);
     component = fixture.componentInstance;

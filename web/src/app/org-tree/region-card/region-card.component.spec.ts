@@ -8,7 +8,7 @@ describe('RegionCardComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RegionCardComponent],
+      imports: [RegionCardComponent],
     });
     fixture = TestBed.createComponent(RegionCardComponent);
     component = fixture.componentInstance;
