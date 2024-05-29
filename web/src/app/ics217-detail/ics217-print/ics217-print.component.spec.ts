@@ -8,7 +8,7 @@ describe('Ics217PrintComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [Ics217PrintComponent],
+      imports: [Ics217PrintComponent],
     });
     fixture = TestBed.createComponent(Ics217PrintComponent);
     component = fixture.componentInstance;

@@ -8,7 +8,7 @@ describe('Ics217DetailComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [Ics217DetailComponent],
+      imports: [Ics217DetailComponent],
     });
     fixture = TestBed.createComponent(Ics217DetailComponent);
     component = fixture.componentInstance;

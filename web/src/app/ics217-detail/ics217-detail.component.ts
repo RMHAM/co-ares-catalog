@@ -1,8 +1,31 @@
+import { AsyncPipe, DecimalPipe, NgIf } from '@angular/common';
 import { Component, HostListener, Input, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { MatMiniFabButton } from '@angular/material/button';
+import {
+  MatCard,
+  MatCardContent,
+  MatCardHeader,
+  MatCardTitle,
+} from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow,
+  MatRowDef,
+  MatTable,
+} from '@angular/material/table';
+import { Router, RouterLink } from '@angular/router';
 import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { OrganizationTitlePipe } from '../core/organization-title.pipe';
+import { TonePipe } from '../core/tone.pipe';
 import { Ics217Service } from '../ics217.service';
 import { OrganizationsService } from '../organizations.service';
 import { UserInfoService } from '../user-info.service';
@@ -11,6 +34,31 @@ import { UserInfoService } from '../user-info.service';
   selector: 'app-ics217-detail',
   templateUrl: './ics217-detail.component.html',
   styleUrls: ['./ics217-detail.component.scss'],
+  standalone: true,
+  imports: [
+    NgIf,
+    MatMiniFabButton,
+    MatIcon,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    RouterLink,
+    MatCardContent,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCellDef,
+    MatHeaderCell,
+    MatCellDef,
+    MatCell,
+    MatHeaderRowDef,
+    MatHeaderRow,
+    MatRowDef,
+    MatRow,
+    AsyncPipe,
+    DecimalPipe,
+    OrganizationTitlePipe,
+    TonePipe,
+  ],
 })
 export class Ics217DetailComponent {
   ics217Service = inject(Ics217Service);

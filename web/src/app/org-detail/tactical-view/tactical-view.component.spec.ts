@@ -8,7 +8,7 @@ describe('TacticalViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TacticalViewComponent]
+      imports: [TacticalViewComponent],
     });
     fixture = TestBed.createComponent(TacticalViewComponent);
     component = fixture.componentInstance;

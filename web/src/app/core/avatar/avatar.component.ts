@@ -1,11 +1,27 @@
+import { NgIf, NgOptimizedImage } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Auth, user } from '@angular/fire/auth';
+import { MatIconButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-avatar',
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss'],
+  standalone: true,
+  imports: [
+    NgIf,
+    MatIconButton,
+    MatMenuTrigger,
+    NgOptimizedImage,
+    MatMenu,
+    MatMenuItem,
+    MatIcon,
+    RouterLink,
+  ],
 })
 export class AvatarComponent {
   readonly blankPhotoUrl: string =
