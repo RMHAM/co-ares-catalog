@@ -1,0 +1,13 @@
+<div class="tacticalEditRow" [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Callsign</mat-label>
+    <input matInput formControlName="callsign" />
+  </mat-form-field>
+  <button mat-icon-button (click)="delete.emit(index)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
