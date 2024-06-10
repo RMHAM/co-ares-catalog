@@ -1,4 +1,4 @@
-name: "{Reusable} Update Web dependencies"
+name: '{Reusable} Update Web dependencies'
 on:
   workflow_call:
     secrets:
@@ -24,7 +24,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: '20'
 
       - name: Cache node deps
         uses: actions/cache@v4
@@ -32,7 +32,9 @@ jobs:
           cache-name: cache-web-node-deps
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('web/package-lock.json') }}
+          key:
+            ${{ runner.os }}-${{ env.cache-name }}-${{
+            hashFiles('web/package-lock.json') }}
 
       - name: npm update
         run: |
@@ -44,9 +46,9 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: "${{ secrets.GH_PAT }}"
-          add-paths: "web/package*.json"
+          token: '${{ secrets.GH_PAT }}'
+          add-paths: 'web/package*.json'
           commit-message: npm update (web)
           title: npm update (web)
           branch: update-web
-          author: "github-actions <github-actions@github.com>"
+          author: 'github-actions <github-actions@github.com>'

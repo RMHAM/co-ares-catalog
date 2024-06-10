@@ -1,4 +1,4 @@
-name: "{Reusable} Update Firestore Test Dependencies"
+name: '{Reusable} Update Firestore Test Dependencies'
 on:
   workflow_call:
     secrets:
@@ -18,7 +18,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: '20'
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -33,9 +33,9 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: "${{ secrets.GH_PAT }}"
-          add-paths: "firestore/package*.json"
+          token: '${{ secrets.GH_PAT }}'
+          add-paths: 'firestore/package*.json'
           commit-message: npm update (firestore)
           title: npm update (firstore)
           branch: update-firestore
-          author: "github-actions <github-actions@github.com>"
+          author: 'github-actions <github-actions@github.com>'
