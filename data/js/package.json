@@ -1,9 +1,6 @@
 {
   "name": "open-ics-data",
   "type": "module",
-  "engines": {
-    "node": ">= 18.12 <19"
-  },
   "dependencies": {
     "firebase-admin": "12.0.0",
     "node-xlsx": "^0.23.0",
