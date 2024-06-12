@@ -62,6 +62,7 @@ export class OrganizationsService {
     const orgDoc = doc(this.firestore, 'organizations', orgId);
     this.firestoreUnsubscribe = onSnapshot(orgDoc, (snapshot) => {
       const org = snapshot.data() as Organization;
+      org.id = snapshot.id;
       this.subscribedOrg$.next(org);
     });
     return this.subscribedOrg$.asObservable();
@@ -77,6 +78,7 @@ export class OrganizationsService {
     this.firestoreUnsubscribe = onSnapshot(orgQuery, (snapshot) => {
       snapshot.docChanges().forEach((change) => {
         const org = change.doc.data() as Organization;
+        org.id = change.doc.id;
         this.subscribedOrg$.next(org);
       });
     });
@@ -97,6 +99,6 @@ export class OrganizationsService {
   /** Save changes to organization details. */
   save(org: Organization): Observable<void> {
     const orgDoc = doc(this.firestore, 'organizations', org.id);
-    return fromPromise(updateDoc(orgDoc, { ...org }));
+    return fromPromise(updateDoc(orgDoc, { ...org, id: undefined }));
   }
 }
