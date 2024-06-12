@@ -6,7 +6,7 @@ import {
   doc,
   docData,
 } from '@angular/fire/firestore';
-import { Observable, mergeMap, of, skipWhile } from 'rxjs';
+import { Observable, mergeMap, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,12 +19,11 @@ export class UserInfoService {
    * Fetch the current user's metadata from Firestore. The returned Observable only emits one
    * document snapshot and then closes to prevent memory leaks.
    */
-  getCurrentUserInfo(): Observable<CatalogUserInfo> {
+  getCurrentUserInfo(): Observable<CatalogUserInfo | null> {
     return user(this.auth).pipe(
-      skipWhile((user) => !user),
       mergeMap((user) => {
         if (!user) {
-          return of({} as CatalogUserInfo);
+          return of(null);
         }
         const userDoc = doc(this.firestore, 'users', user.uid);
         return docData(userDoc, {
