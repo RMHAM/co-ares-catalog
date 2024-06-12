@@ -99,6 +99,6 @@ export class OrganizationsService {
   /** Save changes to organization details. */
   save(org: Organization): Observable<void> {
     const orgDoc = doc(this.firestore, 'organizations', org.id);
-    return fromPromise(updateDoc(orgDoc, { ...org, id: undefined }));
+    return fromPromise(updateDoc(orgDoc, { ...org }));
   }
 }
