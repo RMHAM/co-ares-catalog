@@ -22,7 +22,7 @@ import {
 } from '@angular/material/table';
 import { Router, RouterLink } from '@angular/router';
 import { BehaviorSubject, Observable, combineLatest, mergeMap } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 
 import { OrganizationTitlePipe } from '../core/organization-title.pipe';
 import { TonePipe } from '../core/tone.pipe';
@@ -66,22 +66,37 @@ export class Ics217DetailComponent {
   userInfoService = inject(UserInfoService);
   router = inject(Router);
 
-  ics217Id$ = new BehaviorSubject<string | undefined>(undefined);
-  ics217$ = this.ics217Id$.pipe(mergeMap((id) => this.ics217Service.get(id!)));
-  channels$ = this.ics217$.pipe(map((ics217) => ics217.channels));
-  ownerOrg$ = this.ics217$.pipe(
-    mergeMap((ics217) => this.organizationsService.get(ics217.owner.id)),
+  private ics217Id$ = new BehaviorSubject<string | undefined>(undefined);
+  private ics217$ = this.ics217Id$.pipe(
+    mergeMap((id) => this.ics217Service.get(id!)),
+    shareReplay(1),
   );
-  user$ = this.userInfoService.getCurrentUserInfo();
-  userCanEdit$: Observable<boolean> = combineLatest(
-    this.user$,
-    this.ownerOrg$,
-    (user, ownerOrg) => {
-      if (!user || !ownerOrg) {
+  private ownerOrg$ = this.ics217$.pipe(
+    mergeMap((ics217) => this.organizationsService.get(ics217.owner.id)),
+    shareReplay(1),
+  );
+  private user$ = this.userInfoService
+    .getCurrentUserInfo()
+    .pipe(shareReplay(1));
+  private userCanEdit$: Observable<boolean> = combineLatest(
+    [this.user$, this.ownerOrg$],
+    (user, org) => {
+      if (!user || !org) {
         return false;
       }
-      return user.admin || user.manages.some((org) => org.id === ownerOrg.id);
+      return user.admin || user.manages.some((m) => m.id === org.id);
     },
+  );
+  pageData$ = combineLatest([
+    this.ics217$,
+    this.ownerOrg$,
+    this.userCanEdit$,
+  ]).pipe(
+    map(([ics217, ownerOrg, userCanEdit]) => ({
+      ics217,
+      ownerOrg,
+      userCanEdit,
+    })),
   );
 
   columnsToDisplay = [
