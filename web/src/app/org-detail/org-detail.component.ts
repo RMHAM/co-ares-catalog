@@ -79,7 +79,7 @@ export class OrgDetailComponent {
       if (!user || !org) {
         return false;
       }
-      return user.admin || user.manages.some((m) => m.id === org.id);
+      return user.admin || user.manages?.some((m) => m.id === org.id);
     },
   );
   editMode: boolean = false;
