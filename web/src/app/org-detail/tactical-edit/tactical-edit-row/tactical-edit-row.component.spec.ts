@@ -8,9 +8,8 @@ describe('TacticalEditRowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TacticalEditRowComponent]
-    })
-    .compileComponents();
+      imports: [TacticalEditRowComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TacticalEditRowComponent);
     component = fixture.componentInstance;
