@@ -9,7 +9,6 @@ import { PersonnelEditRowComponent } from './personnel-edit-row/personnel-edit-r
   selector: 'app-personnel-edit',
   templateUrl: './personnel-edit.component.html',
   styleUrls: ['./personnel-edit.component.scss'],
-  standalone: true,
   imports: [ReactiveFormsModule, PersonnelEditRowComponent, MatIcon],
 })
 export class PersonnelEditComponent {

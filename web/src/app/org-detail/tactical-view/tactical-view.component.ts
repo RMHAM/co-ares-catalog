@@ -7,7 +7,6 @@ import { TacticalCallsign } from '../../datatypes/organization';
   selector: 'app-tactical-view',
   templateUrl: './tactical-view.component.html',
   styleUrls: ['./tactical-view.component.scss'],
-  standalone: true,
   imports: [NgIf, NgFor],
 })
 export class TacticalViewComponent {
