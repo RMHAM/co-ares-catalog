@@ -31,7 +31,6 @@ import { TacticalViewComponent } from './tactical-view/tactical-view.component';
   selector: 'app-org-detail',
   templateUrl: './org-detail.component.html',
   styleUrls: ['./org-detail.component.scss'],
-  standalone: true,
   imports: [
     NgIf,
     MatMiniFabButton,

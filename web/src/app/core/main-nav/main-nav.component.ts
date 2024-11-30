@@ -21,7 +21,6 @@ import { AvatarComponent } from '../avatar/avatar.component';
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
   styleUrls: ['./main-nav.component.scss'],
-  standalone: true,
   imports: [
     MatSidenavContainer,
     MatSidenav,

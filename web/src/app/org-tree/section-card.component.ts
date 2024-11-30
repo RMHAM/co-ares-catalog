@@ -16,7 +16,6 @@ import { RegionCardComponent } from './region-card/region-card.component';
   selector: 'app-section-card',
   templateUrl: './section-card.component.html',
   styleUrls: ['./section-card.component.scss'],
-  standalone: true,
   imports: [
     NgIf,
     MatCard,

@@ -7,7 +7,6 @@ import { Personnel } from '../../datatypes/organization';
   selector: 'app-personnel-view',
   templateUrl: './personnel-view.component.html',
   styleUrls: ['./personnel-view.component.scss'],
-  standalone: true,
   imports: [NgIf, NgFor],
 })
 export class PersonnelViewComponent {
