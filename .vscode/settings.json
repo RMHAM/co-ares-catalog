@@ -1,5 +1,8 @@
 {
   "[python]": {
     "editor.defaultFormatter": "ms-python.autopep8"
+  },
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///Users/chris/src/RMHAM/co-ares-catalog/.github/workflows/deploy.yml"
   }
 }
