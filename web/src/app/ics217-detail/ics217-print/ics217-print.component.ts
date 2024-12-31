@@ -26,7 +26,6 @@ import { OrganizationsService } from '../../organizations.service';
   selector: 'app-ics217-print',
   templateUrl: './ics217-print.component.html',
   styleUrls: ['./ics217-print.component.scss'],
-  standalone: true,
   imports: [
     RouterLink,
     NgIf,

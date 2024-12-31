@@ -1,4 +1,4 @@
-import { AsyncPipe, DecimalPipe, NgIf } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 import { Component, HostListener, Input, inject } from '@angular/core';
 import { MatMiniFabButton } from '@angular/material/button';
 import {
@@ -34,9 +34,7 @@ import { UserInfoService } from '../user-info.service';
   selector: 'app-ics217-detail',
   templateUrl: './ics217-detail.component.html',
   styleUrls: ['./ics217-detail.component.scss'],
-  standalone: true,
   imports: [
-    NgIf,
     MatMiniFabButton,
     MatIcon,
     MatCard,
