@@ -4,7 +4,7 @@
     "build": "tsc",
     "build:watch": "tsc --watch",
     "deploy": "firebase deploy --only functions",
-    "lint": "eslint --ext .js,.ts .",
+    "lint": "eslint .",
     "logs": "firebase functions:log",
     "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
@@ -16,21 +16,22 @@
   },
   "main": "build/src/index.js",
   "dependencies": {
-    "firebase-admin": "12.6.0",
-    "firebase-functions": "5.0.1"
+    "firebase-admin": "13.6.0",
+    "firebase-functions": "7.0.0"
   },
   "devDependencies": {
-    "@types/mocha": "10.0.9",
-    "@typescript-eslint/eslint-plugin": "8.9.0",
-    "@typescript-eslint/parser": "8.9.0",
-    "eslint": "8.57.0",
+    "@types/mocha": "10.0.10",
+    "@typescript-eslint/eslint-plugin": "8.46.4",
+    "@typescript-eslint/parser": "8.46.4",
+    "eslint": "9.39.1",
     "eslint-config-google": "0.14.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-import": "2.31.0",
-    "firebase-functions-test": "3.3.0",
-    "mocha": "10.7.3",
-    "prettier": "3.3.3",
-    "typescript": "5.6.3"
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import": "2.32.0",
+    "firebase-functions-test": "3.4.1",
+    "mocha": "11.7.5",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.46.4"
   },
   "private": true
 }
