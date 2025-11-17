@@ -23,19 +23,18 @@ import { Ics217Service } from '../../ics217.service';
 import { OrganizationsService } from '../../organizations.service';
 
 @Component({
-  selector: 'app-ics217-print',
-  templateUrl: './ics217-print.component.html',
-  styleUrls: ['./ics217-print.component.scss'],
-  standalone: true,
-  imports: [
-    RouterLink,
-    NgIf,
-    NgFor,
-    AsyncPipe,
-    DecimalPipe,
-    OrganizationTitlePipe,
-    TonePipe,
-  ],
+    selector: 'app-ics217-print',
+    templateUrl: './ics217-print.component.html',
+    styleUrls: ['./ics217-print.component.scss'],
+    imports: [
+        RouterLink,
+        NgIf,
+        NgFor,
+        AsyncPipe,
+        DecimalPipe,
+        OrganizationTitlePipe,
+        TonePipe,
+    ]
 })
 export class Ics217PrintComponent implements AfterViewInit, OnDestroy {
   ics217Service = inject(Ics217Service);

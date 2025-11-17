@@ -8,20 +8,19 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-avatar',
-  templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.scss'],
-  standalone: true,
-  imports: [
-    NgIf,
-    MatIconButton,
-    MatMenuTrigger,
-    NgOptimizedImage,
-    MatMenu,
-    MatMenuItem,
-    MatIcon,
-    RouterLink,
-  ],
+    selector: 'app-avatar',
+    templateUrl: './avatar.component.html',
+    styleUrls: ['./avatar.component.scss'],
+    imports: [
+        NgIf,
+        MatIconButton,
+        MatMenuTrigger,
+        NgOptimizedImage,
+        MatMenu,
+        MatMenuItem,
+        MatIcon,
+        RouterLink,
+    ]
 })
 export class AvatarComponent {
   readonly blankPhotoUrl: string =

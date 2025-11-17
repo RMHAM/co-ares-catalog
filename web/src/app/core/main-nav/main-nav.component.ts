@@ -18,26 +18,25 @@ import { UserInfoService } from '../../user-info.service';
 import { AvatarComponent } from '../avatar/avatar.component';
 
 @Component({
-  selector: 'app-main-nav',
-  templateUrl: './main-nav.component.html',
-  styleUrls: ['./main-nav.component.scss'],
-  standalone: true,
-  imports: [
-    MatSidenavContainer,
-    MatSidenav,
-    MatToolbar,
-    MatNavList,
-    MatListItem,
-    RouterLink,
-    MatIcon,
-    NgIf,
-    MatSidenavContent,
-    MatIconButton,
-    NgOptimizedImage,
-    AvatarComponent,
-    RouterOutlet,
-    AsyncPipe,
-  ],
+    selector: 'app-main-nav',
+    templateUrl: './main-nav.component.html',
+    styleUrls: ['./main-nav.component.scss'],
+    imports: [
+        MatSidenavContainer,
+        MatSidenav,
+        MatToolbar,
+        MatNavList,
+        MatListItem,
+        RouterLink,
+        MatIcon,
+        NgIf,
+        MatSidenavContent,
+        MatIconButton,
+        NgOptimizedImage,
+        AvatarComponent,
+        RouterOutlet,
+        AsyncPipe,
+    ]
 })
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver);

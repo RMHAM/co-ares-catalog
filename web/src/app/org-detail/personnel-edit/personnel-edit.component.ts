@@ -6,11 +6,10 @@ import { Personnel } from '../../datatypes/organization';
 import { PersonnelEditRowComponent } from './personnel-edit-row/personnel-edit-row.component';
 
 @Component({
-  selector: 'app-personnel-edit',
-  templateUrl: './personnel-edit.component.html',
-  styleUrls: ['./personnel-edit.component.scss'],
-  standalone: true,
-  imports: [ReactiveFormsModule, PersonnelEditRowComponent, MatIcon],
+    selector: 'app-personnel-edit',
+    templateUrl: './personnel-edit.component.html',
+    styleUrls: ['./personnel-edit.component.scss'],
+    imports: [ReactiveFormsModule, PersonnelEditRowComponent, MatIcon]
 })
 export class PersonnelEditComponent {
   private formBuilder = inject(FormBuilder);

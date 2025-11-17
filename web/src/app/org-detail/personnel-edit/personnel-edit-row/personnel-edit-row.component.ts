@@ -7,11 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { Personnel } from '../../../datatypes/organization';
 
 @Component({
-  selector: 'app-personnel-edit-row',
-  standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIcon],
-  templateUrl: './personnel-edit-row.component.html',
-  styleUrl: './personnel-edit-row.component.scss',
+    selector: 'app-personnel-edit-row',
+    imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIcon],
+    templateUrl: './personnel-edit-row.component.html',
+    styleUrl: './personnel-edit-row.component.scss'
 })
 export class PersonnelEditRowComponent {
   @Input({ required: true }) form!: FormGroup;
