@@ -1,37 +1,31 @@
 import * as assert from 'assert';
 import admin from 'firebase-admin';
 import { UserRecord } from 'firebase-admin/auth';
-import firebaseFunctionsTest from 'firebase-functions-test';
-import { FeaturesList } from 'firebase-functions-test/lib/features';
+import fft from 'firebase-functions-test';
 
 import { newUser } from '../src';
 
 describe('newUser', () => {
-  let test: FeaturesList;
+  const test = fft({ projectId: 'open-ics' });
   let user: UserRecord;
+  const wrapped = test.wrap(newUser as any);
 
   before(async () => {
-    test = firebaseFunctionsTest({ projectId: 'open-ics' }, 'creds.json');
     user = test.auth.makeUserRecord({
       uid: '12345',
       email: 'test@example.com',
       displayName: 'Test User',
     });
-    await test.wrap(newUser)(user);
+    await wrapped({ data: user });
   });
 
   it('should set the user name', async () => {
-    let testComplete = false;
-    await admin
+    const userDoc = await admin
       .firestore()
       .collection('users')
       .doc(user.uid)
-      .get()
-      .then((userDoc) => {
-        assert.equal(userDoc.data()?.name, 'Test User');
-        testComplete = true;
-      });
-    assert.equal(testComplete, true);
+      .get();
+    assert.equal(userDoc.data()?.name, 'Test User');
   });
 
   after(async () => {
