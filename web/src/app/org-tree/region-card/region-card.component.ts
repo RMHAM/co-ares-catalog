@@ -16,7 +16,6 @@ import { Organization } from '../../datatypes/organization';
   selector: 'app-region-card',
   templateUrl: './region-card.component.html',
   styleUrls: ['./region-card.component.scss'],
-  standalone: true,
   imports: [
     NgIf,
     MatCard,

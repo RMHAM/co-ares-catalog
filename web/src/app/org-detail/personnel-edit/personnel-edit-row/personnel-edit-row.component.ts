@@ -8,7 +8,6 @@ import { Personnel } from '../../../datatypes/organization';
 
 @Component({
   selector: 'app-personnel-edit-row',
-  standalone: true,
   imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIcon],
   templateUrl: './personnel-edit-row.component.html',
   styleUrl: './personnel-edit-row.component.scss',

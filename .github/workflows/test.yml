@@ -7,16 +7,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.1
-        with:
-          node-version: '22'
-
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: Test
-        working-directory: ./web
+        working-directory: web
         run: |
           npm ci
           npm run build
@@ -25,16 +28,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.1
-        with:
-          node-version: '22'
-
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: Test
-        working-directory: ./functions
+        working-directory: functions
         run: |
           npm ci
           npm run lint
@@ -44,16 +50,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.1
-        with:
-          node-version: '22'
-
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Update npm
+        run: npm install -g npm@latest
 
       - name: Test
-        working-directory: ./firestore
+        working-directory: firestore
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
         run: |
