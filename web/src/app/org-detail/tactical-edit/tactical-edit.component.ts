@@ -1,8 +1,6 @@
 import { Component, Input, inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
-import { MatInput } from '@angular/material/input';
 
 import { TacticalCallsign } from '../../datatypes/organization';
 import { TacticalEditRowComponent } from './tactical-edit-row/tactical-edit-row.component';
@@ -12,9 +10,6 @@ import { TacticalEditRowComponent } from './tactical-edit-row/tactical-edit-row.
     templateUrl: './tactical-edit.component.html',
     styleUrls: ['./tactical-edit.component.scss'],
     imports: [
-        MatFormField,
-        MatLabel,
-        MatInput,
         MatIcon,
         TacticalEditRowComponent,
     ]
