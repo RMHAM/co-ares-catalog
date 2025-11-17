@@ -5,10 +5,10 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
-    selector: 'app-tactical-edit-row',
-    imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIcon],
-    templateUrl: './tactical-edit-row.component.html',
-    styleUrl: './tactical-edit-row.component.scss'
+  selector: 'app-tactical-edit-row',
+  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIcon],
+  templateUrl: './tactical-edit-row.component.html',
+  styleUrl: './tactical-edit-row.component.scss',
 })
 export class TacticalEditRowComponent {
   @Input({ required: true }) form!: FormGroup;

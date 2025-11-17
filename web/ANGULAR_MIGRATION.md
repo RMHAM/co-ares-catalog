@@ -2,11 +2,13 @@
 
 ## Summary
 
-This project has been successfully migrated from Angular 18.2.8 to Angular 20.3.12 with modern standalone architecture.
+This project has been successfully migrated from Angular 18.2.8 to Angular
+20.3.12 with modern standalone architecture.
 
 ## Key Changes
 
 ### Package Updates
+
 - **Angular Core**: 18.2.8 → 20.3.12
 - **Angular Material/CDK**: 18.2.8 → 20.3.12
 - **Angular Fire**: 18.0.1 → 20.0.1
@@ -16,12 +18,14 @@ This project has been successfully migrated from Angular 18.2.8 to Angular 20.3.
 ### Architecture Migration
 
 #### Before (Hybrid Approach)
+
 - Standalone root component (AppComponent)
 - NgModule-based routing (AppRoutingModule)
 - Lazy-loaded feature modules using `loadChildren`
 - Mixed module/standalone architecture
 
 #### After (Pure Standalone)
+
 - Fully standalone architecture
 - Modern routing using `provideRouter` in main.ts
 - Lazy-loaded components using `loadComponent`
@@ -30,6 +34,7 @@ This project has been successfully migrated from Angular 18.2.8 to Angular 20.3.
 ### Routing Changes
 
 **Old routing approach:**
+
 ```typescript
 // app-routing.module.ts
 const routes: Routes = [
@@ -48,6 +53,7 @@ export class AppRoutingModule {}
 ```
 
 **New routing approach:**
+
 ```typescript
 // app.routes.ts
 export const routes: Routes = [
@@ -70,6 +76,7 @@ bootstrapApplication(AppComponent, {
 ```
 
 ### Files Removed
+
 - `app-routing.module.ts`
 - All feature module files:
   - `login/login.module.ts`
@@ -86,26 +93,31 @@ bootstrapApplication(AppComponent, {
 ### TypeScript Configuration
 
 Updated `tsconfig.json` with Angular 20 requirements:
+
 - `moduleResolution`: Changed from `node` to `bundler`
 
 ### Build Configuration
 
 Angular 20 migration included automatic updates to:
+
 - `angular.json` - Updated for v20 build system
 - Build defaults maintained for style guide compatibility
 
 ## Testing
 
-Build verified successfully with no warnings. Existing test failures are unrelated to the migration (Firebase provider configuration issues).
+Build verified successfully with no warnings. Existing test failures are
+unrelated to the migration (Firebase provider configuration issues).
 
 ## Migration Steps Used
 
 1. Updated Angular from 18 → 19 → 20 (required incremental migration)
 2. Updated Angular Material, CDK, and Fire to v20
-3. Converted `main.ts` to use `provideRouter` instead of `importProvidersFrom(AppRoutingModule)`
+3. Converted `main.ts` to use `provideRouter` instead of
+   `importProvidersFrom(AppRoutingModule)`
 4. Created `app.routes.ts` with standalone routing
 5. Added `standalone: true` to all main feature components
-6. Updated all route lazy-loading to use `loadComponent` instead of `loadChildren`
+6. Updated all route lazy-loading to use `loadComponent` instead of
+   `loadChildren`
 7. Removed all NgModule files
 8. Cleaned up unused imports
 
@@ -119,7 +131,9 @@ Build verified successfully with no warnings. Existing test failures are unrelat
 
 ## Compatibility
 
-This project now uses Angular's recommended modern architecture and is compatible with:
+This project now uses Angular's recommended modern architecture and is
+compatible with:
+
 - Node.js: >=22 (as specified in package.json)
 - Angular: 20.x
 - TypeScript: 5.8.x

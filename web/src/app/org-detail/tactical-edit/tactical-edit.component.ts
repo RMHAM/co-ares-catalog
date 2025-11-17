@@ -6,13 +6,10 @@ import { TacticalCallsign } from '../../datatypes/organization';
 import { TacticalEditRowComponent } from './tactical-edit-row/tactical-edit-row.component';
 
 @Component({
-    selector: 'app-tactical-edit',
-    templateUrl: './tactical-edit.component.html',
-    styleUrls: ['./tactical-edit.component.scss'],
-    imports: [
-        MatIcon,
-        TacticalEditRowComponent,
-    ]
+  selector: 'app-tactical-edit',
+  templateUrl: './tactical-edit.component.html',
+  styleUrls: ['./tactical-edit.component.scss'],
+  imports: [MatIcon, TacticalEditRowComponent],
 })
 export class TacticalEditComponent {
   private formBuilder = inject(FormBuilder);

@@ -28,27 +28,27 @@ import { TacticalEditComponent } from './tactical-edit/tactical-edit.component';
 import { TacticalViewComponent } from './tactical-view/tactical-view.component';
 
 @Component({
-    selector: 'app-org-detail',
-    templateUrl: './org-detail.component.html',
-    styleUrls: ['./org-detail.component.scss'],
-    standalone: true,
-    imports: [
-        NgIf,
-        MatMiniFabButton,
-        MatIcon,
-        MatCard,
-        MatCardHeader,
-        MatCardTitle,
-        MatCardContent,
-        PersonnelViewComponent,
-        PersonnelEditComponent,
-        NgFor,
-        RouterLink,
-        TacticalViewComponent,
-        TacticalEditComponent,
-        AsyncPipe,
-        OrganizationTitlePipe,
-    ]
+  selector: 'app-org-detail',
+  templateUrl: './org-detail.component.html',
+  styleUrls: ['./org-detail.component.scss'],
+  standalone: true,
+  imports: [
+    NgIf,
+    MatMiniFabButton,
+    MatIcon,
+    MatCard,
+    MatCardHeader,
+    MatCardTitle,
+    MatCardContent,
+    PersonnelViewComponent,
+    PersonnelEditComponent,
+    NgFor,
+    RouterLink,
+    TacticalViewComponent,
+    TacticalEditComponent,
+    AsyncPipe,
+    OrganizationTitlePipe,
+  ],
 })
 export class OrgDetailComponent {
   @ViewChild(PersonnelEditComponent)
