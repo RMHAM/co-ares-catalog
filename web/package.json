@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "20.3.10",
-    "@angular/cli": "20.3.10",
+    "@angular/cli": "21.1.0",
     "@angular/compiler-cli": "20.3.12",
     "@trivago/prettier-plugin-sort-imports": "6.0.0",
     "@types/jasmine": "5.1.13",
