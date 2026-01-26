@@ -45,8 +45,8 @@ import { TacticalViewComponent } from './tactical-view/tactical-view.component';
     TacticalViewComponent,
     TacticalEditComponent,
     AsyncPipe,
-    OrganizationTitlePipe
-],
+    OrganizationTitlePipe,
+  ],
 })
 export class OrgDetailComponent {
   @ViewChild(PersonnelEditComponent)

@@ -18,8 +18,8 @@ import { RouterLink } from '@angular/router';
     MatMenu,
     MatMenuItem,
     MatIcon,
-    RouterLink
-],
+    RouterLink,
+  ],
 })
 export class AvatarComponent {
   readonly blankPhotoUrl: string =

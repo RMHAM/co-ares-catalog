@@ -1,4 +1,3 @@
-
 import { Component, Input } from '@angular/core';
 import {
   MatCard,
@@ -23,8 +22,8 @@ import { Organization } from '../../datatypes/organization';
     RouterLink,
     MatCardContent,
     OrderByPipe,
-    OrganizationTitlePipe
-],
+    OrganizationTitlePipe,
+  ],
 })
 export class RegionCardComponent {
   @Input() org: Organization | undefined;

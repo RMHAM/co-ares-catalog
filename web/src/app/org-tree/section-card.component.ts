@@ -25,8 +25,8 @@ import { RegionCardComponent } from './region-card/region-card.component';
     MatCardContent,
     RegionCardComponent,
     OrderByPipe,
-    AsyncPipe
-],
+    AsyncPipe,
+  ],
 })
 export class SectionCardComponent {
   rootOrg$ = inject(OrganizationsService).getTree();

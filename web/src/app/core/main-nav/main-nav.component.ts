@@ -34,8 +34,8 @@ import { AvatarComponent } from '../avatar/avatar.component';
     NgOptimizedImage,
     AvatarComponent,
     RouterOutlet,
-    AsyncPipe
-],
+    AsyncPipe,
+  ],
 })
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver);

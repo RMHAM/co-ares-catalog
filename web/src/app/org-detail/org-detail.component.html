@@ -7,7 +7,7 @@
         color="primary"
         aria-label="Edit Organization"
         (click)="editMode = true"
-        >
+      >
         <mat-icon>edit</mat-icon>
       </button>
     } @else if (data.userCanEdit && editMode) {
@@ -17,7 +17,7 @@
         title="Save Edits"
         aria-label="Save Edits"
         (click)="save(); editMode = false"
-        >
+      >
         <mat-icon>save</mat-icon>
       </button>
       <button
@@ -26,7 +26,7 @@
         title="Cancel Edits"
         aria-label="Cancel Edits"
         (click)="editMode = false"
-        >
+      >
         <mat-icon>cancel</mat-icon>
       </button>
     }

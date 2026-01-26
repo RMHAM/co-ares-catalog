@@ -31,8 +31,8 @@ import { OrganizationsService } from '../../organizations.service';
     AsyncPipe,
     DecimalPipe,
     OrganizationTitlePipe,
-    TonePipe
-],
+    TonePipe,
+  ],
 })
 export class Ics217PrintComponent implements AfterViewInit, OnDestroy {
   ics217Service = inject(Ics217Service);
