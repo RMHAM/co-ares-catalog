@@ -52,7 +52,7 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      @if (data.ics217s?.length ?? 0 > 0) {
+      @if (data.ics217s.length > 0) {
         <ul>
           @for (ics217 of data.ics217s; track ics217) {
             <li>
