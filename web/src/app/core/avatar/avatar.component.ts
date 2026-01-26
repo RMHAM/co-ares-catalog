@@ -1,4 +1,4 @@
-import { NgIf, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Auth, user } from '@angular/fire/auth';
@@ -12,15 +12,14 @@ import { RouterLink } from '@angular/router';
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss'],
   imports: [
-    NgIf,
     MatIconButton,
     MatMenuTrigger,
     NgOptimizedImage,
     MatMenu,
     MatMenuItem,
     MatIcon,
-    RouterLink,
-  ],
+    RouterLink
+],
 })
 export class AvatarComponent {
   readonly blankPhotoUrl: string =

@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, Input, ViewChild, inject } from '@angular/core';
 import { MatMiniFabButton } from '@angular/material/button';
 import {
@@ -33,7 +33,6 @@ import { TacticalViewComponent } from './tactical-view/tactical-view.component';
   styleUrls: ['./org-detail.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     MatMiniFabButton,
     MatIcon,
     MatCard,
@@ -42,13 +41,12 @@ import { TacticalViewComponent } from './tactical-view/tactical-view.component';
     MatCardContent,
     PersonnelViewComponent,
     PersonnelEditComponent,
-    NgFor,
     RouterLink,
     TacticalViewComponent,
     TacticalEditComponent,
     AsyncPipe,
-    OrganizationTitlePipe,
-  ],
+    OrganizationTitlePipe
+],
 })
 export class OrgDetailComponent {
   @ViewChild(PersonnelEditComponent)

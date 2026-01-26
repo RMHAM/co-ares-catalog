@@ -1,5 +1,6 @@
-<div *ngIf="!(rootOrg$ | async); else loaded">Loading</div>
-<ng-template #loaded>
+@if (!(rootOrg$ | async)) {
+  <div>Loading</div>
+} @else {
   <mat-card>
     <mat-card-header>
       <mat-card-title>
@@ -9,10 +10,11 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <app-region-card
-        *ngFor="let region of (rootOrg$ | async)?.children | orderBy: 'region'"
-        [org]="region"
-      ></app-region-card>
+      @for (region of (rootOrg$ | async)?.children | orderBy: 'region'; track region) {
+        <app-region-card
+          [org]="region"
+        ></app-region-card>
+      }
     </mat-card-content>
   </mat-card>
-</ng-template>
+}

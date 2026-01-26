@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { AsyncPipe, NgIf, NgOptimizedImage } from '@angular/common';
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -29,14 +29,13 @@ import { AvatarComponent } from '../avatar/avatar.component';
     MatListItem,
     RouterLink,
     MatIcon,
-    NgIf,
     MatSidenavContent,
     MatIconButton,
     NgOptimizedImage,
     AvatarComponent,
     RouterOutlet,
-    AsyncPipe,
-  ],
+    AsyncPipe
+],
 })
 export class MainNavComponent {
   private breakpointObserver = inject(BreakpointObserver);
