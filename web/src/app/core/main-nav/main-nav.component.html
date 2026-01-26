@@ -14,12 +14,14 @@
         Organizations
       </a>
     </mat-nav-list>
-    <mat-nav-list *ngIf="isAdmin$ | async">
-      <a mat-list-item routerLink="/users">
-        <mat-icon>manage_accounts</mat-icon>
-        Manage Users
-      </a>
-    </mat-nav-list>
+    @if (isAdmin$ | async) {
+      <mat-nav-list>
+        <a mat-list-item routerLink="/users">
+          <mat-icon>manage_accounts</mat-icon>
+          Manage Users
+        </a>
+      </mat-nav-list>
+    }
     <mat-nav-list>
       <a
         mat-list-item
@@ -34,15 +36,16 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary" class="noPrint">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
       <img
         ngSrc="../../../assets/colorado-ares.svg"
         class="logo"
@@ -50,12 +53,11 @@
         height="50"
         width="50"
       />
-      <span *ngIf="!(isHandset$ | async); else mobileTitle">
-        Colorado ARES Communications Catalog
-      </span>
-      <ng-template #mobileTitle>
+      @if (!(isHandset$ | async)) {
+        <span> Colorado ARES Communications Catalog </span>
+      } @else {
         <span>ARES Catalog</span>
-      </ng-template>
+      }
       &nbsp;
       <em title="Beta test, design subject to change">β</em>
       <div class="spacer"></div>

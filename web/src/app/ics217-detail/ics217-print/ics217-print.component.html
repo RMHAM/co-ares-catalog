@@ -1,6 +1,7 @@
 <a class="noPrint" [routerLink]="['/ics217', ics217Id$ | async]">Back</a>
-<div *ngIf="(ics217$ | async) == undefined; else details">Loading</div>
-<ng-template #details>
+@if ((ics217$ | async) == undefined) {
+  <div>Loading</div>
+} @else {
   <div class="printForm">
     <table>
       <tbody>
@@ -38,21 +39,22 @@
           </th>
           <th class="smallHeading">11. Remarks</th>
         </tr>
-        <tr *ngFor="let chan of (ics217$ | async)?.channels">
-          <td class="pageColumn"><!-- page number --></td>
-          <td class="configColumn">{{ chan.config }}</td>
-          <td class="nameColumn">{{ chan.name }}</td>
-          <td class="smallHeading usersColumn">{{ chan.users }}</td>
-          <td class="freqColumn">{{ chan.rxFrequency | number: '1.4-4' }}</td>
-          <td class="widthColumn">{{ chan.rxWidth }}</td>
-          <td class="toneColumn">{{ chan.rxTone | tone }}</td>
-          <td class="freqColumn">{{ chan.txFrequency | number: '1.4-4' }}</td>
-          <td class="widthColumn">{{ chan.txWidth }}</td>
-          <td class="toneColumn">{{ chan.txTone | tone }}</td>
-          <td class="modeColumn">{{ chan.mode }}</td>
-          <td class="smallHeading">{{ chan.remarks }}</td>
-        </tr>
-
+        @for (chan of (ics217$ | async)?.channels; track chan) {
+          <tr>
+            <td class="pageColumn"><!-- page number --></td>
+            <td class="configColumn">{{ chan.config }}</td>
+            <td class="nameColumn">{{ chan.name }}</td>
+            <td class="smallHeading usersColumn">{{ chan.users }}</td>
+            <td class="freqColumn">{{ chan.rxFrequency | number: '1.4-4' }}</td>
+            <td class="widthColumn">{{ chan.rxWidth }}</td>
+            <td class="toneColumn">{{ chan.rxTone | tone }}</td>
+            <td class="freqColumn">{{ chan.txFrequency | number: '1.4-4' }}</td>
+            <td class="widthColumn">{{ chan.txWidth }}</td>
+            <td class="toneColumn">{{ chan.txTone | tone }}</td>
+            <td class="modeColumn">{{ chan.mode }}</td>
+            <td class="smallHeading">{{ chan.remarks }}</td>
+          </tr>
+        }
         <tr>
           <td class="smallHeading" colSpan="2">12. Prepared by:</td>
           <td colSpan="2"><!-- name --></td>
@@ -73,4 +75,4 @@
       </tr>
     </table>
   </div>
-</ng-template>
+}

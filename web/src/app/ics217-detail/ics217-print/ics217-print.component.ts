@@ -1,4 +1,4 @@
-import { AsyncPipe, DecimalPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, DecimalPipe } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -28,8 +28,6 @@ import { OrganizationsService } from '../../organizations.service';
   styleUrls: ['./ics217-print.component.scss'],
   imports: [
     RouterLink,
-    NgIf,
-    NgFor,
     AsyncPipe,
     DecimalPipe,
     OrganizationTitlePipe,

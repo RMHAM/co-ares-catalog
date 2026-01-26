@@ -1,4 +1,4 @@
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
   MatCard,
@@ -18,13 +18,11 @@ import { RegionCardComponent } from './region-card/region-card.component';
   styleUrls: ['./section-card.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
     MatCard,
     MatCardHeader,
     MatCardTitle,
     RouterLink,
     MatCardContent,
-    NgFor,
     RegionCardComponent,
     OrderByPipe,
     AsyncPipe,

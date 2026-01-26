@@ -1,27 +1,28 @@
-<div *ngIf="loggedIn(); else showLogin" class="avatar">
-  <button
-    class="avatar"
-    mat-icon-button
-    [matMenuTriggerFor]="accountMenu"
-    aria-label="User Menu"
-  >
-    <img
+@if (loggedIn()) {
+  <div class="avatar">
+    <button
       class="avatar"
-      [ngSrc]="photoURL().toString()"
-      [alt]="displayName()"
-      width="40"
-      height="40"
-    />
-  </button>
-  <mat-menu #accountMenu="matMenu">
-    <button mat-menu-item disabled>{{ email() }}</button>
-    <button mat-menu-item (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      Logout
+      mat-icon-button
+      [matMenuTriggerFor]="accountMenu"
+      aria-label="User Menu"
+    >
+      <img
+        class="avatar"
+        [ngSrc]="photoURL().toString()"
+        [alt]="displayName()"
+        width="40"
+        height="40"
+      />
     </button>
-  </mat-menu>
-</div>
-<ng-template #showLogin>
+    <mat-menu #accountMenu="matMenu">
+      <button mat-menu-item disabled>{{ email() }}</button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+    </mat-menu>
+  </div>
+} @else {
   <div class="avatar">
     <button
       mat-icon-button
@@ -34,4 +35,4 @@
       <div mat-menu-item routerLink="/login">Log In</div>
     </mat-menu>
   </div>
-</ng-template>
+}

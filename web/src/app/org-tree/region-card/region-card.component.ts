@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import {
   MatCard,
@@ -17,13 +16,11 @@ import { Organization } from '../../datatypes/organization';
   templateUrl: './region-card.component.html',
   styleUrls: ['./region-card.component.scss'],
   imports: [
-    NgIf,
     MatCard,
     MatCardHeader,
     MatCardTitle,
     RouterLink,
     MatCardContent,
-    NgFor,
     OrderByPipe,
     OrganizationTitlePipe,
   ],

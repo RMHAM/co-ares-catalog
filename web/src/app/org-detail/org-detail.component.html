@@ -52,14 +52,17 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <ul *ngIf="data.ics217s?.length ?? 0 > 0; else no217s">
-        <li *ngFor="let ics217 of data.ics217s">
-          <a [routerLink]="'/ics217/' + ics217.id">{{ ics217.band }}</a>
-        </li>
-      </ul>
-      <ng-template #no217s>
+      @if (data.ics217s.length > 0) {
+        <ul>
+          @for (ics217 of data.ics217s; track ics217) {
+            <li>
+              <a [routerLink]="'/ics217/' + ics217.id">{{ ics217.band }}</a>
+            </li>
+          }
+        </ul>
+      } @else {
         <p>No ICS 217s on file.</p>
-      </ng-template>
+      }
     </mat-card-content>
   </mat-card>
 

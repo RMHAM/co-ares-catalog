@@ -116,10 +116,7 @@ export class Ics217DetailComponent {
   }
 
   @HostListener('window:beforeprint')
-  onBeforePrint(event: Event | undefined) {
+  onBeforePrint() {
     this.router.navigate(['ics217', this.ics217Id$.value, 'print']);
-    if (event) {
-      event.preventDefault();
-    }
   }
 }
