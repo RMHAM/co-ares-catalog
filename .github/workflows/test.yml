@@ -15,9 +15,6 @@ jobs:
         with:
           node-version-file: '.nvmrc'
 
-      - name: Update npm
-        run: npm install -g npm@latest
-
       - name: Test
         working-directory: web
         run: |
@@ -35,9 +32,6 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
-
-      - name: Update npm
-        run: npm install -g npm@latest
 
       - name: Test
         working-directory: functions
@@ -62,9 +56,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-
-      - name: Update npm
-        run: npm install -g npm@latest
 
       - name: Test
         working-directory: firestore
