@@ -7,7 +7,8 @@
     "outDir": "build",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017"
+    "target": "es2017",
+    "types": ["mocha"]
   },
   "compileOnSave": true,
   "include": ["src", "test"]
