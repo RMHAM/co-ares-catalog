@@ -40,4 +40,4 @@ jobs:
       - name: Deploy to Firebase
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
-        run: firebase deploy --project ${{ vars.FIREBASE_PROJECT_ID }}
+        run: firebase deploy --only hosting,firestore,functions --project ${{ vars.FIREBASE_PROJECT_ID }}
