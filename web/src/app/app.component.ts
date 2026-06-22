@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { MainNavComponent } from './core/main-nav/main-nav.component';
 
@@ -6,6 +6,7 @@ import { MainNavComponent } from './core/main-nav/main-nav.component';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MainNavComponent],
 })
 export class AppComponent {}

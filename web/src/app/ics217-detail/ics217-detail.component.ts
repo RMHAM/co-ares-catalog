@@ -1,5 +1,11 @@
 import { AsyncPipe, DecimalPipe } from '@angular/common';
-import { Component, HostListener, Input, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  Input,
+  inject,
+} from '@angular/core';
 import { MatMiniFabButton } from '@angular/material/button';
 import {
   MatCard,
@@ -35,6 +41,7 @@ import { UserInfoService } from '../user-info.service';
   templateUrl: './ics217-detail.component.html',
   styleUrls: ['./ics217-detail.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatMiniFabButton,
     MatIcon,

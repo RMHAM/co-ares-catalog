@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Personnel } from '../../datatypes/organization';
 
@@ -6,6 +6,7 @@ import { Personnel } from '../../datatypes/organization';
   selector: 'app-personnel-view',
   templateUrl: './personnel-view.component.html',
   styleUrls: ['./personnel-view.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [],
 })
 export class PersonnelViewComponent {

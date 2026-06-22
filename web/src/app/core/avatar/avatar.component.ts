@@ -1,5 +1,10 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+} from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Auth, user } from '@angular/fire/auth';
 import { MatIconButton } from '@angular/material/button';
@@ -11,6 +16,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-avatar',
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatIconButton,
     MatMenuTrigger,
