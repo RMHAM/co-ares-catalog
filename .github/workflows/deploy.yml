@@ -31,6 +31,7 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
           service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+          token_format: access_token
 
       - name: Show gcloud identity (debug)
         run: |
@@ -45,6 +46,7 @@ jobs:
 
       - name: Deploy to Firebase
         env:
+          FIREBASE_TOKEN: ${{ steps.auth.outputs.access_token }}
           FIREBASE_CLI_EXPERIMENTS: webframeworks
           GOOGLE_CLOUD_PROJECT: ${{ vars.FIREBASE_PROJECT_ID }}
         run: firebase deploy --only hosting,firestore,functions --project ${{ vars.FIREBASE_PROJECT_ID }}
