@@ -1,5 +1,7 @@
-import { Component, inject } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+import { Component } from '@angular/core';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+
+import { injectFirebaseAuth } from '../firebase-sdk';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,7 @@ import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
   standalone: true,
 })
 export class LoginComponent {
-  private auth: Auth = inject(Auth);
+  private auth = injectFirebaseAuth();
 
   async logInWithGoogle() {
     await signInWithPopup(this.auth, new GoogleAuthProvider());

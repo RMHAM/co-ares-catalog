@@ -1,25 +1,24 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
-  Firestore,
   collection,
-  collectionData,
   doc,
   onSnapshot,
   query,
   updateDoc,
   where,
-} from '@angular/fire/firestore';
+} from 'firebase/firestore';
 import { Observable, ReplaySubject } from 'rxjs';
 import { fromPromise } from 'rxjs/internal/observable/innerFrom';
 import { map } from 'rxjs/operators';
 
 import { Organization } from './datatypes/organization';
+import { collectionData, injectFirestore } from './firebase-sdk';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrganizationsService {
-  firestore: Firestore = inject(Firestore);
+  firestore = injectFirestore();
   subscribedOrg$ = new ReplaySubject<Organization>(1);
   firestoreUnsubscribe: Function | null = null;
 
