@@ -39,7 +39,7 @@ export function user(auth: Auth): Observable<User | null> {
       (result) => subscriber.next(result),
       (error) => subscriber.error(error),
     );
-    return () => unsubscribe();
+    return unsubscribe;
   });
 }
 
@@ -57,14 +57,14 @@ export function docData<T>(
       (snapshot) => {
         const data = snapshot.data();
         if (!data) {
-          subscriber.next(undefined as T);
+          subscriber.error(new Error(`Document '${docRef.path}' does not exist.`));
           return;
         }
         subscriber.next(addIdToData<T>(snapshot.id, data, options));
       },
       (error) => subscriber.error(error),
     );
-    return () => unsubscribe();
+    return unsubscribe;
   });
 }
 
@@ -86,7 +86,7 @@ export function collectionData<T>(
       },
       (error) => subscriber.error(error),
     );
-    return () => unsubscribe();
+    return unsubscribe;
   });
 }
 
