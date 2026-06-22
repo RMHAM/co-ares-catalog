@@ -57,7 +57,11 @@ export function docData<T>(
       (snapshot) => {
         const data = snapshot.data();
         if (!data) {
-          subscriber.error(new Error(`Document '${docRef.path}' does not exist.`));
+          subscriber.error(
+            new Error(
+              `Document '${docRef.path}' is missing (it may never have existed or may have been deleted).`,
+            ),
+          );
           return;
         }
         subscriber.next(addIdToData<T>(snapshot.id, data, options));
