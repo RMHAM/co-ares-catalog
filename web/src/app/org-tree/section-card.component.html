@@ -1,26 +1,16 @@
-@if (!(rootOrg$ | async)) {
-  <div>Loading</div>
-} @else {
+@if (rootOrg$ | async; as rootOrg) {
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        <a
-          [routerLink]="
-            '/orgs/' + $safeNavigationMigration((rootOrg$ | async)?.slug)
-          "
-        >
-          {{ (rootOrg$ | async)?.name }}
-        </a>
+        <a [routerLink]="'/orgs/' + rootOrg.slug">{{ rootOrg.name }}</a>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      @for (
-        region of $safeNavigationMigration((rootOrg$ | async)?.children)
-          | orderBy: 'region';
-        track region
-      ) {
+      @for (region of rootOrg.children | orderBy: 'region'; track region) {
         <app-region-card [org]="region"></app-region-card>
       }
     </mat-card-content>
   </mat-card>
+} @else {
+  <div>Loading</div>
 }
