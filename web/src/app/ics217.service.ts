@@ -1,22 +1,15 @@
-import { Injectable, inject } from '@angular/core';
-import {
-  Firestore,
-  collection,
-  collectionData,
-  doc,
-  docData,
-  query,
-  where,
-} from '@angular/fire/firestore';
+import { Injectable } from '@angular/core';
+import { collection, doc, query, where } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 import { Ics217 } from './datatypes/ics217';
+import { collectionData, docData, injectFirestore } from './firebase-sdk';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Ics217Service {
-  firestore: Firestore = inject(Firestore);
+  firestore = injectFirestore();
 
   getAll(): Observable<Ics217[]> {
     const ics217Collection = collection(this.firestore, 'ics217s');

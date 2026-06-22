@@ -1,11 +1,12 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Auth, user } from '@angular/fire/auth';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
+
+import { injectFirebaseAuth, user } from '../../firebase-sdk';
 
 @Component({
   selector: 'app-avatar',
@@ -24,7 +25,7 @@ import { RouterLink } from '@angular/router';
 export class AvatarComponent {
   readonly blankPhotoUrl: string =
     'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png';
-  private auth: Auth = inject(Auth);
+  private auth = injectFirebaseAuth();
 
   private user = toSignal(user(this.auth));
   loggedIn = computed(() => !!this.user());

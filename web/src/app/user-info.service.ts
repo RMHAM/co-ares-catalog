@@ -1,19 +1,20 @@
-import { Injectable, inject } from '@angular/core';
-import { Auth, user } from '@angular/fire/auth';
-import {
-  DocumentReference,
-  Firestore,
-  doc,
-  docData,
-} from '@angular/fire/firestore';
+import { Injectable } from '@angular/core';
+import { DocumentReference, doc } from 'firebase/firestore';
 import { Observable, mergeMap, of } from 'rxjs';
+
+import {
+  docData,
+  injectFirebaseAuth,
+  injectFirestore,
+  user,
+} from './firebase-sdk';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserInfoService {
-  private firestore: Firestore = inject(Firestore);
-  private auth: Auth = inject(Auth);
+  private firestore = injectFirestore();
+  private auth = injectFirebaseAuth();
 
   /**
    * Fetch the current user's metadata from Firestore. The returned Observable only emits one
