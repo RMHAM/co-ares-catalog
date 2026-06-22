@@ -1,6 +1,7 @@
 import { AsyncPipe, DecimalPipe } from '@angular/common';
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   Input,
   OnDestroy,
@@ -26,6 +27,7 @@ import { OrganizationsService } from '../../organizations.service';
   selector: 'app-ics217-print',
   templateUrl: './ics217-print.component.html',
   styleUrls: ['./ics217-print.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     RouterLink,
     AsyncPipe,

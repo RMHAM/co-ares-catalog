@@ -1,5 +1,11 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, Input, ViewChild, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { MatMiniFabButton } from '@angular/material/button';
 import {
   MatCard,
@@ -32,6 +38,7 @@ import { TacticalViewComponent } from './tactical-view/tactical-view.component';
   templateUrl: './org-detail.component.html',
   styleUrls: ['./org-detail.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatMiniFabButton,
     MatIcon,

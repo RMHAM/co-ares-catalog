@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import {
   MatCard,
   MatCardContent,
@@ -15,6 +15,7 @@ import { Organization } from '../../datatypes/organization';
   selector: 'app-region-card',
   templateUrl: './region-card.component.html',
   styleUrls: ['./region-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     MatCard,
     MatCardHeader,

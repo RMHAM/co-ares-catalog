@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
@@ -10,6 +16,7 @@ import { Personnel } from '../../../datatypes/organization';
   selector: 'app-personnel-edit-row',
   imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIcon],
   templateUrl: './personnel-edit-row.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './personnel-edit-row.component.scss',
 })
 export class PersonnelEditRowComponent {

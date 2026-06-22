@@ -1,4 +1,9 @@
-import { Component, Input, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  inject,
+} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 
@@ -9,6 +14,7 @@ import { TacticalEditRowComponent } from './tactical-edit-row/tactical-edit-row.
   selector: 'app-tactical-edit',
   templateUrl: './tactical-edit.component.html',
   styleUrls: ['./tactical-edit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatIcon, TacticalEditRowComponent],
 })
 export class TacticalEditComponent {

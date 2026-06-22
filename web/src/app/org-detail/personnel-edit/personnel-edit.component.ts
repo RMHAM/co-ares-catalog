@@ -1,4 +1,9 @@
-import { Component, Input, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  inject,
+} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 
@@ -9,6 +14,7 @@ import { PersonnelEditRowComponent } from './personnel-edit-row/personnel-edit-r
   selector: 'app-personnel-edit',
   templateUrl: './personnel-edit.component.html',
   styleUrls: ['./personnel-edit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ReactiveFormsModule, PersonnelEditRowComponent, MatIcon],
 })
 export class PersonnelEditComponent {
