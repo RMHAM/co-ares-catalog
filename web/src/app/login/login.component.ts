@@ -1,15 +1,17 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+
+import { injectFirebaseAuth } from '../firebase-sdk';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
 })
 export class LoginComponent {
-  private auth: Auth = inject(Auth);
+  private auth = injectFirebaseAuth();
 
   async logInWithGoogle() {
     await signInWithPopup(this.auth, new GoogleAuthProvider());
