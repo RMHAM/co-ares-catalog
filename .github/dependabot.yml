@@ -1,0 +1,35 @@
+version: 2
+
+# Dependabot handles SECURITY updates only.
+# Routine version updates are Renovate's job - it groups version-locked
+# families (Angular monorepo, etc.) correctly without per-repo patterns.
+# open-pull-requests-limit: 0 disables version updates; per GitHub's docs
+# it has no effect on security updates.
+
+updates:
+  - package-ecosystem: npm
+    directories:
+      - /
+      - /web
+      - /data/js
+      - /functions
+      - /firestore
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    groups:
+      npm-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    groups:
+      actions-security:
+        applies-to: security-updates
+        patterns:
+          - "*"
