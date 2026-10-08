@@ -13,8 +13,8 @@ const db = getFirestore(app);
 db.settings({ ignoreUndefinedProperties: true });
 
 export async function findOrg(
-  region: number,
-  district: number,
+  region: number | null,
+  district: number | null,
 ): Promise<QueryDocumentSnapshot | null> {
   const query = db
     .collection('organizations')

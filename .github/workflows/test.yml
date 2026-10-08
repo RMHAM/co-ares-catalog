@@ -1,6 +1,8 @@
 name: Test
 
-on: push
+on:
+  push:
+  pull_request:
 
 jobs:
   test-web:
@@ -64,3 +66,26 @@ jobs:
         run: |
           npm ci
           npm run test
+
+
+  test-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+          cache-dependency-path: data/js/package-lock.json
+
+      - name: Test data tooling
+        working-directory: data/js
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+          npm test -- --runInBand
