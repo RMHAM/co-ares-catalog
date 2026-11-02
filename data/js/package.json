@@ -20,7 +20,7 @@
     "run-func": "3.0.0",
     "ts-api-utils": "1.4.3",
     "ts-jest": "29.4",
-    "typescript": "5.4.2"
+    "typescript": "5.9.3"
   },
   "scripts": {
     "start": "node build/src/ares/main.js",
