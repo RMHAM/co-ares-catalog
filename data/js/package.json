@@ -18,7 +18,7 @@
     "prettier": "3.9",
     "rimraf": "6.1",
     "run-func": "3.0.0",
-    "ts-api-utils": "1.4.3",
+    "ts-api-utils": "2.5.0",
     "ts-jest": "29.4",
     "typescript": "5.9.3"
   },
